@@ -1,0 +1,5 @@
+Single Page Application with ASP.NET and AngularJS : 
+
+http://channel9.msdn.com/Events/Build/2014/3-644                                                  
+(code : https://github.com/jongalloway/Angular-and-ASPNET-Build2014) (Use firefox to open AngularMTG\Step 6\index.html)
+                                                               
