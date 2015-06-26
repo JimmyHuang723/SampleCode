@@ -1,0 +1,61 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+</head>
+<body>
+
+    <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Extn.</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+ 
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Extn.</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table>
+    
+    
+
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+  <script>
+  
+
+	$(document).ready(function() {
+    $('#example').dataTable( {
+        "ajax": "DataTable1.json",
+        "pagingType": "full_numbers",
+        "lengthMenu": [[5, 10, 15, -1], ['five', 'ten', 'fifteen', "All"]],
+        "columns": [
+            { "data": "name",
+					    "render": function ( data, type, row )  {
+					       return  '<a href="'+data+'">' + data + '</a>';
+					    }
+            },
+            { "data": "position" },
+            { "data": "office" },
+            { "data": "extn" },
+            { "data": "start_date" },
+            { "data": "salary" }
+        ]
+    } );
+} );
+
+  
+  </script>
+</body>
+</html>
