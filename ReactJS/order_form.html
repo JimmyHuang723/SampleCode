@@ -1,0 +1,254 @@
+<!--
+http://tutorialzine.com/2014/07/5-practical-examples-for-learning-facebooks-react-framework/
+--> 
+
+<!DOCTYPE html>
+<html>
+  
+<head>
+
+
+
+  <script src="https://unpkg.com/react@15.3.2/dist/react-with-addons.js"></script>
+  <!--
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  -->
+
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+ 
+<style>
+
+* {
+    padding:0;
+    margin:0;
+}
+
+html{
+    font:14px normal Arial, sans-serif;
+    color:#626771;
+    background-color:#fff;
+}
+
+body{
+    padding:60px;
+    text-align: center;
+}
+
+h1{
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+#services{
+    list-style: none;
+    display: inline-block;
+    width: 340px;
+    text-align: left;
+}
+
+#services p{
+    display: block;
+    padding: 15px 20px;
+    background-color: #F8F8F8;
+    color: #7B8585;
+    margin-bottom: 3px;
+    position: relative;
+    cursor: pointer;
+    
+    transition: 0.3s;
+}
+
+#services p b{
+    position: absolute;
+    right: 28px;
+    line-height: 16px;
+    width: 100px;
+    color: #808787;
+    text-align: right;
+}
+
+#services p:hover{
+    background-color:#d8f2f1;
+}
+
+#services p.active{
+    color:#fff;
+    background-color:#41c7c2;
+}
+
+#services p.active b{
+    color: #fff;
+}
+
+#total{
+    background: none !important;
+    cursor: default !important;
+    padding-top: 10px !important;
+}
+
+  
+
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 5000ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 3000ms ease-in;
+}
+
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity 2s ease-in;
+}
+
+
+
+  </style>
+</head>
+  
+<body>
+
+<div id="errors" style="
+  background: #c00;
+  color: #fff;
+  display: none;
+  margin: -20px -20px 20px;
+  padding: 20px;
+  white-space: pre-wrap;
+"></div>
+<div id="container"></div>
+
+<div id="container2"></div>
+
+<script  type="text/babel">
+
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup; // ES5 with react-with-addons.js
+
+
+// This is more complex example that uses two components -
+// a service chooser form, and the individual services inside it.
+
+
+
+var ServiceChooser = React.createClass({
+
+    getInitialState: function(){
+        return { total: 0 };
+    },
+
+    addTotal: function( price ){
+        this.setState( { total: this.state.total + price } );
+
+    },
+
+    render: function() {
+
+        var self = this;
+
+        var services = this.props.items.map(function(s){
+
+            // Create a new Service component for each item in the items array.
+            // Notice that I pass the self.addTotal function to the component.
+
+            return <Service key={s.name} name={s.name} price={s.price} active={s.active} addTotal={self.addTotal} />;
+        });
+
+             
+        return <div>
+                    <h1>Our services</h1>
+                    
+                    <div key="services" id="services">
+                        <ReactCSSTransitionGroup
+                          transitionName="example"
+                          transitionAppear={true}
+                          transitionAppearTimeout={1000}
+                          transitionEnterTimeout={1000}
+                          transitionLeaveTimeout={1000}>
+                          {services}
+                        </ReactCSSTransitionGroup>     
+
+                        <p id="total">Total <b>${this.state.total.toFixed(2)}</b></p>
+
+                    </div>
+                    <div key="services2" id="services2">
+                    </div>
+
+                </div>;          
+
+
+
+
+    }
+});
+
+
+var Service = React.createClass({
+
+    getInitialState: function(){
+        return { active: false };
+    },
+
+    clickHandler: function (){
+
+        var active = !this.state.active;
+
+        this.setState({ active: active });
+        
+        // Notify the ServiceChooser, by calling its addTotal method
+        this.props.addTotal( active ? this.props.price : -this.props.price );
+
+    },
+
+    render: function(){
+
+        return  <p className={ this.state.active ? 'active' : '' } onClick={this.clickHandler}>
+                    {this.props.name} <b>${this.props.price.toFixed(2)}</b>
+                </p>;
+
+    }
+
+});
+
+
+var services = [
+    { name: 'Web Development', price: 300 },
+    { name: 'Design', price: 400 },
+    { name: 'Integration', price: 250 },
+    { name: 'Training', price: 220 }
+];
+
+
+// Render the ServiceChooser component, and pass the array of services
+
+ReactDOM.render(
+    <ServiceChooser items={ services } />,
+    document.getElementById('container')
+);
+
+
+
+</script>
+
+
+
+</body> 
+ 
+</html>
+
+
