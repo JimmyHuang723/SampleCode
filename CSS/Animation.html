@@ -1,0 +1,87 @@
+<!--
+https://www.w3schools.com/css/css3_animations.asp
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {
+    position : relative;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+   
+}
+
+div.test3 {   
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+div.test1:hover {   
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+
+@keyframes example
+{
+0% {transform: rotate(0deg);left:0px;}
+25% {transform: rotate(20deg);left:0px;}
+50% {transform: rotate(0deg);left:500px;}
+55% {transform: rotate(0deg);left:500px;}
+70% {transform: rotate(0deg);left:500px;background: blue;}
+100% {transform: rotate(-180deg);left:0px;}
+}
+
+</style>
+</head>
+<body>
+
+<p> Animation on page ready: </p>
+
+<div class='test3' >
+<img src="http://i.stack.imgur.com/WCveg.jpg" alt="Mountains" width="100%" height="100%">
+</div>
+
+<br>
+
+<p>Hover mouse on me : </p>
+
+<div class='test1' >
+<img src="http://i.stack.imgur.com/WCveg.jpg" alt="Mountains" width="100%" height="100%">
+</div>
+
+<br>
+
+<p>Click me : </p>
+<div id="test2">
+<img onclick="onClicktest2()" 
+     src="http://i.stack.imgur.com/WCveg.jpg" alt="Mountains" width="100%" height="100%">
+</div>
+
+
+<script>
+function onClicktest2() {
+    css_ori = document.getElementById('test2').style.cssText;
+    document.getElementById('test2').style.cssText += 'animation-name: example; animation-duration: 4s;';
+    setTimeout(revertCSS, 4000);
+    
+    function revertCSS(){
+        document.getElementById('test2').style.cssText = css_ori;
+    }
+}
+
+
+</script>
+
+</body>
+</html>
+
+
+

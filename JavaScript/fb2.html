@@ -1,0 +1,81 @@
+<!--
+https://developers.facebook.com/quickstarts/1737454876564690/?platform=web
+https://developers.facebook.com/docs/javascript/examples
+https://developers.facebook.com/docs/facebook-login/web/
+
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+
+
+</style>
+</head>
+<body>
+
+<script>
+
+///////   Init FB lib : 
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '1737454876564690',
+    xfbml      : true,
+    version    : 'v2.8'
+  });
+  FB.AppEvents.logPageView();
+};
+
+(function(d, s, id){
+   var js, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement(s); 
+   js.id = id;
+   js.src = "//connect.facebook.net/en_US/sdk.js";
+   fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));
+///////////////////////
+
+
+
+
+function onClicktest()
+{
+  //FB.getLoginStatus(function(response) {    
+  //  console.log(response);
+  //});
+  
+  FB.login(function(response) {
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+    }
+  });
+
+}
+
+</script>
+
+
+<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
+
+<img onclick="onClicktest()" 
+     src="http://i.stack.imgur.com/WCveg.jpg" alt="Mountains" width="20%" height="20%">
+
+
+</body>
+</html>
+
+
+
