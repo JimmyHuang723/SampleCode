@@ -1,5 +1,6 @@
 <!--
 https://www.w3schools.com/css/css3_images.asp
+https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_modal_close
 -->
 
 
@@ -123,6 +124,7 @@ img.onclick = function(){
     modal.style.display = "block";
     modalImg.src = this.src;
     captionText.innerHTML = this.alt;
+
 }
 
 // Get the <span> element that closes the modal
@@ -132,6 +134,15 @@ var span = document.getElementsByClassName("close")[0];
 span.onclick = function() { 
     modal.style.display = "none";
 }
+
+
+// Click outside modal to close modal : 
+modal.onclick = function(event) { 
+   if (event.target == modal) { // must use "event.target" otherwise modal closes on clicking the image
+       modal.style.display = "none";
+   }
+}   
+
 </script>
 
 </body>
