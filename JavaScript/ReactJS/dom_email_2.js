@@ -235,17 +235,17 @@ function setState(changes) {
 // Set initial data
 setState({
   contacts: [
-    {key: 1, name: "James K Nelson - Front End Unicorn", email: "James's post"},
+    {key: 1, name: "James", email: "James's post"},
     {key: 2, name: "Jim", email: "Jim's post"},
-    {key: 3, name: "James K Nelson - Front End Unicorn", email: "James's post"},
+    {key: 3, name: "James", email: "James's post"},
     {key: 4, name: "Jim", email: "Jim's post"},
-    {key: 5, name: "James K Nelson - Front End Unicorn", email: "James's post"},
+    {key: 5, name: "James", email: "James's post"},
     {key: 6, name: "Jim", email: "Jim's post"},
-    {key: 7, name: "James K Nelson - Front End Unicorn", email: "James's post"},
+    {key: 7, name: "James", email: "James's post"},
     {key: 8, name: "Jim", email: "Jim's post"},
-    {key: 9, name: "James K Nelson - Front End Unicorn", email: "James's post"},
+    {key: 9, name: "James", email: "James's post"},
     {key: 10, name: "Jim", email: "Jim's post"},
-    {key: 11, name: "James K Nelson - Front End Unicorn", email: "James's post"},
+    {key: 11, name: "James", email: "James's post"},
     {key: 12, name: "Jim", email: "Jim's post"},
   ],
   newContact: Object.assign({}, CONTACT_TEMPLATE),
