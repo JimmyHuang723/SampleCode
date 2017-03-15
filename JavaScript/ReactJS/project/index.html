@@ -12,6 +12,7 @@ https://www.w3schools.com/css/css_rwd_mediaqueries.asp
   <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
   <script src="https://npmcdn.com/react-router@2.6.0/umd/ReactRouter.min.js"></script>  
+  <script type="text/babel" src = "SPA.js"></script>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -153,10 +154,11 @@ html {
 
 <div class="menu left">
   <ul>
-    <li onclick="onClickMenu1()">  (1) ...     </li>
-    <li onclick="onClickMenu2()">  (2)The City </li>
-    <li>(3)The Island</li>
-    <li>(4)The Food</li>
+    <li onclick="onClickMenu1()">  (1) ... </li>
+    <li onclick="onClickMenu2()">  (2) ... </li>
+    <li onclick="onClickMenu3()">  (3) ... </li>
+    <li onclick="onClickMenu4()">  (4) ... </li>
+   
     <li>(5)The Flight</li>
     <li>(6)The City</li>
     <li>(7)The Island</li>
@@ -259,14 +261,26 @@ html {
 
 <script>
 
+
 function onClickMenu1() {
-    window.location = "/html/react/SPA/SPA.html";
+    window.location = "/html/react/project/";
 }
 
 function onClickMenu2() {
-    window.location = "/html/react/SPA/SPA.html";
+    
+    window.location = "/html/react/project/#/test";
 }
 
+function onClickMenu3() {
+    
+    window.location = "/html/react/project/#/test2";
+   
+}
+
+function onClickMenu4() {
+    
+    window.location = "/html/react/project/#/search";
+}
 
 </script>
 
