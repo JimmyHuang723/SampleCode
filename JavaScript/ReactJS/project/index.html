@@ -85,7 +85,7 @@ html {
 }
 
 .menu ul {
-    list-style-type: none;
+    /*list-style-type: none;*/
     margin: 0;
     padding: 0;
 }
@@ -93,12 +93,15 @@ html {
     padding: 8px;
     margin-bottom: 7px;
     
-    color: #ffffff;
+    color: white;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
+
+/*
 .menu li:hover {
     background-color: #0099cc;
 }
+*/
 
 ul ul{
     position: relative;
@@ -334,6 +337,28 @@ function mainmenu(){
                     }
                 }
             );
+
+    $("li").hover(
+            function(event){
+                if(event.target == this){                    
+                    $(this).css({
+                                    "color" : "#93979b",
+                                    "font-weight": "bold"
+                                });                   
+                }
+            },
+            function(event){
+                if(event.target == this){                    
+                    $(this).css({
+                                    "color" : "white",
+                                    "font-weight": "normal"
+                                });
+                    
+                }
+            }
+
+        );
+
 }
 
 $(document).ready(function(){         
