@@ -169,10 +169,10 @@ ul ul{
 
 <div class="menu left">
   <ul>
-    <li onclick="onClickMenu1()">  <span>(1) ...</span> </li>
-    <li onclick="onClickMenu2()">  <span>(2) ...</span> </li>
-    <li onclick="onClickMenu3()">  <span>(3) ...</span> </li>
-    <li onclick="onClickMenu4()">  <span>(4) ...</span> </li>
+    <li>  <span onclick="onClickMenu1()">(1) ...</span> </li>
+    <li>  <span onclick="onClickMenu2()">(2) ...</span> </li>
+    <li>  <span onclick="onClickMenu3()">(3) ...</span> </li>
+    <li>  <span onclick="onClickMenu4()">(4) ...</span> </li>
    
     <li><span>(5)The Flight</span>
         <ul>
@@ -395,7 +395,7 @@ function mainmenu(){
                                    // "background-color": "#0099cc",
                                 });
 
-                    if ($(this).next().length > 0){
+                    if ($(this).next().length > 0){ // if it has ul 
                         $(this).css({"cursor": "cell"});
                     }else{
                         $(this).css({"cursor": "pointer"});
