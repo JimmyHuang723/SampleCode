@@ -166,10 +166,28 @@ var ContactItem = React.createClass({
   },
 
   render: function() {
+
+    var imgSrc = "";
+    if(this.props.name % 6 == 0){
+      imgSrc = "http://i.stack.imgur.com/WCveg.jpg";
+    }else if(this.props.name % 6 == 1){
+      imgSrc = "http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg";
+    }else if(this.props.name % 6 == 2){
+      imgSrc = "https://s3-us-west-1.amazonaws.com/powr/defaults/image-slider2.jpg";
+    }else if(this.props.name % 6 == 3){
+      imgSrc = "http://beebom.redkapmedia.netdna-cdn.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg";
+    }else if(this.props.name % 6 == 4){
+      imgSrc = "http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg";
+    }else{
+      imgSrc = "https://australianmuseum.net.au/uploads/images/34570/1108%20(1)_big.jpg";
+    }
+
+
     return (
       React.createElement('li', {className: 'ContactItem'},
         React.createElement('h2', {className: 'ContactItem-email'}, this.props.email),
-        React.createElement('span', {className: 'ContactItem-name'}, this.props.name)
+        React.createElement('span', {className: 'ContactItem-name'}, this.props.name),
+        React.createElement('img', {src : imgSrc, width : "20%", height:"20%"})
       )
     );
   },
@@ -187,34 +205,30 @@ var ContactView = React.createClass({
   componentDidMount: function() {
     console.log("addEventListener in ContactView");
     document.getElementById("middleDiv").addEventListener("scroll", this.handleScroll);
+
   },
 
   handleScroll: function(event) {
 
       //console.log("scrollllll!!!");
       //console.log(event);
+    
 
-      const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;      
-      const body = document.body;
-      const html = document.documentElement;
-      const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
-      const windowBottom = windowHeight + window.pageYOffset;
-      //console.log('windowHeight : '.concat(windowHeight));
-      //console.log('pageYOffset : '.concat(window.pageYOffset));
-      //console.log('docHeight : '.concat(docHeight));
-      if (windowBottom >= (docHeight - 5 )) {
-        console.log('bottom reached');
+      if($("#middleDiv").scrollTop() + $("#middleDiv").innerHeight() >= $("#middleDiv")[0].scrollHeight) {
+            console.log('Bottom reached');
 
-        // Add item automatically when on bottom...
-        counter ++;
-        CONTACT_TEMPLATE_2.name = "number ".concat(counter);
-        CONTACT_TEMPLATE_2.email = CONTACT_TEMPLATE_2.name.concat("s' post");
-        this.props.onNewContactChange(CONTACT_TEMPLATE_2);
-        this.props.onNewContactSubmit();
+            // Add item automatically when on bottom...
+            counter_scroll_end ++;
+            CONTACT_TEMPLATE_2.name = counter_scroll_end; 
+            var number = "number ".concat(counter_scroll_end);
+            CONTACT_TEMPLATE_2.email = number.concat("s' post");
+            this.props.onNewContactChange(CONTACT_TEMPLATE_2);
+            this.props.onNewContactSubmit();
 
-      } else {
-        console.log('not at bottom');        
-      }      
+      }else{
+            console.log('NOT reached');
+      }
+
 
   },
 
@@ -247,7 +261,7 @@ var ContactView = React.createClass({
 var CONTACT_TEMPLATE = {name: "", email: "", description: "", errors: null};
 var CONTACT_TEMPLATE_2 = {name: "xxx", email: "@gmail.com", description: "", errors: null};
 
-var counter = 0;
+var counter_scroll_end = 0;
 
 /*
  * Model
@@ -277,27 +291,6 @@ function setState(changes) {
   );
 
 }
-
-/*
-// Set initial data
-setState({
-  contacts: [
-    {key: 1, name: "James K Nelson - Front End Unicorn", email: "James's post"},
-    {key: 2, name: "Jim", email: "Jim's post"},
-    {key: 3, name: "James K Nelson - Front End Unicorn", email: "James's post"},
-    {key: 4, name: "Jim", email: "Jim's post"},
-    {key: 5, name: "James K Nelson - Front End Unicorn", email: "James's post"},
-    {key: 6, name: "Jim", email: "Jim's post"},
-    {key: 7, name: "James K Nelson - Front End Unicorn", email: "James's post"},
-    {key: 8, name: "Jim", email: "Jim's post"},
-    {key: 9, name: "James K Nelson - Front End Unicorn", email: "James's post"},
-    {key: 10, name: "Jim", email: "Jim's post"},
-    {key: 11, name: "James K Nelson - Front End Unicorn", email: "James's post"},
-    {key: 12, name: "Jim", email: "Jim's post"},
-  ],
-  newContact: Object.assign({}, CONTACT_TEMPLATE),
-});
-*/
 
 
 /*
@@ -506,17 +499,17 @@ var Test2 = React.createClass({
         :
         {
           contacts: [
-            {key: 1, name: "James K Nelson - Front End Unicorn", email: "James's post"},
+            {key: 1, name: "James", email: "James's post"},
             {key: 2, name: "Jim", email: "Jim's post"},
-            {key: 3, name: "James K Nelson - Front End Unicorn", email: "James's post"},
+            {key: 3, name: "James", email: "James's post"},
             {key: 4, name: "Jim", email: "Jim's post"},
-            {key: 5, name: "James K Nelson - Front End Unicorn", email: "James's post"},
+            {key: 5, name: "James", email: "James's post"},
             {key: 6, name: "Jim", email: "Jim's post"},
-            {key: 7, name: "James K Nelson - Front End Unicorn", email: "James's post"},
+            {key: 7, name: "James", email: "James's post"},
             {key: 8, name: "Jim", email: "Jim's post"},
-            {key: 9, name: "James K Nelson - Front End Unicorn", email: "James's post"},
+            {key: 9, name: "James", email: "James's post"},
             {key: 10, name: "Jim", email: "Jim's post"},
-            {key: 11, name: "James K Nelson - Front End Unicorn", email: "James's post"},
+            {key: 11, name: "James", email: "James's post"},
             {key: 12, name: "Jim", email: "Jim's post"},
           ],
           newContact: Object.assign({}, CONTACT_TEMPLATE),
