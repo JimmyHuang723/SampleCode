@@ -44,6 +44,7 @@ html {
     right: 0;
     height: 10%;
     
+    font-size: 18px;
 }
 
 .left {
@@ -63,7 +64,10 @@ html {
     right: 0;
     width: 20%;
     height: 90%;
-    background-color: black;
+    text-align: center;
+    font-size: 24px;
+    color : black;
+    background-color: white;
 }
 
 .middle {
@@ -113,12 +117,8 @@ ul ul{
 }
 
 
-.aside {
-    
+.aside {    
     padding: 15px;
-    color: #ffffff;
-    text-align: center;
-    font-size: 14px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
@@ -158,6 +158,12 @@ ul ul{
 
 }
 
+.fb {
+    position: absolute;   
+    visibility : hidden;
+    right: 0px;
+}
+
 /* Start : For ContactView  */
 .ContactItem {
 
@@ -191,7 +197,22 @@ ul ul{
 <body>
 
 <div class="header">
-  <p>Head</p>
+
+     <!--FB -->
+     <div class = "fb" >
+        <div>
+            <p id = "fb_username">Welcome! </p>
+        </div>
+
+        <!--FB like and share-->
+        <div
+          class="fb-like"
+          data-share="true"
+          data-width="450"
+          data-show-faces="true">
+        </div>
+    </div>
+
 </div>
 
 
@@ -262,6 +283,9 @@ ul ul{
 
 <div class="right">
   <div class="aside">
+    
+
+<!--
     <h2>What?</h2>
     <p>Chania is a city on the island of Crete.</p>
     <h2>Where?</h2>
@@ -280,6 +304,7 @@ ul ul{
     <p>Crete is a Greek island in the Mediterranean Sea.</p>
     <h2>How?</h2>
     <p>You can reach Chania airport from all over Europe.</p>
+-->    
   </div>
 </div>
 
@@ -342,6 +367,9 @@ ul ul{
 <script>
 
 
+
+
+
 function onClickMenu1() {
     window.location = "/html/react/project/";
 }
@@ -361,6 +389,11 @@ function onClickMenu4() {
     
     window.location = "/html/react/project/#/search";
 }
+
+
+
+
+
 
 
 function mainmenu(){
@@ -421,9 +454,11 @@ function mainmenu(){
             function(event){
                 //if(event.target == this){               
                     $(this).css({                                  
-                                   // "background-color": "#0099cc",
+                                    //"background-color": "white",
+                                    //"color": "black",
                                 });
 
+                    // mouse cursor: 
                     if ($(this).next().length > 0){ // if it has ul 
                         $(this).css({"cursor": "cell"});
                     }else{
@@ -434,8 +469,9 @@ function mainmenu(){
             function(event){
                 //if(event.target == this){           
                     $(this).css({
-                                   "cursor": "default",
-                                   // "background-color": "black",
+                                    //"background-color": "black",
+                                    //"color": "white",
+                                    "cursor": "default",
                                 });
                 //}    
                 
@@ -443,10 +479,74 @@ function mainmenu(){
 
         );
 
+}  // end of mainmenu()
+
+
+
+///  START : FB 
+// This is called with the results from from FB.getLoginStatus().
+function FBstatusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+        getFBUser();  
+    } else if (response.status === 'not_authorized') {
+     
+    } else {
+     
+    }
+
+    // Show FB block : 
+    $('.fb').css({ "visibility" : "visible",});
 }
+
+function getFBUser(){
+    //  FB username : 
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      console.log(response);
+      document.getElementById('fb_username').innerHTML += response.name;
+      
+    });
+}
+
+///////START    Init FB lib : 
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '1737454876564690',
+    xfbml      : true,
+    version    : 'v2.8'
+  });
+  FB.AppEvents.logPageView();
+
+
+  FB.getLoginStatus(function(response) {
+     FBstatusChangeCallback(response);
+  });
+};
+
+(function(d, s, id){
+   var js, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement(s); 
+   js.id = id;
+   js.src = "//connect.facebook.net/en_US/sdk.js";
+   fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));
+/////////END    Init FB lib  
+///  END : FB 
+
+
 
 $(document).ready(function(){         
     mainmenu();
+
 });
 
 </script>

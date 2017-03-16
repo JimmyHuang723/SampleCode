@@ -187,7 +187,7 @@ var ContactItem = React.createClass({
       React.createElement('li', {className: 'ContactItem'},
         React.createElement('h2', {className: 'ContactItem-email'}, this.props.email),
         React.createElement('span', {className: 'ContactItem-name'}, this.props.name),
-        React.createElement('img', {src : imgSrc, width : "20%", height:"20%"})
+        React.createElement('img', {src : imgSrc, width : "70%", height:"70%"})
       )
     );
   },
