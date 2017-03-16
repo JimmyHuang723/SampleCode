@@ -8,6 +8,7 @@ https://www.w3schools.com/css/css_rwd_mediaqueries.asp
 <html>
 <head>
 
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
   <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
@@ -98,6 +99,14 @@ html {
 .menu li:hover {
     background-color: #0099cc;
 }
+
+ul ul{
+    position: relative;
+    left : 30px;   
+    display:none;
+}
+
+
 .aside {
     
     padding: 15px;
@@ -159,7 +168,31 @@ html {
     <li onclick="onClickMenu3()">  (3) ... </li>
     <li onclick="onClickMenu4()">  (4) ... </li>
    
-    <li>(5)The Flight</li>
+    <li>(5)The Flight
+        <ul>
+            <li>(5)-1
+                <ul>
+                    <li>(5)-1-1
+                        <ul>
+                            <li>(5)-1-1-1
+                                <ul>
+                                    <li>(5)-1-1-1-1</li>
+                                    <li>(5)-1-1-1-2</li>
+                                    <li>(5)-1-1-1-3</li>
+                                </ul>
+                            </li>
+                            <li>(5)-1-1-2</li>
+                            <li>(5)-1-1-3</li>
+                        </ul>
+                    </li>
+                    <li>(5)-1-2</li>
+                    <li>(5)-1-3</li>
+                </ul>
+            </li>
+            <li>(5)-2</li>
+            <li>(5)-3</li>
+        </ul>
+    </li>
     <li>(6)The City</li>
     <li>(7)The Island</li>
     <li>(8)The Food</li>
@@ -281,6 +314,26 @@ function onClickMenu4() {
     
     window.location = "/html/react/project/#/search";
 }
+
+
+function mainmenu(){
+    // Click and show menu
+    $("li").click(
+                function(event){
+                    if(event.target == this){
+                        if( $(this).find('ul:first').css('display') == 'none' ){
+                            $(this).find('ul:first').css({display: "block"});
+                        }else{
+                            $(this).find('ul:first').css({display: "none"});
+                        }
+                    }
+                }
+            );
+}
+
+$(document).ready(function(){         
+    mainmenu();
+});
 
 </script>
 
