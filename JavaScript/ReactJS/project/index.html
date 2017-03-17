@@ -64,7 +64,7 @@ body {
     height: 90%;
     font-size: 80%;  /* fallback of vmin */
     font-size: 3vmin; /* the smaller of vw or vh. */ 
-    background-color: black;
+    background-color: white;
 }
 
 .right {
@@ -101,7 +101,7 @@ body {
 }
 
 .menu ul {
-    /*list-style-type: none;*/
+    list-style-type: none;
     margin: 0;
     padding: 0;
 }
@@ -109,7 +109,7 @@ body {
     padding: 8px;
     margin-bottom: 7px;
     
-    color: white;
+    color: black;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: font 0.3s ease;
 }
@@ -218,9 +218,11 @@ ul ul{
             <p id = "fb_username">Welcome! </p>
         </div>
 
-        <!--FB like and share-->
+        <!--FB like and share
+            data-colorscheme : Light color scheme is for light background and vice-versa. --> 
         <div
           class="fb-like"
+          data-colorscheme="light"  
           data-share="true"
           data-width="250"
           data-show-faces="true">
@@ -436,15 +438,15 @@ function mainmenu(){
 
 
     // This changes current node + all it's ancestors.
-    $("li").hover(  // use $("li span") to select current text only (excluding all ancestor texts).  
+    $(".left li").hover(  // use $("li span") to select current text only (excluding all ancestor texts).  
             function(event){
                 if(1){
                 //if(event.target == this){                    
                     $(this).css({
                                     "color" : "#93979b",
                                     "font-weight": "bold",
-                                    "font-size": "100%",
-                                    "font-size": "4vmin",
+                                    //"font-size": "100%",
+                                    //"font-size": "3.5vmin",
                                     
                                 });
                             
@@ -454,10 +456,10 @@ function mainmenu(){
                 if(1){
                 //if(event.target == this){                    
                     $(this).css({
-                                    "color" : "white",
+                                    "color" : "black",
                                     "font-weight": "normal",
-                                    "font-size": "80%",
-                                    "font-size": "3vmin",
+                                    //"font-size": "80%",
+                                    //"font-size": "3vmin",
                                     
                                 });
                     
@@ -467,7 +469,7 @@ function mainmenu(){
         );
 
     //This changes current node only
-    $("li span").hover( 
+    $(".left li span").hover( 
             function(event){
                 //if(event.target == this){               
                     $(this).css({                                  
