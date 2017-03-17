@@ -57,7 +57,9 @@ body {
 
 .left {
     position: fixed;
+    z-index:0;
     overflow: scroll;
+    top:10%;
     bottom: 0;
     left: 0;
     width: 20%;
@@ -147,6 +149,8 @@ ul ul{
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
+
+
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
@@ -455,7 +459,8 @@ function onClickMenu4() {
 
 function mainmenu(){
 
-    // for mobile browser left menu
+
+    //START: for mobile browser left menu
     $("#menu_mobile").click(
                 function(event){
                     if(event.target == this){
@@ -477,6 +482,29 @@ function mainmenu(){
                     }
                 }
             );
+
+    // to recover class .left to default value (while resize from mobile to desktop):  
+    $( window ).resize(function() {
+        //console.log("window h: " + $( window ).height() + ", w: " + $( window ).width());
+        if( $( window ).width() > 768 ){
+            $(".left").css({
+                "height": "90%", 
+            });
+            $("#menu_ul").css({
+                display: "block", 
+            });
+        }else{
+            $(".left").css({
+                "height": "5%", 
+            });
+            $("#menu_ul").css({
+                display: "none", 
+            });
+        }
+    });
+    //END: for mobile browser left menu
+
+
 
     // Click and show menu
     $("li span").click(
