@@ -160,15 +160,15 @@ ul ul{
     
     .left {
        position: absolute;   
-       z-index:1;
+       z-index:1; /* When mobile menu dropdown, lay on top of class middle*/
        top: 10%;
-       height: 5%;                 
+       height: 8%;                 
        width: 80%;
     }
     
     #menu_ul {
         position: absolute;  /*absolute to class ".left" */
-        top: 6.25%;
+        top: 10%; /* 10% = 8/80 ( see $("#menu_mobile").click )*/
         width: 100%;
         display: none;   
     } 
@@ -476,7 +476,7 @@ function mainmenu(){
                                                             display: "none",
                                                          });
                             $(".left").css({
-                                "height": "5%", 
+                                "height": "8%", 
                             });
                         }
                     }
@@ -495,7 +495,7 @@ function mainmenu(){
             });
         }else{
             $(".left").css({
-                "height": "5%", 
+                "height": "8%", 
             });
             $("#menu_ul").css({
                 display: "none", 
