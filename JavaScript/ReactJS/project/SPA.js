@@ -213,7 +213,7 @@ var ContactView = React.createClass({
 
   handleScrollWindow: function(event) {
 
-      console.log("Window : scrollllll!!!");
+      //console.log("Window : scrollllll!!!");
 
       const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;      
       const body = document.body;
@@ -236,9 +236,9 @@ var ContactView = React.createClass({
       console.log("scrollllll!!!");
       //console.log(event);
     
-      console.log("scrollTop" + $("#middleDiv").scrollTop());
-      console.log("innerHeight" + $("#middleDiv").innerHeight());
-      console.log("scrollHeight" + $("#middleDiv")[0].scrollHeight);
+      //console.log("scrollTop" + $("#middleDiv").scrollTop());
+      //console.log("innerHeight" + $("#middleDiv").innerHeight());
+      //console.log("scrollHeight" + $("#middleDiv")[0].scrollHeight);
       if($("#middleDiv").scrollTop() + $("#middleDiv").innerHeight() >= $("#middleDiv")[0].scrollHeight) {
             console.log('Div : Bottom reached');
 
