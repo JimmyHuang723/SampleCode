@@ -152,6 +152,7 @@ ul ul{
 
 
 
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     [class*="col-"] {
@@ -200,6 +201,12 @@ ul ul{
 #menu_mobile {
     /*background-color: green;*/
 } 
+
+#menu_mobile_text {
+    color:white;
+    
+    display: none;
+}
 
 .fb {
     
@@ -275,7 +282,7 @@ ul ul{
 
 <div class="menu left">
     <div id = "menu_mobile"> 
-      
+      <span id = "menu_mobile_text" > Open Menu </span>
       <ul id = "menu_ul">
         <li>  <span onclick="onClickMenu1()">(1) ...</span> </li>
         <li>  <span onclick="onClickMenu2()">(2) ...</span> </li>
@@ -470,6 +477,7 @@ function mainmenu(){
                             $(".left").css({
                                 "height": "80%", 
                             });
+                            $("#menu_mobile_text").text("Close Menu");
                         }else{
                             $(this).find('#menu_ul').css({
                                                             display: "none",
@@ -477,6 +485,7 @@ function mainmenu(){
                             $(".left").css({
                                 "height": "8%", 
                             });
+                            $("#menu_mobile_text").text("Open Menu");
                         }
                     }
                 }
@@ -492,12 +501,18 @@ function mainmenu(){
             $("#menu_ul").css({
                 display: "block", 
             });
+            $("#menu_mobile_text").css({
+                display: "none", 
+            });
         }else{
             $(".left").css({
                 "height": "8%", 
             });
             $("#menu_ul").css({
                 display: "none", 
+            });
+            $("#menu_mobile_text").css({
+                display: "inline", 
             });
         }
     });
@@ -658,6 +673,16 @@ window.fbAsyncInit = function() {
 
 $(document).ready(function(){         
     mainmenu();
+
+    if( $( window ).width() > 768 ){
+        $("#menu_mobile_text").css({
+            display: "none", 
+        });
+    }else{
+        $("#menu_mobile_text").css({
+            display: "inline", 
+        });
+    }
 
 });
 
