@@ -17,6 +17,7 @@ https://www.w3schools.com/css/css_rwd_mediaqueries.asp
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 * {
     box-sizing: border-box;
@@ -44,7 +45,9 @@ html {
     right: 0;
     height: 10%;
     
-    font-size: 18px;
+
+    font-size: 80%;  /* fallback of vmin */
+    font-size: 2vmin; /* the smaller of vw or vh. */ 
 }
 
 .left {
@@ -54,6 +57,8 @@ html {
     left: 0;
     width: 20%;
     height: 90%;
+    font-size: 80%;  /* fallback of vmin */
+    font-size: 3vmin; /* the smaller of vw or vh. */ 
     background-color: black;
 }
 
@@ -65,7 +70,8 @@ html {
     width: 20%;
     height: 90%;
     text-align: center;
-    font-size: 24px;
+    font-size: 80%;  /* fallback of vmin */
+    font-size: 2vmin; /* the smaller of vw or vh. */ 
     color : black;
     background-color: white;
 }
@@ -84,7 +90,8 @@ html {
     background-color: grey;
     color: #ffffff;
     text-align: center;
-    font-size: 12px;
+    font-size: 80%;  /* fallback of vmin */
+    font-size: 2vmin; /* the smaller of vw or vh. */ 
     padding: 15px;
 }
 
@@ -98,7 +105,6 @@ html {
     margin-bottom: 7px;
     
     color: white;
-    font-size: 24px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: font 0.3s ease;
 }
@@ -162,6 +168,8 @@ ul ul{
     position: absolute;   
     visibility : hidden;
     right: 0px;
+    bottom: 0px;
+    top:0px;
 }
 
 /* Start : For ContactView  */
@@ -285,7 +293,6 @@ ul ul{
   <div class="aside">
     
 
-<!--
     <h2>What?</h2>
     <p>Chania is a city on the island of Crete.</p>
     <h2>Where?</h2>
@@ -304,7 +311,7 @@ ul ul{
     <p>Crete is a Greek island in the Mediterranean Sea.</p>
     <h2>How?</h2>
     <p>You can reach Chania airport from all over Europe.</p>
--->    
+
   </div>
 </div>
 
