@@ -644,7 +644,7 @@ ReactDOM.render(
         <Route path="testinnerhtml" component={componentTestInnerHtml} />
     </Route>
   </Router>,
-  document.querySelector("#middleDiv")
+  document.querySelector("#middleDivRow")
 );
 
 
