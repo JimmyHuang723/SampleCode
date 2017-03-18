@@ -502,7 +502,7 @@ var Stuff = React.createClass({
     }
 });
 
-var Test = React.createClass({
+var componentChooser = React.createClass({
   render: function() {
       return (
          <ServiceChooser items={ services } />
@@ -510,7 +510,7 @@ var Test = React.createClass({
     }
 });
 
-var Test2 = React.createClass({
+var componentUnlimitedShow = React.createClass({
 
   
   componentDidMount: function() {
@@ -559,7 +559,7 @@ var Test2 = React.createClass({
 });
 
 
-var Search = React.createClass({
+var componentSearch = React.createClass({
   render: function() {
       return (
         <div>
@@ -594,16 +594,15 @@ ReactDOM.render(
   <Router>
     <Route path="/" component={App}>
 
-        <IndexRoute component={Test}/> 
+        <IndexRoute component={componentChooser}/> 
        
-        <Route path="test" component={Test} />
-        <Route path="test2" component={Test2} />      
-        <Route path="search" component={Search} />
+        <Route path="chooser" component={componentChooser} />
+        <Route path="unlimitedshow" component={componentUnlimitedShow} />      
+        <Route path="search" component={componentSearch} />
     </Route>
   </Router>,
   document.querySelector("#middleDiv")
 );
-
 
 
 
