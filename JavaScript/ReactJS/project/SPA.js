@@ -630,7 +630,7 @@ var App = React.createClass({
 
 
 
-
+// START : Initial React Render....
 
 ReactDOM.render(
   <Router>
@@ -647,6 +647,9 @@ ReactDOM.render(
   document.querySelector("#middleDivRow")
 );
 
+$("#middleDiv").css({ "visibility": "visible",  });
+
+// END : Initial React Render....
 
 
 
