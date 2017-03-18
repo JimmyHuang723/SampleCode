@@ -636,7 +636,7 @@ ReactDOM.render(
   <Router>
     <Route path="/" component={App}>
 
-        <IndexRoute component={componentChooser}/> 
+        <IndexRoute component={Home}/> 
        
         <Route path="chooser" component={componentChooser} />
         <Route path="unlimitedshow" component={componentUnlimitedShow} />      
