@@ -502,6 +502,48 @@ var Stuff = React.createClass({
     }
 });
 
+// https://facebook.github.io/react/docs/dom-elements.html
+// http://stackoverflow.com/questions/40108843/react-how-to-load-and-render-external-html-file
+var componentTestInnerHtml = React.createClass({
+
+  createMarkup: function() { 
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests
+    //console.log("createMarkup.....");
+    var allHTML = "default";
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", "http://jimmyh.hopto.org/html/react/project/1.html", false); // true:async, false:sync
+    rawFile.onload = function ()
+    {
+        console.log("XMLHttpRequest onreadystatechange...");
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                allHTML = rawFile.responseText;
+                //console.log(allHTML);
+            }else{
+                console.log("Error : componentTestInnerHtml fail to read server html file.");
+            }
+        }
+    };
+
+    rawFile.onerror = function (e) {
+      console.error(rawFile.statusText);
+    };
+
+    rawFile.send(null); // actually initiates the request.  The callback routine is called whenever the state of the request changes.
+
+    return {__html: allHTML};
+  },
+
+  render: function() {
+      return (
+         <div dangerouslySetInnerHTML={this.createMarkup()} ></div>
+      );
+  }
+});
+
 var componentChooser = React.createClass({
   render: function() {
       return (
@@ -599,6 +641,7 @@ ReactDOM.render(
         <Route path="chooser" component={componentChooser} />
         <Route path="unlimitedshow" component={componentUnlimitedShow} />      
         <Route path="search" component={componentSearch} />
+        <Route path="testinnerhtml" component={componentTestInnerHtml} />
     </Route>
   </Router>,
   document.querySelector("#middleDiv")
