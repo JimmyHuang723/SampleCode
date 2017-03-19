@@ -512,7 +512,7 @@ var componentTestInnerHtml = React.createClass({
     //console.log("createMarkup.....");
     var allHTML = "default";
     var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", "http://jimmyh.hopto.org/html/react/project/1.html", false); // true:async, false:sync
+    rawFile.open("GET", "image.html", false); // true:async, false:sync
     rawFile.onload = function ()
     {
         console.log("XMLHttpRequest onreadystatechange...");
