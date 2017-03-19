@@ -508,6 +508,18 @@ var componentTestInnerHtml = React.createClass({
 
   componentDidMount: function() {
 
+    function openModal(){
+      $("#middleDiv").css({ "overflow": "hidden",  }); // Hide scroll to fix bug : lapton screen scroll bar is on top of modal
+      modal.style.display = "block";
+      
+    }
+
+    function closeModal(){
+      $("#middleDiv").css({ "overflow": "scroll",  });
+      modal.style.display = "none";
+      
+    }
+
     // Get the modal
     var modal = document.getElementById('myModal');
 
@@ -518,7 +530,7 @@ var componentTestInnerHtml = React.createClass({
     $(".responsive img").click(
       function(event){         
           if(event.target == this){
-            modal.style.display = "block";
+            openModal();
             modalImg.src = this.src;
             captionText.innerHTML = this.alt;
           }
@@ -530,14 +542,14 @@ var componentTestInnerHtml = React.createClass({
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() { 
-        modal.style.display = "none";
+        closeModal();
     }
 
 
     // Click outside modal to close modal : 
     modal.onclick = function(event) { 
        if (event.target == modal) { // must use "event.target" otherwise modal closes on clicking the image
-           modal.style.display = "none";
+           closeModal();
        }
     }   
 
@@ -684,7 +696,7 @@ ReactDOM.render(
   document.querySelector("#middleDivRow")
 );
 
-$("#middleDiv").css({ "visibility": "visible",  });
+$("#middleDiv").css({ "visibility": "visible",  }); // if we don't this, html foot will show before React rendered
 
 // END : Initial React Render....
 
