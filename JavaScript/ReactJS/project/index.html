@@ -67,7 +67,7 @@ body {
     /*text-align: center;*/  /* This causes deeper node to look strange*/
     font-size: 80%;  /* fallback of vmin */
     font-size: 3vmin; /* the smaller of vw or vh. */ 
-    background-color: black;
+    background-color: #eaeaea;
     transition: height 0.7s ease;
     border: 2px solid black;
     border-radius: 6px;
@@ -113,19 +113,24 @@ body {
     padding: 0;
 }
 .menu li {
-    padding: 8px;
-    margin-bottom: 7px;
+    /*padding: 8px;*/
+    margin: 7px;
     
     color: white;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    /*box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);*/
     transition: font 0.3s ease;
+
 }
+
 
 .left li span {
    display:block; /*Need to be 'block' if span want to have width & height */
    /*background-color: red;*/
    width: 100%;
    height:100%;
+   background-color: #454647;
+   border: 1px solid black;
+   border-radius: 6px;
 }
 
 /*
@@ -216,10 +221,11 @@ ul ul{
 } 
 
 #menu_mobile_text {
-    /*background-color: yellow;*/
+    background-color: #cdcfd3;
+    
     font-size: 140%;  /* fallback of vmin */
     font-size: 6vmin; /* the smaller of vw or vh. */ 
-    color:white;
+    color:black;
     display: none;
 }
 
