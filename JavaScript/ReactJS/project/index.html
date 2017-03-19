@@ -486,30 +486,37 @@ function onClickMenu6() {
 
 function mainmenu(){
 
+    function expandMenu(){
+        $('#menu_ul').css({
+            display: "block",
+        });
+        $(".left").css({
+            "height": "80%", 
+        });
+        $("#menu_mobile_text").text("Close Menu");
+    }
+
+    function collapseMenu(){
+        $('#menu_ul').css({
+            display: "none",
+        });
+        $(".left").css({
+            "height": "8%", 
+        });
+        $("#menu_mobile_text").text("Open Menu");
+    }
 
     //START: for mobile browser left menu
     $("#menu_mobile_text").click(
                 function(event){
-                    console.log("click : " ); console.log(event);
-                    //if(1){
+                    //console.log("click : " ); console.log(event);
+                   
                     if(event.target == this){
-                        console.log("target is this " );
+                        //console.log("target is this " );
                         if( $('#menu_ul').css('display') == 'none' ){
-                            $('#menu_ul').css({
-                                                            display: "block",
-                                                         });
-                            $(".left").css({
-                                "height": "80%", 
-                            });
-                            $("#menu_mobile_text").text("Close Menu");
+                            expandMenu();
                         }else{
-                            $('#menu_ul').css({
-                                                            display: "none",
-                                                         });
-                            $(".left").css({
-                                "height": "8%", 
-                            });
-                            $("#menu_mobile_text").text("Open Menu");
+                            collapseMenu();
                         }
                     }
                 }
