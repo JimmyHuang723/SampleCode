@@ -64,6 +64,7 @@ body {
     left: 0;
     width: 20%;
     height: 90%;
+    text-align: center;
     font-size: 80%;  /* fallback of vmin */
     font-size: 3vmin; /* the smaller of vw or vh. */ 
     background-color: black;
@@ -118,6 +119,13 @@ body {
     color: white;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: font 0.3s ease;
+}
+
+.left li span {
+   display:block; /*Need to be 'block' if span want to have width & height */
+   /*background-color: red;*/
+   width: 100%;
+   height:100%;
 }
 
 /*
@@ -208,8 +216,10 @@ ul ul{
 } 
 
 #menu_mobile_text {
+    /*background-color: yellow;*/
+    font-size: 140%;  /* fallback of vmin */
+    font-size: 6vmin; /* the smaller of vw or vh. */ 
     color:white;
-    
     display: none;
 }
 
@@ -258,6 +268,8 @@ ul ul{
 }
 /*End : For ContactView*/
 
+
+
 </style>
 </head>
 <body>
@@ -287,7 +299,7 @@ ul ul{
 
 <div class="menu left">
     <div id = "menu_mobile"> 
-      <span id = "menu_mobile_text" > Open Menu </span>
+      <div id = "menu_mobile_text" > Open Menu </div>
       <ul id = "menu_ul">
         <li>  <span onclick="onClickMenu1()">(1) ...</span> </li>
         <li>  <span onclick="onClickMenu2()">(2) ...</span> </li>
@@ -476,11 +488,14 @@ function mainmenu(){
 
 
     //START: for mobile browser left menu
-    $("#menu_mobile").click(
+    $("#menu_mobile_text").click(
                 function(event){
+                    console.log("click : " ); console.log(event);
+                    //if(1){
                     if(event.target == this){
-                        if( $(this).find('#menu_ul').css('display') == 'none' ){
-                            $(this).find('#menu_ul').css({
+                        console.log("target is this " );
+                        if( $('#menu_ul').css('display') == 'none' ){
+                            $('#menu_ul').css({
                                                             display: "block",
                                                          });
                             $(".left").css({
@@ -488,7 +503,7 @@ function mainmenu(){
                             });
                             $("#menu_mobile_text").text("Close Menu");
                         }else{
-                            $(this).find('#menu_ul').css({
+                            $('#menu_ul').css({
                                                             display: "none",
                                                          });
                             $(".left").css({
@@ -521,7 +536,7 @@ function mainmenu(){
                 display: "none", 
             });
             $("#menu_mobile_text").css({
-                display: "inline", 
+                display: "block", 
             });
         }
     });
@@ -530,7 +545,7 @@ function mainmenu(){
 
 
     // Click and show menu
-    $("li span").click(
+    $(".left li span").click(
                 function(event){
                     if(event.target == this){
                         if( $(this).next().css('display') == 'none' ){
@@ -691,7 +706,7 @@ $(document).ready(function(){
         });
     }else{
         $("#menu_mobile_text").css({
-            display: "inline", 
+            display: "block", 
         });
     }
 
