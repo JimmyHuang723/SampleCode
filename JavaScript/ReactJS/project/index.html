@@ -69,8 +69,7 @@ body {
     font-size: 3vmin; /* the smaller of vw or vh. */ 
     background-color: #eaeaea;
     transition: height 0.7s ease;
-    border: 2px solid black;
-    border-radius: 6px;
+    
 }
 
 .right {
@@ -182,6 +181,8 @@ ul ul{
        top: 10%;
        height: 8%;                 
        width: 80%;
+       font-size: 100%;  /* fallback of vmin */
+       font-size: 5vmin; /* the smaller of vw or vh. */ 
     }
     
     #menu_ul {
@@ -227,6 +228,8 @@ ul ul{
     font-size: 6vmin; /* the smaller of vw or vh. */ 
     color:black;
     display: none;
+    border: 1px solid black;
+    border-radius: 6px;
 }
 
 .fb {
