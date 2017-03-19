@@ -134,6 +134,8 @@ var ContactForm = React.createClass({
     var errors = this.props.value.errors || {};
 
     return (
+      <h1> {"Keep scrolling down...you will see more and more..."} </h1>
+      /*
       React.createElement('form', {onSubmit: this.onSubmit, className: 'ContactForm', noValidate: true},
         React.createElement('input', {
           type: 'text',
@@ -154,6 +156,8 @@ var ContactForm = React.createClass({
         }),
         React.createElement('button', {type: 'submit'}, "Add Contact")
       )
+      */
+
     );
   },
 });
