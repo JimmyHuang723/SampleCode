@@ -566,6 +566,12 @@ function mainmenu(){
                                                             
                                                });
                         }
+                        // Mobile Browser : to collapse/expand menu when clicking on menu item
+                        if( $( window ).width() <= 768 ){
+                            if ($(this).next().length == 0){ // if it doesn't have ul (the bottom node)
+                                collapseMenu(); 
+                            }
+                        }
                     }
                 }
             );
