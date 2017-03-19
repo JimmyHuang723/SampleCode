@@ -237,22 +237,34 @@ For screens larger than 1224px wide, it will show four images side by side, for 
 
 /* Modal Content (image) */
 .modal-content {
+    position: absolute;
     margin: auto;
     display: block;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+    height:auto;
     width: 80%;
-    max-width: 700px;
+    
+  
 }
 
 /* Caption of Modal Image */
 #caption {
+    position: absolute;
     margin: auto;
     display: block;
+    top: 5%;
+    left: 10%;
+    right: 10%;
     width: 80%;
-    max-width: 700px;
+    height: 10%;
+
     text-align: center;
     color: #ccc;
     padding: 10px 0;
-    height: 150px;
+    
 }
 
 /* Add Animation */
@@ -292,7 +304,7 @@ For screens larger than 1224px wide, it will show four images side by side, for 
 }
 
 /* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 768px){
     .modal-content {
         width: 100%;
     }
