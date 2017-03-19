@@ -519,6 +519,8 @@ function mainmenu(){
         $("#menu_mobile_text").text("Open Menu");
     }
 
+// This is useless on mobile (also it caused bug on Android that click on "open menu" will trigger on first menu item)    
+/* 
     $(".left").hover(  
         function(event){
             if( $( window ).width() <= 768 ){
@@ -535,7 +537,7 @@ function mainmenu(){
             }
         }
     );
-
+*/
     $("#menu_mobile_text").click(
                 function(event){
                     //console.log("click : " ); console.log(event);
