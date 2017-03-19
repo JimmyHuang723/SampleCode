@@ -666,6 +666,19 @@ function mainmenu(){
 
         );
 
+
+    $( ".left li span" ).mouseup(function() {
+                            $(this).css({                                  
+                                "background-color": "#32d14c", 
+                            });
+                        })
+                        .mousedown(function() {
+                            $(this).css({                                  
+                                "background-color": "#454647", 
+                            });  
+                        });
+
+
 }  // end of mainmenu()
 
 
