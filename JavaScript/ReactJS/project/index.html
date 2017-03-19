@@ -64,7 +64,7 @@ body {
     left: 0;
     width: 20%;
     height: 90%;
-    text-align: center;
+    /*text-align: center;*/  /* This causes deeper node to look strange*/
     font-size: 80%;  /* fallback of vmin */
     font-size: 3vmin; /* the smaller of vw or vh. */ 
     background-color: black;
@@ -486,6 +486,8 @@ function onClickMenu6() {
 
 function mainmenu(){
 
+
+    //START: for mobile browser left menu
     function expandMenu(){
         $('#menu_ul').css({
             display: "block",
@@ -506,7 +508,23 @@ function mainmenu(){
         $("#menu_mobile_text").text("Open Menu");
     }
 
-    //START: for mobile browser left menu
+    $("#menu_mobile").hover(  
+        function(event){
+            if( $( window ).width() <= 768 ){
+                if( $('#menu_ul').css('display') == 'none' ){
+                    expandMenu();
+                }
+            }
+        },
+        function(event){
+            if( $( window ).width() <= 768 ){    
+                if( $('#menu_ul').css('display') == 'block' ){
+                    collapseMenu();
+                }
+            }
+        }
+    );
+
     $("#menu_mobile_text").click(
                 function(event){
                     //console.log("click : " ); console.log(event);
@@ -566,12 +584,14 @@ function mainmenu(){
                                                             
                                                });
                         }
+                        
                         // Mobile Browser : to collapse/expand menu when clicking on menu item
                         if( $( window ).width() <= 768 ){
                             if ($(this).next().length == 0){ // if it doesn't have ul (the bottom node)
                                 collapseMenu(); 
                             }
                         }
+                        
                     }
                 }
             );
