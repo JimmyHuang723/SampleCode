@@ -223,7 +223,7 @@ var ContactView = React.createClass({
       //console.log('windowHeight : '.concat(windowHeight));
       //console.log('pageYOffset : '.concat(window.pageYOffset));
       //console.log('docHeight : '.concat(docHeight));
-      if (windowBottom >= (docHeight - 5 )) {
+      if (windowBottom >= (docHeight * 0.95 )) {
         console.log('Window : bottom reached');
         this.addContactItem();
       } else {
@@ -239,7 +239,8 @@ var ContactView = React.createClass({
       //console.log("scrollTop" + $("#middleDiv").scrollTop());
       //console.log("innerHeight" + $("#middleDiv").innerHeight());
       //console.log("scrollHeight" + $("#middleDiv")[0].scrollHeight);
-      if($("#middleDiv").scrollTop() + $("#middleDiv").innerHeight() >= $("#middleDiv")[0].scrollHeight) {
+      if($("#middleDiv").scrollTop() + $("#middleDiv").innerHeight() 
+              >= $("#middleDiv")[0].scrollHeight * 0.95) {
             console.log('Div : Bottom reached');
 
             // Add item automatically when on bottom...
@@ -515,7 +516,7 @@ var componentTestInnerHtml = React.createClass({
     }
 
     function closeModal(){
-      $("#middleDiv").css({ "overflow": "scroll",  });
+      $("#middleDiv").css({ "overflow": "auto",  });
       modal.style.display = "none";
       
     }
