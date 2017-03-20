@@ -574,7 +574,7 @@ var Stuff = React.createClass({
 });
 
 
-
+///
 var componentAbout = React.createClass({
 
   afterRender: function() {
@@ -591,12 +591,10 @@ var componentAbout = React.createClass({
 });
 
 
+///
+var componentImageGallery = React.createClass({
 
-// https://facebook.github.io/react/docs/dom-elements.html
-// http://stackoverflow.com/questions/40108843/react-how-to-load-and-render-external-html-file
-var componentTestInnerHtml = React.createClass({
-
-  componentDidMount: function() {
+  afterRender: function() {
 
     function openModal(){
       $("#middleDiv").css({ "overflow": "hidden",  }); // Hide scroll to fix bug : lapton screen scroll bar is on top of modal
@@ -635,7 +633,6 @@ var componentTestInnerHtml = React.createClass({
         closeModal();
     }
 
-
     // Click outside modal to close modal : 
     modal.onclick = function(event) { 
        if (event.target == modal) { // must use "event.target" otherwise modal closes on clicking the image
@@ -643,44 +640,15 @@ var componentTestInnerHtml = React.createClass({
        }
     }   
 
-  },
-
-  createMarkup: function() { 
-
-    // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests
-    //console.log("createMarkup.....");
-    var allHTML = "default";
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", "image.html", false); // true:async, false:sync
-    rawFile.onload = function ()
-    {
-        console.log("XMLHttpRequest onreadystatechange...");
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                allHTML = rawFile.responseText;
-                //console.log(allHTML);
-            }else{
-                console.log("Error : componentTestInnerHtml fail to read server html file.");
-            }
-        }
-    };
-
-    rawFile.onerror = function (e) {
-      console.error(rawFile.statusText);
-    };
-
-    rawFile.send(null); // actually initiates the request.  The callback routine is called whenever the state of the request changes.
-
-    return {__html: allHTML};
-  },
+  }, 
 
   render: function() {
+      var html_object = { file_path : "image.html"} ;
       return (
-         <div dangerouslySetInnerHTML={this.createMarkup()} ></div>
+        <LoadInnerHtml  html= {html_object}  afterRender={this.afterRender}   />                 
       );
   }
+
 });
 
 
@@ -782,7 +750,7 @@ ReactDOM.render(
         <Route path="chooser" component={componentChooser} />
         <Route path="unlimitedshow" component={componentUnlimitedShow} />      
         <Route path="search" component={componentSearch} />
-        <Route path="testinnerhtml" component={componentTestInnerHtml} />
+        <Route path="imagegallery" component={componentImageGallery} />
     </Route>
   </Router>,
   document.querySelector("#middleDivRow")
