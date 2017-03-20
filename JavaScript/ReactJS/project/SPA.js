@@ -652,6 +652,55 @@ var componentImageGallery = React.createClass({
 });
 
 
+///
+var componentGMAP = React.createClass({
+
+  afterRender: function() {
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+
+        var myLatLng = {lat: 51.5, lng:  -0.12};
+        //myLatLng.lat = position.coords.latitude;
+        //myLatLng.lng = position.coords.longitude;
+        
+        var mapOptions = {
+            center: new google.maps.LatLng(myLatLng.lat, myLatLng.lng),
+            zoom: 10,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById("map_div"), mapOptions);
+
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
+
+    }
+ 
+    //getLocation();
+    showPosition();
+  }, 
+
+  render: function() {
+      var html_object = { file_path : "gmap.html"} ;
+      return (
+        <div>
+          <LoadInnerHtml  html= {html_object}  afterRender={this.afterRender}   />              
+        </div>   
+      );
+  }
+
+});
+
 
 var componentChooser = React.createClass({
   render: function() {
@@ -751,6 +800,8 @@ ReactDOM.render(
         <Route path="unlimitedshow" component={componentUnlimitedShow} />      
         <Route path="search" component={componentSearch} />
         <Route path="imagegallery" component={componentImageGallery} />
+        <Route path="gmap" component={componentGMAP} />
+        
     </Route>
   </Router>,
   document.querySelector("#middleDivRow")
