@@ -335,36 +335,15 @@ ul ul{
       <ul id = "menu_ul">
 
         <li><span onclick="onClickMenu_HOME()"> HOME </span> </li>
-        <li><span onclick="onClickMenu_WORK_EXPERIENCE()"> WORK EXPERIENCE </span> 
-        </li>
         <li><span> WORK DEMO </span> 
-            <ul>
-                <li><span> JavaScript </span>
-                    <ul>
-                        <li><span> ReactJS </span>
-                            <ul>
-                                <li><span onclick="onClickMenu3()"> Feed </span> </li>
-                                <li><span onclick="onClickMenu2()"> Choose </span> </li>
-                                <li><span onclick="onClickMenu4()"> Search </span> </li>       
-                            </ul>
-                        </li>
-                        <li><span> AngularJS </span>
-                        </li>
-                        <li><span onclick="onClickMenu_Google_Map()"> Google Map </span> </li>
-                    </ul>
-                </li>
-                <li><span> CSS HTML </span>
-                    <ul>
-                        <li><span onclick="onClickMenu_Image_Gallery()" > Image Gallery </span></li>
-                    </ul>
-                </li>
-                <li><span> PHP </span></li>
+            <ul>           
+                <li><span onclick="onClickMenu3()"> Feed </span> </li>
+                <li><span onclick="onClickMenu2()"> Choose </span> </li>
+                <li><span onclick="onClickMenu4()"> Search </span> </li>    
+                <li><span onclick="onClickMenu_Image_Gallery()" > Image Gallery </span></li>   
+                <li><span onclick="onClickMenu_Google_Map()"> Google Map </span> </li> 
             </ul>
-        </li>
-        <li><span onclick="onClickMenu_TECH()"> TECH </span> </li>
-        <li><span onclick="onClickMenu_TRAVEL()"> TRAVEL </span> </li>
-
-       
+        </li>       
         <li><span> Expand me </span>
             <ul>
                 <li><span>Expand me -1 </span>
@@ -402,6 +381,10 @@ ul ul{
                 <li><span>3</span></li>
             </ul>
         </li>
+        <li><span onclick="onClickMenu_WORK_EXPERIENCE()"> WORK EXPERIENCE </span> 
+        </li>
+        <li><span onclick="onClickMenu_TECH()"> TECH </span> </li>
+        <li><span onclick="onClickMenu_TRAVEL()"> TRAVEL </span> </li>
 
     <!--   
         <li><span>(9)The Flight</span></li>
@@ -498,7 +481,10 @@ ul ul{
 
 function onClickMenu_HOME() {
 
-    window.location = "/html/react/project/";
+    // start with "/#/" means absolute path
+    // start with "#/"  means relative path
+    window.location = "#/";  
+
 }
 
 function onClickMenu_WORK_EXPERIENCE(){
@@ -515,28 +501,28 @@ function onClickMenu_TRAVEL(){
 
 function onClickMenu2() {
     
-    window.location = "/html/react/project/#/chooser";
+    window.location = "#/chooser";
 }
 
 function onClickMenu3() {
     
-    window.location = "/html/react/project/#/unlimitedshow";
+    window.location = "#/unlimitedshow";
    
 }
 
 function onClickMenu4() {
     
-    window.location = "/html/react/project/#/search";
+    window.location = "#/search";
 }
 
 function onClickMenu_Image_Gallery() {
     
-    window.location = "/html/react/project/#/imagegallery";
+    window.location = "#/imagegallery";
 
 }
 
 function onClickMenu_Google_Map(){
-    window.location = "/html/react/project/#/gmap";    
+    window.location = "#/gmap";    
 }
 
 
