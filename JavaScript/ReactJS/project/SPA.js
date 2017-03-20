@@ -264,7 +264,7 @@ var ContactView = React.createClass({
   },
 
   componentDidMount: function() {
-    console.log("addEventListener in ContactView");
+    //console.log("addEventListener in ContactView");
 
     // Bind to scroll bar of current Div : 
     document.getElementById("middleDiv").addEventListener("scroll", this.handleScroll);
@@ -318,7 +318,7 @@ var ContactView = React.createClass({
     counter_scroll_end ++;
     CONTACT_TEMPLATE_2.name = counter_scroll_end; 
     var number = "number ".concat(counter_scroll_end);
-    CONTACT_TEMPLATE_2.email = number.concat("s' post");
+    CONTACT_TEMPLATE_2.email = number.concat("'s post");
     this.props.onNewContactChange(CONTACT_TEMPLATE_2);
     this.props.onNewContactSubmit();
   },
