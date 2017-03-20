@@ -1,8 +1,52 @@
 
 
-<h1>My First Google Map</h1>
 
-<div id="map_div" style="width:400px;height:400px;background:yellow"></div>
+<style>
+
+
+
+ 
+
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1225px) {
+    #map_div {
+        width:600px;
+		height:600px;
+    }
+}
+
+/* Desktops and laptops ----------- */
+
+@media only screen and (max-width: 1224px){
+    #map_div {
+        width:400px;
+		height:400px;
+        
+    }
+}
+
+
+/* iPads ----------- */
+@media only screen and (max-width: 768px){
+    #map_div {
+        width:200px;
+		height:200px;
+    }
+}
+
+#map_div {
+	width:600px;
+	height:600px;
+	background:#eaeaea; 
+}
+
+</style>
+
+
+<h1>This is your approx location </h1>
+
+<div id="map_div"></div>
 
 
 

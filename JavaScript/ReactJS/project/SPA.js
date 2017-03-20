@@ -658,16 +658,38 @@ var componentGMAP = React.createClass({
   afterRender: function() {
 
     function getLocation() {
+
+        /* Must use with HTTPS
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else { 
             alert("Geolocation is not supported by this browser.");
         }
+        */
+
+        $.get("http://ipinfo.io", function (response) {
+          /*
+            {
+            "ip": "49.177.226.68",
+            "hostname": "No Hostname",
+            "city": "Wantirna South",
+            "region": "Victoria",
+            "country": "AU",
+            "loc": "-37.8833,145.2167",
+            "org": "AS4804 Microplex Network Operations Centre",
+            "postal": "3152"
+            }
+          */
+            var res = response.loc.split(",");
+            showPosition( parseFloat(res[0]) , parseFloat(res[1]) );
+        }, "jsonp");
+
     }
 
-    function showPosition(position) {
+    function showPosition(lat, lng) {
+        console.log(lat); console.log(lng);
 
-        var myLatLng = {lat: 51.5, lng:  -0.12};
+        var myLatLng = {lat: lat, lng:  lng};
         //myLatLng.lat = position.coords.latitude;
         //myLatLng.lng = position.coords.longitude;
         
@@ -686,16 +708,14 @@ var componentGMAP = React.createClass({
 
     }
  
-    //getLocation();
-    showPosition();
+    getLocation();
+    
   }, 
 
   render: function() {
       var html_object = { file_path : "gmap.html"} ;
       return (
-        <div>
           <LoadInnerHtml  html= {html_object}  afterRender={this.afterRender}   />              
-        </div>   
       );
   }
 
