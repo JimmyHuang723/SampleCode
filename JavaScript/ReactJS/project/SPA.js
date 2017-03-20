@@ -1,3 +1,67 @@
+
+
+/////////////////////////////////////////////////////////////
+//////////////////////LoadInnerHtml ////////////////////////////////
+/////////////////////////////////////////////////////////////
+// https://facebook.github.io/react/docs/dom-elements.html
+// http://stackoverflow.com/questions/40108843/react-how-to-load-and-render-external-html-file
+var LoadInnerHtml = React.createClass({
+
+  propTypes: {
+    html: React.PropTypes.object.isRequired,
+    afterRender: React.PropTypes.func.isRequired,
+  },
+
+  getInitialState: function(){
+    return {  };
+  },
+
+  componentDidMount: function() {
+    this.props.afterRender();
+  },
+
+  createMarkup: function() { 
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests
+    //console.log("createMarkup.....");
+    var allHTML = "default";
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", this.props.html.file_path, false); // true:async, false:sync
+    rawFile.onload = function ()
+    {
+        //console.log("XMLHttpRequest onreadystatechange...");
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                allHTML = rawFile.responseText;
+                //console.log(allHTML);
+            }else{
+                console.log("Error : componentLoadInnerHtml fail to read :" + this.props.html);
+            }
+        }
+    };
+
+    rawFile.onerror = function (e) {
+      console.error(rawFile.statusText);
+    };
+
+    rawFile.send(null); // actually initiates the request.  The callback routine is called whenever the state of the request changes.
+
+    return {__html: allHTML};
+  },
+
+  render: function() {
+    return (
+      <div dangerouslySetInnerHTML={this.createMarkup()} ></div>
+    );
+  }
+});
+
+
+
+
+
 /////////////////////////////////////////////////////////////
 //////////////////////search ////////////////////////////////
 /////////////////////////////////////////////////////////////
@@ -83,13 +147,6 @@ var libraries = [
 //////////////////////dom email//////////////////////////////
 /////////////////////////////////////////////////////////////
 
-
-
-
-
-/*
- * Components
- */
 
 
 var ContactForm = React.createClass({
@@ -443,11 +500,21 @@ var services = [
     { name: 'Training', price: 220 }
 ];
 
-/////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////
 
 
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+//////////////////////Component for Router///////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
 
 var { Router,
       Route,
@@ -455,7 +522,6 @@ var { Router,
       IndexLink,
       Link } = ReactRouter; 
 
-var destination = document.querySelector("#container");
 
 var Home = React.createClass({
   render: function() {
@@ -506,6 +572,25 @@ var Stuff = React.createClass({
       );
     }
 });
+
+
+
+var componentAbout = React.createClass({
+
+  afterRender: function() {
+    //alert("afterRender componentAbout");
+  }, 
+
+  render: function() {
+      var html_object = { file_path : "about.html"} ;
+      return (
+        <LoadInnerHtml  html= {html_object}  afterRender={this.afterRender}   />                 
+      );
+  }
+
+});
+
+
 
 // https://facebook.github.io/react/docs/dom-elements.html
 // http://stackoverflow.com/questions/40108843/react-how-to-load-and-render-external-html-file
@@ -597,6 +682,8 @@ var componentTestInnerHtml = React.createClass({
       );
   }
 });
+
+
 
 var componentChooser = React.createClass({
   render: function() {
@@ -690,7 +777,7 @@ ReactDOM.render(
   <Router>
     <Route path="/" component={App}>
 
-        <IndexRoute component={Home}/> 
+        <IndexRoute component={componentAbout}/> 
        
         <Route path="chooser" component={componentChooser} />
         <Route path="unlimitedshow" component={componentUnlimitedShow} />      
