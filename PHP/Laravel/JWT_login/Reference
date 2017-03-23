@@ -1,0 +1,303 @@
+[Install]
+
+1. Go to project root (the dir where composer.json is)
+2. Execute "composer install"  (Install all 3rd party dependencies to project_root/vendor/)
+   Check if there are packages downloaded in project_root/vendor/
+3. Check mysql config : project_root/.env
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=test
+    DB_USERNAME=root
+    DB_PASSWORD=c8CwBe9FuajLYFPV
+4. Open "http://.../project_root/public/login.html"
+        "http://.../project_root/public/register.html"
+
+5. Restfu API :
+    (1) register
+       POST
+       http://.../project_root/public/api/register
+       BODY : email=XXX&password=XXX&name=XXX
+    (2) login, server reply token
+       POST
+       http://.../project_root/public/api/authenticate
+       BODY : email=123@xxx.xxx&password=5678
+       [Response]
+        {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjYsImlzcyI6Imh0dHA6XC9cL2ppbW15aC5ob3B0by5vcmdcL3Rlc3RcL2xvZ2luXC9wdWJsaWNcL2FwaVwvYXV0aGVudGljYXRlIiwiaWF0IjoxNDkwMjc3NjEzLCJleHAiOjE0OTAyODEyMTMsIm5iZiI6MTQ5MDI3NzYxMywianRpIjoiNDIyOTI0YjUzNDlkZDRhZDhmNTA5YjcyNzhiZGU2MjcifQ.UeFgyL0rst9jtg_IC5Y5jDc7ceA9gjQBsuCcIoBMp-k"
+        }
+
+    (3) All operatons after login, use token from (2), server return user data
+       GET 
+       http://jimmyh.hopto.org/test/login/public/api/authenticate/user
+       [HEADER]  Authorization = "Bearer Token"
+       [Response]
+          {
+            "user": {
+                    "id": 6,
+                    "name": "name0322",
+                    "email": "123@xxx.xxx",
+                    "created_at": "2017-03-22 12:33:30",
+                    "updated_at": "2017-03-22 12:33:30"
+                    }
+          }
+
+##############################################################
+##############################################################
+##############################################################
+[Reference]
+This project has part 1 only.
+
+Part 1 : backend
+https://www.codetutorial.io/laravel-and-angularjs-token-based-auth-part1/
+
+Park 2 : frontend
+https://www.codetutorial.io/laravel-and-angularjs-token-based-authentication-part-2/
+
+Other Tutorial :
+https://www.codetutorial.io/tutorial/laravel-5/
+
+##############################################################
+##############################################################
+##############################################################
+
+[STEPs to build this project from scratch]
+
+
+Install composer : (php dependency manager)
+http://ulyssesonline.com/2014/07/24/install-laravel-4-2-on-ubuntu-server-14-04-lts/
+
+What is php composer : 
+http://culttt.com/2013/01/07/what-is-php-composer/
+https://www.codementor.io/php/tutorial/composer-install-php-dependency-manager
+
+Create project :
+composer create-project --prefer-dist laravel/laravel login
+
+Install : https://github.com/tymondesigns/jwt-auth/wiki/Installation
+Edit login/composer.json :
+
+"require": {     "tymon/jwt-auth": "0.5.*" }
+
+run "composer update"
+
+Add to login/config/app.php
+
+"Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,"
+
+'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+
+'JWTFactory'=> Tymon\JWTAuth\Facades\JWTFactory::class,
+
+generate a new random key, which will be used to sign your tokens : 
+
+ php artisan jwt:generate
+
+publish (copy config to /config/jwt.php) : php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\JWTAuthServiceProvider"
+
+create db table (database/migrations) : php artisan make:migration create_todo_table
+
+Add migration (database/migrations/2017_03_22_112156_create_todo_table.php): 
+
+     public function up()
+
+    {
+
+        Schema::create('todos', function ($table) {
+
+            $table->increments('id');
+
+            $table->string('description', 100);
+
+            $table->boolean('is_done');
+
+            $table->integer('owner_id');
+
+            $table->date('created_at');
+
+            $table->date('updated_at');
+
+        });
+
+    }
+
+    public function down()
+
+    {
+
+        Schema::drop('todos');
+
+    }
+
+Create model : php artisan make:model Todo
+
+Edit : app/Todo.php
+
+class Todo extends Model
+
+{
+
+    protected $fillable = ['description','owner_id','is_done'];
+
+ 
+
+    public function owner()
+
+    {
+
+        return $this->belongsTo('App\User','owner_id');
+
+    }
+
+}
+
+Config DB connection /login/.env  (http://jimmyh.hopto.org/phpMyAdmin-4.5.1-english/): 
+
+DB_DATABASE=test
+
+DB_USERNAME=root
+
+DB_PASSWORD=c8CwBe9FuajLYFPV
+
+mySQLAdmin : http://jimmyh.hopto.org/phpMyAdmin-4.5.1-english/
+
+
+
+Create db table : php artisan migrate
+
+Create controller (/app/Http/Controllers): php artisan make:controller TokenAuthController
+
+===================TokenAuthController.php===================================
+<?php
+ 
+namespace App\Http\Controllers;
+ 
+use App\Http\Controllers\Controller;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+ 
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Hash;
+ 
+ 
+class TokenAuthController extends Controller
+{
+    // It takes the email and password from the request and try to generate a token for the given user credential.
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+ 
+        try {
+            if (! $token = JWTAuth::attempt($credentials)) {
+                return response()->json(['error' => 'invalid_credentials'], 401);
+            }
+        } catch (JWTException $e) {
+            return response()->json(['error' => 'could_not_create_token'], 500);
+        }
+ 
+        // if no errors are encountered we can return a JWT
+        return response()->json(compact('token'));
+    }
+ 
+    // parse the token in the request and if the token is valid and the user is present it return the user itself
+    public function getAuthenticatedUser()
+    {
+        try {
+ 
+            if (! $user = JWTAuth::parseToken()->authenticate()) {
+                return response()->json(['user_not_found'], 404);
+            }
+ 
+        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+ 
+            return response()->json(['token_expired'], $e->getStatusCode());
+ 
+        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+ 
+            return response()->json(['token_invalid'], $e->getStatusCode());
+ 
+        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+ 
+            return response()->json(['token_absent'], $e->getStatusCode());
+ 
+        }
+ 
+        return response()->json(compact('user'));
+    }
+ 
+    // parse the request and create a new User in the database hashing the password
+    public function register(Request $request){
+ 
+        $newuser= $request->all();
+        $password=Hash::make($request->input('password'));
+ 
+        $newuser['password'] = $password;
+ 
+        return User::create($newuser);
+    }
+}
+ 
+
+==============================================================
+Add route to  app/Http/routes.php :
+
+Route::post('api/register', 'TokenAuthController@register');
+
+Route::post('api/authenticate', 'TokenAuthController@authenticate');
+
+Route::get('api/authenticate/user', 'TokenAuthController@getAuthenticatedUser');
+
+Edit app/Http/Kernal.php
+
+Add : 
+
+    protected $routeMiddleware = [
+
+        'jwt.auth' => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
+
+        'jwt.refresh' => \Tymon\JWTAuth\Middleware\RefreshToken::class
+
+     ];
+
+Remove : 
+
+     \App\Http\Middleware\VerifyCsrfToken::class
+
+
+
+
+
+test API : http://jimmyh.hopto.org/test/login/public/
+
+               http://jimmyh.hopto.org/test/login/public/api/register/
+
+                post : name & email & password
+
+               http://jimmyh.hopto.org/test/login/public/api/authenticate
+
+                post :  email & password
+
+                http://jimmyh.hopto.org/test/login/public/api/authenticate/user
+
+                GET,   [Header]  Authorization : Bearer Token
+
+
+
+Frontend 
+
+http://jimmyh.hopto.org/test/login/public/login.html
+
+(123@xxx.xxx / 5678)
+
+
+
+
+
+
+
+
+
+
+
+
