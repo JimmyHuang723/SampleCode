@@ -808,8 +808,7 @@ var App = React.createClass({
 
 
 
-// START : Initial React Render....
-
+/// START : Initial React Render....
 ReactDOM.render(
   <Router>
     <Route path="/" component={App}>
@@ -829,7 +828,7 @@ ReactDOM.render(
 
 $("#middleDiv").css({ "visibility": "visible",  }); // if we don't this, html foot will show before React rendered
 
-// END : Initial React Render....
+/// END : Initial React Render....
 
 
 
