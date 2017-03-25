@@ -80,13 +80,16 @@ Edit login/composer.json :
 
 run "composer update"
 
-Add to login/config/app.php
+Add to login/config/app.php : 
 
-"Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,"
+   providers array : 
+       "Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,"
 
-'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+ aliases array : 
+       'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
 
-'JWTFactory'=> Tymon\JWTAuth\Facades\JWTFactory::class,
+       'JWTFactory'=> Tymon\JWTAuth\Facades\JWTFactory::class,
+
 
 generate a new random key, which will be used to sign your tokens : 
 
