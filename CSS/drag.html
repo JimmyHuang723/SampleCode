@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+  
+<style>
+div, img {
+  transition: all 0.25s;
+}
+
+img:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-transform: translateY(-2px);
+  -moz-transform: translateY(-2px);
+  transform: translateY(-2px);
+}
+
+
+</style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.parentNode.id);
+}
+
+function drop(ev) {
+                
+    console.log(ev);
+  
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    //console.log("drag " + data);
+   
+    
+  var parentItem = ev.target.parentNode.parentNode;
+  var newItem = document.getElementById(data);
+  var afterItem = ev.target.parentNode.nextSibling;
+  //console.log("parentItem: " + parentItem.id);
+  //console.log("newItem: " + newItem.id);
+  //console.log("afterItem: " + afterItem.id);
+    
+  parentItem.insertBefore(newItem, afterItem);
+}
+</script>
+</head>
+<body>
+
+<h2>Drag and Drop</h2>
+<p>Drag the image back and forth between the two div elements.</p>
+
+<div id= "div_out">
+
+  <div id="drag1" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)" >
+      <img draggable="true" src="http://www.irishtimes.com/polopoly_fs/1.2614603.1461003507!/image/image.jpg_gen/derivatives/box_620_330/image.jpg" alt="Mountains" width= 180 height = 60>
+  </div>
+
+  <div id="drag2" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)" >
+      <img src="http://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg" alt="Mountains" width= 180 height = 60>
+  </div>
+
+  <div id="drag3" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)" >
+      <img src="https://amazingcarousel.com/wp-content/uploads/amazingcarousel/13/images/lightbox/golden-wheat-field-lightbox.jpg" alt="Mountains" width= 180 height = 60>
+  </div>
+  
+    <div id="drag4" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)" >
+      <img src="http://wowslider.com/sliders/demo-18/data1/images/hongkong1081704.jpg" alt="Mountains" width= 180 height = 60>
+  </div>
+  
+    <div id="drag5" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)" >
+      <img src="http://www.menucool.com/slider/jsImgSlider/images/image-slider-1.jpg" alt="Mountains" width= 180 height = 60>
+  </div>
+  
+  
+</div>
+
+</body>
+</html>
+
+
+
+
