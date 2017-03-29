@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
+    <script src="baseURL.js" ></script>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bootstrap.css">
+    <title>Login</title>
+    
+</head>
+
+
+<style>
+#login-form{
+    display: none;
+    position: absolute;
+    width: 30%;
+    height: 50%;
+    
+    left: 35%; /* (100 - width)/2 */
+    top: 25%;  /* (100% - height)/2 */
+
+}
+
+
+
+</style>
+
+<body>
+
+
+
+
+
+
+
+<div id="login-form" >
+    
+    <div class="well">
+        <h3>Login</h3>
+        
+        <div class="form-group">
+            <input id = "e_in" type="email" class="form-control" placeholder="Email" >
+        </div>
+        <div class="form-group">
+            <input id = "p_in"  type="password" class="form-control" placeholder="Password" >
+        </div>
+        <button id = "submit_btn" class="btn btn-primary" onclick="onClickSubmit()">Submit</button>
+        
+        <br/>
+        <a href="register.html" >Register</a>
+    </div>
+</div>
+
+
+
+
+
+<script>
+
+
+function onClickSubmit(){
+
+    $.ajax({
+              url: base_url + "/authenticate",
+              type:"POST",
+              data: 
+                {
+                    email: $('#e_in').val(),
+                    password: $('#p_in').val()
+                },
+              contentType:"application/x-www-form-urlencoded",
+              timeout: 9000, // in milliseconds
+              success: function(data, status){
+                    //alert("Data: " + data + "\nStatus: " + status);
+                    
+                    console.log(JSON.stringify(status)); 
+                    console.log(JSON.stringify(data));
+                    //console.log(data.token);
+                    if(status == 'success'){
+                        alert( "Login Success" );
+                        localStorage.setItem("my_token", data.token);
+                        window.location = "welcome.html";
+                        //alert("success");
+                    }else{
+                        //alert("status not success");
+                    }
+              }
+    }).done(function() {
+                //alert( "done" );
+            })
+      .fail(function(xhr, status, error) {
+                alert( "Login Fail" );
+                //alert( xhr );
+                //alert( status );
+                //alert( error );
+                console.log(JSON.stringify(xhr));
+                console.log(JSON.stringify(status)); 
+                console.log(JSON.stringify(error)); 
+
+       });
+
+
+
+
+}
+
+
+
+$(document).ready(function(){       
+
+    var token = localStorage.getItem("my_token");
+
+    if (token != null){
+        console.log("Token found.");
+        $.ajax({
+                  url: base_url + "/authenticate/user",
+                  type:"GET",
+                  timeout: 9000, // in milliseconds
+                  beforeSend: function (xhr) {
+                        xhr.setRequestHeader ("Authorization", "Bearer " + token);
+                  },
+                  success: function(data, status){
+                        
+                        console.log(JSON.stringify(status)); 
+                        console.log(JSON.stringify(data));
+                        
+                        if(status == 'success'){
+                            alert( "Login Already!" );
+                            window.location = "welcome.html"; 
+                        }else{
+                            localStorage.removeItem("my_token");
+                            $("#login-form").css({ display: "block"});
+                        }
+                  }
+        }).done(function() {
+                   
+                })
+          .fail(function(xhr, status, error) {
+                console.log(JSON.stringify(xhr));
+                console.log(JSON.stringify(status)); 
+                console.log(JSON.stringify(error)); 
+                localStorage.removeItem("my_token");
+                $("#login-form").css({ display: "block"});
+           });
+    }else{
+        console.log("Token not exist.");
+        $("#login-form").css({ display: "block"});
+    }
+
+
+
+});
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
+
+
+

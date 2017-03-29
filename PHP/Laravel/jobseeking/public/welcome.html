@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
+        <script src="baseURL.js" ></script>
+        <link rel="stylesheet" href="bootstrap.css">
+        <title>Laravel</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+
+        <style>
+            html, body {
+                height: 100%;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                display: table;
+                font-weight: 100;
+                font-family: 'Lato';
+            }
+
+            .container {
+                display: none;
+                text-align: center;
+              
+                vertical-align: middle;
+            }
+
+            .content {
+                text-align: center;
+                display: inline-block;
+            }
+
+            .title {
+                font-size: 96px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="content">
+                <div id = "welcome_user"   class="title">Welcome!</div>
+                <div class="well">
+                       <button id = "submit_btn" class="btn btn-primary" onclick="onClickLogout()">Logout</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+<script>
+
+
+
+function onClickLogout(){
+    localStorage.removeItem("my_token");
+    window.location = "login.html";
+}
+
+
+$(document).ready(function(){       
+
+    var token = localStorage.getItem("my_token");
+
+    if (token != null){
+        console.log("login token is : " + token);
+        
+        $.ajax({
+                  url: base_url + "/authenticate/user",
+                  type:"GET",
+                  timeout: 9000, // in milliseconds
+                  beforeSend: function (xhr) {
+                        xhr.setRequestHeader ("Authorization", "Bearer " + token);
+                  },
+                  success: function(data, status){
+                        
+                        console.log(JSON.stringify(status)); 
+                        console.log(JSON.stringify(data));
+                        
+                        if(status == 'success'){
+                            
+                            document.getElementById('welcome_user').innerHTML = "Wecome " + data.user.name + "!";
+                            $(".container").css({ display: "table-cell"});
+                            
+                        }else{
+                            localStorage.removeItem("my_token");
+                            window.location = "login.html"; 
+                        }
+                  }
+        }).done(function() {
+                   
+                })
+          .fail(function(xhr, status, error) {
+                console.log(JSON.stringify(xhr));
+                console.log(JSON.stringify(status)); 
+                console.log(JSON.stringify(error)); 
+                localStorage.removeItem("my_token");
+                window.location = "login.html"; 
+           });
+    }else{
+        console.log("Token not exist.");
+        window.location = "login.html"; 
+    }
+
+
+
+});
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
