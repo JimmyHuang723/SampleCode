@@ -4,4 +4,8 @@ Install : cd project root
           composer install
           cd public/hotel
           npm install
-          
+          (
+          only "public/hotel/app/bower_components/angular-payments/" is downloaded already because i cannot download it by bower somehow.
+          "bower install angular-payments"
+          https://www.codetutorial.io/laravel-and-angularjs-payments-with-stripe-part-4/
+          )
