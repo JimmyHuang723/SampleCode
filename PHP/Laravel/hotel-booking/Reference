@@ -1,2 +1,7 @@
 https://www.codetutorial.io/tutorial/laravel-5/
 
+Install : cd project root 
+          composer install
+          cd public/hotel
+          npm install
+          
