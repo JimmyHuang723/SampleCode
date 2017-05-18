@@ -754,7 +754,8 @@ var componentPhotoCropper = React.createClass({
       } 
     );
 
-
+    $('#hidden_modal').css({ display: "block" });
+    
   }, 
 
   render: function() {

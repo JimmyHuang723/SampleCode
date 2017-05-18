@@ -341,15 +341,17 @@ ul ul{
       <div id = "menu_mobile_text" > Open Menu </div>
       <ul id = "menu_ul">
 
-        <li><span onclick="onClickMenu_HOME()"> HOME </span> </li>
+        <li><span id="menu_home" onclick="onClickLeftMenu(this)"> HOME </span> </li>
         <li><span> WORK DEMO </span> 
             <ul>
-                <li><span onclick="onClickCropper()"> Cropper </span> </li>           
-                <li><span onclick="onClickMenu3()"> Feed </span> </li>
-                <li><span onclick="onClickMenu2()"> Choose </span> </li>
-                <li><span onclick="onClickMenu4()"> Search </span> </li>    
-                <li><span onclick="onClickMenu_Image_Gallery()" > Image Gallery </span></li>   
-                <li><span onclick="onClickMenu_Google_Map()"> Google Map </span> </li> 
+                <li>
+                    <span id="menu_cropper" onclick="onClickLeftMenu(this)"> Cropper </span>
+                </li>           
+                <li><span id="menu_feed" onclick="onClickLeftMenu(this)"> Feed </span> </li>
+                <li><span id="menu_choose" onclick="onClickLeftMenu(this)"> Choose </span> </li>
+                <li><span id="menu_search" onclick="onClickLeftMenu(this)"> Search </span> </li>    
+                <li><span id="menu_imagegallery" onclick="onClickLeftMenu(this)" > Image Gallery </span></li>   
+                <li><span id="menu_gmap" onclick="onClickLeftMenu(this)"> Google Map </span> </li> 
             </ul>
         </li>       
         <li><span> Expand me </span>
@@ -516,7 +518,7 @@ ul ul{
 
 
 
-<div id="hidden_modal" >
+<div id="hidden_modal" style="display: none;">
     <!--used by photo cropper-->    
 </div>
 
@@ -531,55 +533,36 @@ ul ul{
 
 
 
-function onClickMenu_HOME() {
 
-    // start with "/#/" means absolute path
-    // start with "#/"  means relative path
-    window.location = "#/";  
+function onClickLeftMenu(obj){
 
+    // Hide Model
+    $('#hidden_modal').css({ display: "none" });
+
+
+    if(  $(obj).attr('id') == "menu_cropper"){
+        window.location = "#/cropper";    
+    }else if( $(obj).attr('id') == "menu_home"){
+        window.location = "#/";  
+    }else if( $(obj).attr('id') == "menu_choose"){
+        window.location = "#/chooser";
+    }else if( $(obj).attr('id') == "menu_feed"){
+        window.location = "#/unlimitedshow";
+    }else if( $(obj).attr('id') == "menu_search"){
+        window.location = "#/search";
+    }else if( $(obj).attr('id') == "menu_imagegallery"){
+        window.location = "#/imagegallery";
+    }else if( $(obj).attr('id') == "menu_gmap"){
+        window.location = "#/gmap";    
+    }else{
+
+    }
 }
 
-function onClickMenu_WORK_EXPERIENCE(){
 
-}
 
-function onClickMenu_TECH(){
 
-}
 
-function onClickMenu_TRAVEL(){
-
-}
-
-function onClickMenu2() {
-    
-    window.location = "#/chooser";
-}
-
-function onClickMenu3() {
-    
-    window.location = "#/unlimitedshow";
-   
-}
-
-function onClickMenu4() {
-    
-    window.location = "#/search";
-}
-
-function onClickMenu_Image_Gallery() {
-    
-    window.location = "#/imagegallery";
-
-}
-
-function onClickMenu_Google_Map(){
-    window.location = "#/gmap";    
-}
-
-function onClickCropper(){
-    window.location = "#/cropper";    
-}
 
 function mainmenu(){
 
