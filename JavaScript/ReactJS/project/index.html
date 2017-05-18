@@ -23,8 +23,9 @@ https://www.w3schools.com/css/css_rwd_mediaqueries.asp
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!--
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+-->
 
 <style>
 * {
@@ -342,7 +343,8 @@ ul ul{
 
         <li><span onclick="onClickMenu_HOME()"> HOME </span> </li>
         <li><span> WORK DEMO </span> 
-            <ul>           
+            <ul>
+                <li><span onclick="onClickCropper()"> Cropper </span> </li>           
                 <li><span onclick="onClickMenu3()"> Feed </span> </li>
                 <li><span onclick="onClickMenu2()"> Choose </span> </li>
                 <li><span onclick="onClickMenu4()"> Search </span> </li>    
@@ -515,7 +517,7 @@ ul ul{
 
 
 <div id="hidden_modal" >
-    <!--used by photo cropper-->
+    <!--used by photo cropper-->    
 </div>
 
 
@@ -575,6 +577,9 @@ function onClickMenu_Google_Map(){
     window.location = "#/gmap";    
 }
 
+function onClickCropper(){
+    window.location = "#/cropper";    
+}
 
 function mainmenu(){
 
