@@ -1,0 +1,59 @@
+<!--https://www.w3schools.com/bootstrap/bootstrap_modal.asp-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+  <title>Model</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <!-- Header -->
+  <header >
+    
+  </header>
+
+
+  
+
+
+        <!-- test modal -->
+        <div class="modal fade" id="test_modal" style="background-color: yellow">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div><!-- /.modal -->
+        <button type="button" class="btn btn-primary" onClick="test_modal()" />
+  
+
+
+
+
+
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  <script>
+    function test_modal(){
+    $('#test_modal').modal();
+
+    }
+  </script>
+
+</body>
+</html>

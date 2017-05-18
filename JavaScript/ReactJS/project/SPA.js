@@ -722,6 +722,43 @@ var componentGMAP = React.createClass({
 });
 
 
+///
+var componentPhotoCropper = React.createClass({
+
+  afterRender: function() {
+    
+    $("#cropper_add_photo_btn").click(
+      function onClickAdd(e){
+        e.preventDefault();
+        $('#upload_modal').modal();
+      }
+    );
+
+
+    // load js files 
+    var element1 = document.createElement("script");
+    element1.src = "js/cropper/common.js";
+    document.body.appendChild(element1);
+    var element2 = document.createElement("script");
+    element2.src = "js/cropper/cropper.min.js";
+    document.body.appendChild(element2);
+    var element3 = document.createElement("script");
+    element3.src = "js/cropper/main.js";
+    document.body.appendChild(element3);
+
+
+  }, 
+
+  render: function() {
+      var html_object = { file_path : "cropper.html"} ;
+      return (
+        <LoadInnerHtml  html= {html_object}  afterRender={this.afterRender}   />                 
+      );
+  }
+
+});
+
+
 var componentChooser = React.createClass({
   render: function() {
       return (
@@ -820,7 +857,8 @@ ReactDOM.render(
         <Route path="search" component={componentSearch} />
         <Route path="imagegallery" component={componentImageGallery} />
         <Route path="gmap" component={componentGMAP} />
-        
+        <Route path="cropper" component={componentPhotoCropper} />
+
     </Route>
   </Router>,
   document.querySelector("#middleDivRow")
