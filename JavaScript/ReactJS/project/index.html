@@ -8,6 +8,7 @@ https://www.w3schools.com/css/css_rwd_mediaqueries.asp
 <html>
 <head>
 
+  
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
   <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
@@ -517,9 +518,11 @@ ul ul{
 <!--Modal for uploading photo-->
 <div class="modal fade" id="upload_modal" style="background-color: rgba(224, 224, 224, 0.5)">
     <button type="button" class="cropper_button button is-primary" data-dismiss="modal">Close</button>
+    <div id="upload_modal_inner" >
     <!--
     @include('cropper.cropper_modal')
     -->
+    </div>
 </div>
 
 

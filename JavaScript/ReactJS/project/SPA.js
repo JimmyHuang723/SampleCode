@@ -735,17 +735,21 @@ var componentPhotoCropper = React.createClass({
     );
 
 
-    // load js files 
-    var element1 = document.createElement("script");
-    element1.src = "js/cropper/common.js";
-    document.body.appendChild(element1);
-    var element2 = document.createElement("script");
-    element2.src = "js/cropper/cropper.min.js";
-    document.body.appendChild(element2);
-    var element3 = document.createElement("script");
-    element3.src = "js/cropper/main.js";
-    document.body.appendChild(element3);
-  
+    $( "#upload_modal_inner" ).load( "cropper_modal.html", 
+      function(){
+        // load js files 
+        var element1 = document.createElement("script");
+        element1.src = "js/cropper/common.js";
+        document.body.appendChild(element1);
+        var element2 = document.createElement("script");
+        element2.src = "js/cropper/cropper.min.js";
+        document.body.appendChild(element2);
+        var element3 = document.createElement("script");
+        element3.src = "js/cropper/main.js";
+        document.body.appendChild(element3);
+      } 
+    );
+
 
   }, 
 
