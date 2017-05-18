@@ -3,9 +3,10 @@ Known issue :
 # Cropper.html : bootstrap css conflict 
 <!-- Warning!! put this on home page will conflict with current css-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+Remove bootstape will need to define css for Modal (copy from bootstrap) and re-layout for upload_modal
 
 
-1. Why some page keep status some not? (componentUnlimitedShow v.s componentChooser) 
+# Why some page keep status some not? (componentUnlimitedShow v.s componentChooser) 
    Ans : keep state on global variable?
 
 
