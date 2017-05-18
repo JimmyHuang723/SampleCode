@@ -745,7 +745,7 @@ var componentPhotoCropper = React.createClass({
     var element3 = document.createElement("script");
     element3.src = "js/cropper/main.js";
     document.body.appendChild(element3);
-
+  
 
   }, 
 

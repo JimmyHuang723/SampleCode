@@ -15,11 +15,15 @@ https://www.w3schools.com/css/css_rwd_mediaqueries.asp
   <script src="https://npmcdn.com/react-router@2.6.0/umd/ReactRouter.min.js"></script> 
  
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqEGzJjrYKYD7rW9kZMwAcRMITuxJ7tM0"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <script type="text/babel" src = "SPA.js"></script>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <style>
 * {
@@ -502,6 +506,27 @@ ul ul{
     </div>
 
 </div>  <!--end of middleDiv-->
+
+
+
+
+
+
+
+
+<!--Modal for uploading photo-->
+<div class="modal fade" id="upload_modal" style="background-color: rgba(224, 224, 224, 0.5)">
+    <button type="button" class="cropper_button button is-primary" data-dismiss="modal">Close</button>
+    <!--
+    @include('cropper.cropper_modal')
+    -->
+</div>
+
+
+
+
+
+
 
 
 <script>
