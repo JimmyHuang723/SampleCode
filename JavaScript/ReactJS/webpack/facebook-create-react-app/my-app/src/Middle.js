@@ -1,5 +1,6 @@
 import React from 'react';
 import MessageList from './Middle/MessageList';
+import TypeArea from './Middle/TypeArea';
 import PropTypes from 'prop-types';
 
 class Middle extends React.Component {
@@ -18,6 +19,7 @@ class Middle extends React.Component {
     return (
       <div className="col-sm-10 middle-css">
         <MessageList/>
+        <TypeArea/>        
      	</div>
     );
   }

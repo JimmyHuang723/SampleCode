@@ -37,6 +37,7 @@ html {
 }
 
 .middle-css {
+  padding: 50px;
   overflow: auto;
   /*background-color: blue;*/
   height: 100%;
@@ -64,6 +65,13 @@ html {
   font-size: 3vmin;
   text-align: center;
   /*background-color: grey;*/    
+}
+
+.type-area {
+
+  height: 120px;
+  font-size: 2vmin;
+  
 }
 
 .member {
