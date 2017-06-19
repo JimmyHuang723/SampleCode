@@ -7,11 +7,11 @@ class App extends Component {
   render() {
   	// this.props.xxx
     return (
-      <div className=" app-css">
-      	
-      	<Left />
-      	<Middle />
-
+      <div className="container width-height-full app-css">
+        <div className="row width-height-full">	
+      	  <Left />
+      	  <Middle />
+     	</div>
       </div>
     );
   }

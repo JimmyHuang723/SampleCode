@@ -16,7 +16,7 @@ class Middle extends React.Component {
 
   render() {
     return (
-      <div className="col-md-10 middle-css">
+      <div className="col-sm-10 middle-css">
         
         <MessageList/>
      	</div>

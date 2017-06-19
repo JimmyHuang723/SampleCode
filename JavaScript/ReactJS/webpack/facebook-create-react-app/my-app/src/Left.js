@@ -14,7 +14,7 @@ class Left extends React.Component {
   
   render() {
     return (
-      <div className="col-md-2 left-css">
+      <div className="col-sm-2 left-css">
         <MemberList/>
       </div>
     );
