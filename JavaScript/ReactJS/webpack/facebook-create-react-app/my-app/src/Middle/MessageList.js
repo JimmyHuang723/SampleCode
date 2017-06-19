@@ -36,9 +36,7 @@ class MessageList extends React.Component {
     for (i = 10 ; i <20; i++) {
           output.push(<MessageAnnouncement key={i} message={"Someone has joined..."} />);
     }
-    for (i = 20 ; i <100; i++) {
-          output.push(<MessageChat key={i} />);
-    }
+  
 
     return (
       <div>
