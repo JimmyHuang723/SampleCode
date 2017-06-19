@@ -8,9 +8,10 @@ class App extends Component {
   	// this.props.xxx
     return (
       <div className="app-css">
-        
+      	
       	<Left />
-      	<Middle className="middle-css"/>
+      	<Middle />
+
       </div>
     );
   }
