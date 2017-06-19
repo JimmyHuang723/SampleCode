@@ -1,5 +1,5 @@
 import React from 'react';
-import MemberList from './MemberList';
+import MemberList from './Left/MemberList';
 
 
 class Left extends React.Component {
@@ -14,7 +14,7 @@ class Left extends React.Component {
   
   render() {
     return (
-      <div>
+      <div className="left-css">
         <MemberList/>
       </div>
     );

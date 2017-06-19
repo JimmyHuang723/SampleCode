@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import Left from './Left';
 import Middle from './Middle';
 
+
 class App extends Component {
   render() {
   	// this.props.xxx
     return (
-      <div>
-      	<Left/>
-      	<Middle/>
+      <div className="app-css">
+        
+      	<Left />
+      	<Middle className="middle-css"/>
       </div>
     );
   }

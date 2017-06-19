@@ -1,5 +1,5 @@
 import React from 'react';
-import MessageList from './MessageList';
+import MessageList from './Middle/MessageList';
 
 
 class Middle extends React.Component {

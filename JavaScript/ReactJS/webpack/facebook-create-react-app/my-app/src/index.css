@@ -1,9 +1,30 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  position: relative; 
 }
 
-.span-color {
-  color : orange;
+body,
+html {
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+}
+
+.app-css {
+  background-color: red;
+  height: 100%;
+  width: 100%;
+}
+
+.left-css {
+  
+  background-color: yellow;
+  height: 100%;
+  width: 20%;
+ 
+}
+
+.middle-css {
+  background-color: blue;
+  height: 100%;
+  width: 80%;
 }
