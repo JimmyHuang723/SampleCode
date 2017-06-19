@@ -15,13 +15,13 @@ class MessageList extends React.Component {
   
   render() {
     var output = [];
-    for (var i = 0 ; i <10; i++) {
+    for (var i = 0 ; i <5; i++) {
           output.push(<MessageChat key={i} />);
     }
-    for (var i = 10 ; i <20; i++) {
-          output.push(<MessageAnnouncement key={i} message={"test"} />);
+    for (i = 5 ; i <20; i++) {
+          output.push(<MessageAnnouncement key={i} message={"Someone has joined..."} />);
     }
-    for (var i = 20 ; i <100; i++) {
+    for (i = 20 ; i <100; i++) {
           output.push(<MessageChat key={i} />);
     }
 

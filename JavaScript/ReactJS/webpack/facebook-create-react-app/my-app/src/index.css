@@ -54,6 +54,7 @@ html {
   border-style: solid;
   border-color: red;
   height: 90px;
+  font-size: 3vmin;
   background-color: grey;    
 }
 
@@ -61,6 +62,8 @@ html {
   border-style: solid;
   border-color: red;
   height: 90px;
+  font-size: 4vmin;
+  text-align: center;
   background-color: grey;    
 }
 
