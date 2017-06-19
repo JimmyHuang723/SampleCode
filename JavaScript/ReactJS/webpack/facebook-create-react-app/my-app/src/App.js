@@ -7,7 +7,7 @@ class App extends Component {
   render() {
   	// this.props.xxx
     return (
-      <div className="app-css">
+      <div className=" app-css">
       	
       	<Left />
       	<Middle />
