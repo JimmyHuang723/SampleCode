@@ -15,6 +15,7 @@ class MessageChat extends React.Component {
   render() {
     return (
       <div className="message-chat">
+        <img src={this.props.pic_url} className="img-circle" alt="" width="60" height="60"/>
       </div>
     );
   }
@@ -26,7 +27,7 @@ MessageChat.propTypes = {
   online : PropTypes.bool,
   message : PropTypes.string,
   time : PropTypes.string,
-  picture : PropTypes.string,
+  pic_url : PropTypes.string,
 };
 
 

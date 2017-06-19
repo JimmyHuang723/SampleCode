@@ -52,10 +52,10 @@ html {
 
 .message-chat {
   border-style: solid;
-  border-color: red;
+  border-color: black;
   height: 90px;
   font-size: 3vmin;
-  background-color: grey;    
+  /*background-color: grey;*/    
 }
 
 .message-announcement {
@@ -64,14 +64,16 @@ html {
   height: 90px;
   font-size: 4vmin;
   text-align: center;
-  background-color: grey;    
+  /*background-color: grey;*/    
 }
 
 .member {
   border-style: solid;
   border-color: blue;
   height: 40px;
-  background-color: grey;    
+  font-size: 2vmin;
+  text-align: center;
+  /*background-color: grey;*/    
 }
 
 

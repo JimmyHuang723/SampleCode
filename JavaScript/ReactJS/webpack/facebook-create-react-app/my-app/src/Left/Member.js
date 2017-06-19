@@ -15,6 +15,7 @@ class Member extends React.Component {
   render() {
     return (
       <div className="member">
+        {this.props.name}
       </div>
     );
   }
