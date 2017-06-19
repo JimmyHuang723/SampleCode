@@ -2,7 +2,7 @@ body {
   
   width: 100%;
   height: 100%;
-  background-color: black;
+ 
 }
 
 html {	
@@ -19,23 +19,26 @@ html {
 #root {
   width: 100%;
   height: 100%;	
+  /*
   background-color: green;
+  */
 }
 
 .app-css {
-  
+  /*
   background-color: red;
-
+  */
 }
 
 .left-css {
   
   background-color: yellow;
   height: 100%;
-/*
+ 
+/*  alternative to col-xx-xx
   position: fixed;
-  width: 20%; 
   left:0;
+  width: 20%;    
   top:0;
   bottom:0;
 */
@@ -45,10 +48,11 @@ html {
   
   background-color: blue;
   height: 100%;
-/*
+    
+/*  alternative to col-xx-xx
   position: fixed;
-  width: 80%;  
   right:0;
+  width: 80%;  
   top:0;
   bottom:0;
 */
