@@ -7,7 +7,7 @@ class App extends Component {
   render() {
   	// this.props.xxx
     return (
-      <div className="container width-height-full app-css">
+      <div className="container width-height-full">
         <div className="row width-height-full">	
       	  <Left />
       	  <Middle />
