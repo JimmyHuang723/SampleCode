@@ -1,27 +1,25 @@
 import React from 'react';
-import Left from './Left';
 
 
-class Middle extends React.Component {
+
+class Member extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
      
     };
-    
-   
   }
-
   
-
+  
+  
   render() {
     return (
       <div>
-     	</div>
+      </div>
     );
   }
 }
 
 
 
-export default Middle;
+export default Member;
