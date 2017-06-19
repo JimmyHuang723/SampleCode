@@ -19,7 +19,7 @@ class ProductTable extends React.Component {
       lastCategory = product.category;
     });
     return (
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>Name</th>

@@ -21,6 +21,7 @@ class SearchBar extends React.Component {
     return (
       <form>
         <input
+          className="form-control"
           type="text"
           placeholder="Search..."
           value={this.props.filterText}
@@ -28,6 +29,7 @@ class SearchBar extends React.Component {
         />
         <p>
           <input
+            className="form-control"
             type="checkbox"
             checked={this.props.inStockOnly}
             onChange={this.handleInStockInputChange}
