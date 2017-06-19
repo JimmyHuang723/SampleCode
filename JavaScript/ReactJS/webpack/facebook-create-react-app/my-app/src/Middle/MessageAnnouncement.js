@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 
 class MessageAnnouncement extends React.Component {
@@ -14,12 +14,16 @@ class MessageAnnouncement extends React.Component {
   
   render() {
     return (
-      <div>
+      <div className="message-announcement">
+          {this.props.message}
       </div>
     );
   }
 }
 
+MessageAnnouncement.propTypes = {
+  message : PropTypes.string,
 
+};
 
 export default MessageAnnouncement;

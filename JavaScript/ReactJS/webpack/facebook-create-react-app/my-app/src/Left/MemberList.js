@@ -1,6 +1,6 @@
 import React from 'react';
 import Member from './Member';
-
+import PropTypes from 'prop-types';
 
 class MemberList extends React.Component {
   constructor(props) {

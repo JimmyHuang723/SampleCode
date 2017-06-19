@@ -57,6 +57,13 @@ html {
   background-color: grey;    
 }
 
+.message-announcement {
+  border-style: solid;
+  border-color: red;
+  height: 90px;
+  background-color: grey;    
+}
+
 .member {
   border-style: solid;
   border-color: blue;

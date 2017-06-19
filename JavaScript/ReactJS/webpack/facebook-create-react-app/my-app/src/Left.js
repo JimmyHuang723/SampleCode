@@ -1,5 +1,6 @@
 import React from 'react';
 import MemberList from './Left/MemberList';
+import PropTypes from 'prop-types';
 
 class Left extends React.Component {
   constructor(props) {

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 
 class MessageChat extends React.Component {
@@ -19,6 +19,15 @@ class MessageChat extends React.Component {
     );
   }
 }
+
+
+MessageChat.propTypes = {
+  name : PropTypes.string,
+  online : PropTypes.bool,
+  message : PropTypes.string,
+  time : PropTypes.string,
+  picture : PropTypes.string,
+};
 
 
 

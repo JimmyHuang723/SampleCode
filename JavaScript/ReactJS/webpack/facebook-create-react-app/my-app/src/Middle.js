@@ -1,6 +1,6 @@
 import React from 'react';
 import MessageList from './Middle/MessageList';
-
+import PropTypes from 'prop-types';
 
 class Middle extends React.Component {
   constructor(props) {
