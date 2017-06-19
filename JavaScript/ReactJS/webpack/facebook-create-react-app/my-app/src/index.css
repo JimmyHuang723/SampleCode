@@ -11,8 +11,10 @@ html {
 }
 
 .test {
-  width: 600px;
-  height: 600px;
+  border-style: solid;
+  border-color: red;
+  height: 30px;
+  
   background-color: grey;    
 }
 

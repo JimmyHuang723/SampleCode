@@ -19,13 +19,7 @@ class Middle extends React.Component {
       <div className="col-sm-10 middle-css">
         
         <MessageList/>
-                <MessageList/>
-                        <MessageList/>
-                                <MessageList/>
-                                        <MessageList/>
-                                                <MessageList/>
-                                                        <MessageList/>
-                                                                <MessageList/>
+               
      	</div>
     );
   }

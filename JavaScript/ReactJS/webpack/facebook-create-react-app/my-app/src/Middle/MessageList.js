@@ -1,5 +1,5 @@
 import React from 'react';
-
+import MessageChat from './MessageChat';
 
 
 class MessageList extends React.Component {
@@ -13,8 +13,14 @@ class MessageList extends React.Component {
   
   
   render() {
+    var output = [];
+    for (var i = 0 ; i <100; i++) {
+          output.push(<MessageChat/>);
+    }
+
     return (
-      <div className="test">
+      <div>
+        {output}
       </div>
     );
   }
