@@ -15,6 +15,7 @@ class Left extends React.Component {
   render() {
     return (
       <div>
+        <MemberList/>
       </div>
     );
   }

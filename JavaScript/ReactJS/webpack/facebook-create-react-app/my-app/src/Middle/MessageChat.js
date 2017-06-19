@@ -1,28 +1,25 @@
 import React from 'react';
-import MessageList from './MessageList';
 
 
-class Middle extends React.Component {
+
+class MessageChat extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
      
     };
-    
-   
   }
-
   
-
+  
+  
   render() {
     return (
       <div>
-        <MessageList/>
-     	</div>
+      </div>
     );
   }
 }
 
 
 
-export default Middle;
+export default MessageChat;
