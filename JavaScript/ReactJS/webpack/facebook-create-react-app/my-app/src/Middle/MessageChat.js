@@ -14,7 +14,7 @@ class MessageChat extends React.Component {
   
   render() {
     return (
-      <div className="test">
+      <div className="message-chat">
       </div>
     );
   }
