@@ -53,16 +53,15 @@ html {
 .message-chat {
   border-style: solid;
   border-color: black;
-  height: 90px;
-  font-size: 3vmin;
+ /* height: 90px;*/
+  font-size: 2vmin;
   /*background-color: grey;*/    
 }
 
 .message-announcement {
-  border-style: solid;
-  border-color: red;
-  height: 90px;
-  font-size: 4vmin;
+  color:red;
+  height: 45px;
+  font-size: 3vmin;
   text-align: center;
   /*background-color: grey;*/    
 }

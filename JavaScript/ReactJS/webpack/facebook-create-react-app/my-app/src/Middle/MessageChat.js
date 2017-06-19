@@ -16,6 +16,13 @@ class MessageChat extends React.Component {
     return (
       <div className="message-chat">
         <img src={this.props.pic_url} className="img-circle" alt="" width="60" height="60"/>
+        &nbsp; 
+        <span style={{fontWeight: "bold"}} >{this.props.name}</span>
+        &nbsp; &nbsp; 
+        <span style={{fontStyle: "italic"}}>{this.props.time}</span>
+        <br/>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        {this.props.message}
       </div>
     );
   }
