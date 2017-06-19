@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 
 class Member extends React.Component {
@@ -20,6 +20,11 @@ class Member extends React.Component {
   }
 }
 
+
+Member.propTypes = {
+  name: PropTypes.string,
+  online : PropTypes.bool,
+};
 
 
 export default Member;

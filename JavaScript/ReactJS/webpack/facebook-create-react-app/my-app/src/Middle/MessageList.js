@@ -15,7 +15,7 @@ class MessageList extends React.Component {
   render() {
     var output = [];
     for (var i = 0 ; i <100; i++) {
-          output.push(<MessageChat/>);
+          output.push(<MessageChat key={i} />);
     }
 
     return (
