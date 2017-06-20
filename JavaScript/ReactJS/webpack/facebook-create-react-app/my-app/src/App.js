@@ -9,8 +9,8 @@ class App extends Component {
     return (
       <div className="container width-height-full">
         <div className="row width-height-full">	
-      	  <Left />
-      	  <Middle />
+      	  <Left data={APP_DATA.left} />
+      	  <Middle data={APP_DATA.middle} />
      	</div>
       </div>
     );
@@ -22,6 +22,7 @@ var APP_DATA = {
     member_list : [
       { name: "Jimmy", online: true},
       { name: "Lucy", online: false},
+      { name: "Micahael", online: true},
     ]
   }, 
   
