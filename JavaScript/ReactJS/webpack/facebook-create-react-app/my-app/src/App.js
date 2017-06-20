@@ -5,7 +5,6 @@ import Middle from './Middle';
 
 class App extends Component {
   render() {
-  	// this.props.xxx
     return (
       <div className="container width-height-full">
         <div className="row width-height-full">	
@@ -22,7 +21,7 @@ var APP_DATA = {
     member_list : [
       { name: "Jimmy", online: true},
       { name: "Lucy", online: false},
-      { name: "Micahael", online: true},
+      { name: "Michael", online: true},
     ]
   }, 
   
