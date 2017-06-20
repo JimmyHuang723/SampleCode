@@ -51,6 +51,11 @@ html {
 */
 }
 
+.message-list {
+  overflow: auto; 
+  height: 75%;
+}
+
 .message-chat {
   border-style: solid;
   border-color: black;
@@ -69,7 +74,7 @@ html {
 
 .type-area {
 
-  height: 120px;
+  height: 15%;
   font-size: 2vmin;
   
 }

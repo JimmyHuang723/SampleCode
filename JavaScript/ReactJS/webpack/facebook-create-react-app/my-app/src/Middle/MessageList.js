@@ -32,7 +32,7 @@ class MessageList extends React.Component {
   
 
     return (
-      <div>
+      <div className="message-list">
         {output}
       </div>
     );
