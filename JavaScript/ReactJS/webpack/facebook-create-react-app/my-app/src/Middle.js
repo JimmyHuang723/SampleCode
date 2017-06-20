@@ -18,8 +18,8 @@ class Middle extends React.Component {
   render() {
     return (
       <div className="col-sm-10 middle-css">
-        <MessageList/>
-        <TypeArea/>        
+        <MessageList message_list={this.props.data.message_list}/>
+        <TypeArea data={this.props.data.type_area} />        
      	</div>
     );
   }

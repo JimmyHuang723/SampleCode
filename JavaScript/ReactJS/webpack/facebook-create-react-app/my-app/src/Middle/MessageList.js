@@ -15,27 +15,20 @@ class MessageList extends React.Component {
   
   render() {
     var output = [];
-    for (var i = 0 ; i <5; i++) {
-          output.push(<MessageChat key={i} 
-                                   name={"Jimmy"} 
-                                   online={true} 
-                                   message={"Instagram is one of the poster children for social media site successes. Founded in 2010, the photo sharing site now supports upwards of 90 million active photo-sharing users.As with every social media site, part of the fun is that photos and comments appear instantly so your friends can engage while the moment is hot.  Recently, at PyCon 2013 last month, Instagram engineer "}
-                                   time="Wed. 22:20"
-                                   pic_url="http://dreamicus.com/data/image/image-07.jpg"
-                                   />);
-    }
-    for (var i = 5 ; i <10; i++) {
-          output.push(<MessageChat key={i} 
-                                   name={"Jack"} 
-                                   online={true} 
-                                   message={"Instagram is one of the poster."}
-                                   time="Mon. 09:35"
-                                   pic_url="https://amazingslider.com/wp-content/uploads/2012/12/dandelion.jpg"
-                                   />);
-    }
-    for (i = 10 ; i <20; i++) {
-          output.push(<MessageAnnouncement key={i} message={"Someone has joined..."} />);
-    }
+
+    this.props.message_list.forEach((message, index) => {
+      output.push(<MessageChat 
+                     key={index} 
+                     name={message.name} 
+                     online={message.online} 
+                     message={message.message}
+                     time={message.time}
+                     pic_url={message.pic_url}
+                  />);
+    });
+
+    // hard code : 
+    output.push(<MessageAnnouncement key={999} message={"Someone has joined..."} />);
   
 
     return (
