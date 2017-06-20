@@ -28,11 +28,11 @@ class MessageList extends React.Component {
     });
 
     // hard code : 
-    output.push(<MessageAnnouncement key={999} message={"Someone has joined..."} />);
+    //output.push(<MessageAnnouncement key={999} message={"Someone has joined..."} />);
   
 
     return (
-      <div className="message-list">
+      <div id="messageList" className="message-list">
         {output}
       </div>
     );

@@ -28,6 +28,21 @@ class Middle extends React.Component {
         message_list : message_list
       };
     });
+
+  }
+
+  scrollMessageListToEnd(){
+    // 2nd answer : https://stackoverflow.com/questions/26556436/react-after-render-code
+    var element = document.getElementById("messageList");
+    element.scrollTop = element.scrollHeight;
+  }
+
+  componentDidMount(){
+    this.scrollMessageListToEnd();
+  }
+
+  componentDidUpdate(){
+    this.scrollMessageListToEnd();
   }
 
   render() {
