@@ -17,7 +17,6 @@ class TypeArea extends React.Component {
       <div className="type-area">
         <textarea className="form-control" name="typearea" rows="5" placeholder="Type a message..."/>        
         <button type="button" className="btn btn-primary btn-block">Send</button>
-        <button type="button" className="btn btn-primary btn-block">Get</button>
       </div>
     );
   }
