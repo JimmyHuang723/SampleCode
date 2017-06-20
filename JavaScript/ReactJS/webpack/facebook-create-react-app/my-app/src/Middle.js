@@ -7,7 +7,7 @@ class Middle extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     
+      message_list :  props.data.message_list
     };
     
    
@@ -18,7 +18,7 @@ class Middle extends React.Component {
   render() {
     return (
       <div className="col-sm-10 middle-css">
-        <MessageList message_list={this.props.data.message_list}/>
+        <MessageList message_list={this.state.message_list}/>
         <TypeArea data={this.props.data.type_area} />        
      	</div>
     );
