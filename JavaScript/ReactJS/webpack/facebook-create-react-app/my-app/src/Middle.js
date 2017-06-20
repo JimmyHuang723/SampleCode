@@ -33,8 +33,11 @@ class Middle extends React.Component {
   render() {
     return (
       <div className="col-sm-10 middle-css">
-        <button type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Get</button>    
+        
         <MessageList message_list={this.state.message_list}/>
+
+        <button type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Get</button>    
+        <br/>
         <TypeArea data={this.props.data.type_area} />   
      	</div>
     );
