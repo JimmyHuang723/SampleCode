@@ -2,6 +2,8 @@ import React from 'react';
 import MessageList from './Middle/MessageList';
 import TypeArea from './Middle/TypeArea';
 import PropTypes from 'prop-types';
+import io from "socket.io-client"
+
 
 class Middle extends React.Component {
   constructor(props) {
@@ -29,6 +31,16 @@ class Middle extends React.Component {
       };
     });
 
+/*
+    if(!this.socket){
+      this.socket = io.connect("http://localhost:3700");
+      console.log("connect to server");
+      this.socket.on('message',(res)=>{
+         console.dir(res);
+      });
+    }
+    this.socket.emit('send', { message: 'sent from client' });
+*/
   }
 
   scrollMessageListToEnd(){
