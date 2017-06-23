@@ -14,6 +14,7 @@ class Middle extends React.Component {
     
     // This binding is necessary to make `this` work in the callback
     this.handleClick = this.handleClick.bind(this);
+    this.socket_send = this.socket_send.bind(this);
   }
 
   handleClick() {
@@ -51,10 +52,41 @@ class Middle extends React.Component {
 
   componentDidMount(){
     this.scrollMessageListToEnd();
+
+    // Connect socket to server : 
+    if(!this.socket){
+      this.socket = io.connect("http://localhost:3700");
+      console.log("connect to server");
+      this.socket.on('message',(res)=>{
+        console.dir("Received : " + JSON.stringify(res));
+        var new_message = { 
+              name: "Jimmy", online: true, 
+              message: res.message, 
+              time : "Wed. 22:20", pic_url : "http://dreamicus.com/data/image/image-07.jpg"
+            };
+        
+        this.setState(function(prevState, props) {
+          var message_list = prevState.message_list.slice(); // copy array
+          message_list.push(new_message);
+          return {
+            message_list : message_list
+          };
+        });
+      });
+    }
+
   }
 
   componentDidUpdate(){
     this.scrollMessageListToEnd();
+  }
+
+  socket_send(input_message) {
+    if(this.socket){
+      this.socket.emit('send', { message: input_message });
+    }else{
+      console.log("error : socket not connected!");
+    }
   }
 
   render() {
@@ -65,7 +97,7 @@ class Middle extends React.Component {
 
         <button type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Get</button>    
         <br/>
-        <TypeArea data={this.props.data.type_area} />   
+        <TypeArea data={this.props.data.type_area} on_send={this.socket_send} />   
      	</div>
     );
   }
