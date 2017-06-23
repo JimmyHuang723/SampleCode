@@ -17,6 +17,7 @@ class Middle extends React.Component {
     this.socket_send = this.socket_send.bind(this);
   }
 
+  // debug
   handleClick() {
     var dummy = { 
                   name: "Jimmy", online: false, 
@@ -55,7 +56,7 @@ class Middle extends React.Component {
 
     // Connect socket to server : 
     if(!this.socket){
-      this.socket = io.connect("http://localhost:3700");
+      this.socket = io.connect("http://13.115.255.206:3700");
       console.log("connect to server");
       this.socket.on('message',(res)=>{
         console.dir("Received : " + JSON.stringify(res));
@@ -90,12 +91,14 @@ class Middle extends React.Component {
   }
 
   render() {
+    // <button type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Get</button>    
+    
     return (
       <div className="col-sm-10 middle-css">
         
         <MessageList message_list={this.state.message_list}/>
 
-        <button type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Get</button>    
+        
         <br/>
         <TypeArea data={this.props.data.type_area} on_send={this.socket_send} />   
      	</div>

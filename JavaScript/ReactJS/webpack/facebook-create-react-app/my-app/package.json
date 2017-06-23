@@ -21,5 +21,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "http://jimmyh.hopto.org/html/react/webpack/build"
+  "homepage": "http://jimmyh.hopto.org:8081"
 }
