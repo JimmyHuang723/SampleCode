@@ -16,8 +16,7 @@ class Login extends React.Component {
 
  
   handleClick() {
-   
-
+    this.props.on_click({ username : document.getElementById("input_username").value });
   }
 
   componentDidMount(){
@@ -35,7 +34,7 @@ class Login extends React.Component {
     return (
       <div className="login-css">
        
-        User Name: <input type="text"/>
+        User Name: <input id="input_username" type="text"/>
         &nbsp; &nbsp; 
         <button type="button" className="btn btn-primary" onClick={this.handleClick}>Start</button> 
        

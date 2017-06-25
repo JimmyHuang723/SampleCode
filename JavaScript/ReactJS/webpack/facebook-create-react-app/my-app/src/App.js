@@ -11,16 +11,21 @@ class App extends Component {
     this.state = {
       APP_DATA : g_APP_DATA,
       user_name : "default user_name",
-      page : "chat"
+      page : "login"
     };
     
     // This binding is necessary to make `this` work in the callback
     this.socket_send = this.socket_send.bind(this);
     this.socket_recv = this.socket_recv.bind(this);
+    this.on_login = this.on_login.bind(this);
   }
 
   componentDidMount(){
 
+
+  }
+
+  socket_connect(){
     // Connect socket to server : 
     if(!this.socket){
       this.socket = io.connect("http://13.115.255.206:3700");
@@ -34,7 +39,6 @@ class App extends Component {
         this.socket_recv(res);
       });
     }
-
   }
 
   socket_recv(res) {
@@ -92,9 +96,24 @@ class App extends Component {
     }
   }
 
+  on_login(data) {
+    this.setState(function(prevState, props) {
+      console.log("user login : " + data.username);
+      return {
+        page : "chat",
+        user_name : data.username
+      };
+    });
+
+  }
+
   render() {
 
     if(this.state.page == "chat"){
+      if(!this.socket){
+        this.socket_connect();
+      }
+
       return (
         <div className="container width-height-full">
           <div className="row width-height-full"> 
@@ -106,7 +125,7 @@ class App extends Component {
     }else if(this.state.page == "login"){
       return (
         <div className="container width-height-full">
-          <Login/>
+          <Login on_click={this.on_login} />
         </div>
       );
     }else{
