@@ -20,7 +20,14 @@ class Login extends React.Component {
   }
 
   componentDidMount(){
-   
+
+    // Press enter key on input: 
+    document.getElementById("input_username").addEventListener("keyup", function(event) {
+      event.preventDefault();
+      if (event.keyCode == 13) {
+        document.getElementById("btn_login").click();
+      }
+    }); 
   }
 
   componentDidUpdate(){
@@ -36,7 +43,7 @@ class Login extends React.Component {
        
         User Name: <input id="input_username" type="text"/>
         &nbsp; &nbsp; 
-        <button type="button" className="btn btn-primary" onClick={this.handleClick}>Start</button> 
+        <button id="btn_login" type="button" className="btn btn-primary" onClick={this.handleClick}>Start</button> 
        
      	</div>
     );
