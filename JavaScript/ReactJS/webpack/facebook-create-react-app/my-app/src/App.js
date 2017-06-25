@@ -45,7 +45,7 @@ class App extends Component {
     if(res.hasOwnProperty('message')){      
       var new_message = { 
             type: "chat",
-            name: "Jimmy", 
+            name: res.user_name, 
             online: true, 
             message: res.message, 
             time : "Wed. 22:20", 
@@ -90,6 +90,7 @@ class App extends Component {
 
   socket_send(message) {
     if(this.socket){
+      message['user_name'] = this.state.user_name;
       this.socket.emit('send', message);
     }else{
       console.log("error : socket not connected!");
