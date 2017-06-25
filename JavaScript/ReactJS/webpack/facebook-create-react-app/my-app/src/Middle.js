@@ -9,7 +9,7 @@ class Middle extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message_list :  props.data.message_list
+     
     };
     
     // This binding is necessary to make `this` work in the callback
@@ -60,7 +60,7 @@ class Middle extends React.Component {
     return (
       <div className="col-sm-10 middle-css">
         
-        <MessageList message_list={this.state.message_list}/>
+        <MessageList message_list={this.props.data.message_list}/>
 
         
         <br/>
