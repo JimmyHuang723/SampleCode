@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Left from './Left';
 import Middle from './Middle';
+import Login from './Login';
 import io from "socket.io-client"
 
 class App extends Component {
@@ -103,7 +104,11 @@ class App extends Component {
         </div>
       );
     }else if(this.state.page == "login"){
-
+      return (
+        <div className="container width-height-full">
+          <Login/>
+        </div>
+      );
     }else{
       return null;
     }

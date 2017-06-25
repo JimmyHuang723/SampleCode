@@ -20,7 +20,13 @@ html {
   height: 100%;	
 }
 
-
+.login-css {
+  position: absolute;
+  width:  30%;
+  height: 30%;
+  left:  35%;
+  top:   35%;
+}
 
 .left-css {
   overflow: auto;
