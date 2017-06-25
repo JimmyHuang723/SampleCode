@@ -20,6 +20,7 @@ class Middle extends React.Component {
   // debug
   handleClick() {
     var dummy = { 
+                  type: "chat",
                   name: "Jimmy", online: false, 
                   message: "Instagram is one of the poster children for social media site successes. Founded in 2010, the photo sharing site now supports upwards of 90 million active photo-sharing users.As with every social media site, part of the fun is that photos and comments appear instantly so your friends can engage while the moment is hot.  Recently, at PyCon 2013 last month, Instagram engineer", 
                   time : "Wed. 22:20", pic_url : "http://dreamicus.com/data/image/image-07.jpg"
@@ -58,21 +59,44 @@ class Middle extends React.Component {
     if(!this.socket){
       this.socket = io.connect("http://13.115.255.206:3700");
       console.log("connect to server");
+
+      this.socket.emit('send', { announcement: "XXX has joined the chat..." });
+      this.socket.emit('send', { join: "XXX" });
+
       this.socket.on('message',(res)=>{
         console.dir("Received : " + JSON.stringify(res));
-        var new_message = { 
-              name: "Jimmy", online: true, 
-              message: res.message, 
-              time : "Wed. 22:20", pic_url : "http://dreamicus.com/data/image/image-07.jpg"
+
+        if(res.hasOwnProperty('message')){      
+          var new_message = { 
+                type: "chat",
+                name: "Jimmy", 
+                online: true, 
+                message: res.message, 
+                time : "Wed. 22:20", 
+                pic_url : "http://dreamicus.com/data/image/image-07.jpg"
+              };
+        }else if(res.hasOwnProperty('announcement')){
+          var new_message = { 
+                type: "announcement",
+                message: res.announcement
+              };
+        }else if(res.hasOwnProperty('join')){
+          
+        }else{
+
+        }
+
+
+        if(res.hasOwnProperty('message') || res.hasOwnProperty('announcement')){
+          this.setState(function(prevState, props) {
+            var message_list = prevState.message_list.slice(); // copy array
+            message_list.push(new_message);
+            return {
+              message_list : message_list
             };
-        
-        this.setState(function(prevState, props) {
-          var message_list = prevState.message_list.slice(); // copy array
-          message_list.push(new_message);
-          return {
-            message_list : message_list
-          };
-        });
+          });
+        }
+          
       });
     }
 

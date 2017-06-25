@@ -17,19 +17,22 @@ class MessageList extends React.Component {
     var output = [];
 
     this.props.message_list.forEach((message, index) => {
-      output.push(<MessageChat 
-                     key={index} 
-                     name={message.name} 
-                     online={message.online} 
-                     message={message.message}
-                     time={message.time}
-                     pic_url={message.pic_url}
-                  />);
-    });
+      if(message.type == "chat"){    
+        output.push(<MessageChat 
+                       key={index} 
+                       name={message.name} 
+                       online={message.online} 
+                       message={message.message}
+                       time={message.time}
+                       pic_url={message.pic_url}
+                    />);
+      }else if(message.type == "announcement"){
+        output.push(<MessageAnnouncement key={index} message={message.message} />);
+      }else{
 
-    // hard code : 
-    //output.push(<MessageAnnouncement key={999} message={"Someone has joined..."} />);
-  
+      }
+
+    });
 
     return (
       <div id="messageList" className="message-list">
