@@ -8,7 +8,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      APP_DATA : g_APP_DATA 
+      APP_DATA : g_APP_DATA,
+      user_name : "default user_name",
+      page : "chat"
     };
     
     // This binding is necessary to make `this` work in the callback
@@ -90,14 +92,22 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="container width-height-full">
-        <div className="row width-height-full">	
-      	  <Left data={this.state.APP_DATA.left} on_send={this.socket_send}  />
-      	  <Middle data={this.state.APP_DATA.middle} on_send={this.socket_send}  />
-     	</div>
-      </div>
-    );
+
+    if(this.state.page == "chat"){
+      return (
+        <div className="container width-height-full">
+          <div className="row width-height-full"> 
+            <Left data={this.state.APP_DATA.left} on_send={this.socket_send}  />
+            <Middle data={this.state.APP_DATA.middle} on_send={this.socket_send}  />
+        </div>
+        </div>
+      );
+    }else if(this.state.page == "login"){
+
+    }else{
+      return null;
+    }
+
   }
 }
 
