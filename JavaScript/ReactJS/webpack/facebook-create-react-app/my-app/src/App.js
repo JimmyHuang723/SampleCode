@@ -139,14 +139,17 @@ class App extends Component {
 var g_APP_DATA = {
   left : {
     member_list : [
+    /*
       { name: "Jimmy", online: true},
       { name: "Lucy", online: false},
       { name: "Michael", online: true},
+    */
     ]
   }, 
   
   middle : {
     message_list : [
+    /*
       { 
         type:"chat",
         name: "Jimmy", online: false, 
@@ -165,6 +168,7 @@ var g_APP_DATA = {
         message: "hey", 
         time : "Wed. 22:20", pic_url : "http://dreamicus.com/data/image/image-07.jpg"
       },
+    */
     ],
     type_area : {
 
