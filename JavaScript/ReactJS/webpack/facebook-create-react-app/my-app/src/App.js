@@ -25,8 +25,8 @@ class App extends Component {
       this.socket = io.connect("http://13.115.255.206:3700");
       console.log("connect to server");
 
-      this.socket.emit('send', { announcement: "XXX has joined the chat..." });
-      this.socket.emit('send', { join: "XXX" });
+      this.socket.emit('send', { announcement: this.state.user_name+" has joined the chat..." });
+      this.socket.emit('send', { join: this.state.user_name });
 
       this.socket.on('message',(res)=>{
         console.dir("Received : " + JSON.stringify(res));
