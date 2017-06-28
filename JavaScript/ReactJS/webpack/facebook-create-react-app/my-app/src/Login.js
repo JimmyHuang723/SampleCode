@@ -44,9 +44,7 @@ class Login extends React.Component {
         
 
       
-          Enter your name 
-          <br/> <br/> 
-          <input id="input_username" type="text" className="input-lg login-input-css" />
+          <input id="input_username" type="text" className="input-lg login-input-css" placeholder="Enter your name"/>
           <br/> <br/> 
           <button id="btn_login" type="button" className="btn btn-primary btn-lg btn-block" onClick={this.handleClick}>Start</button> 
        
