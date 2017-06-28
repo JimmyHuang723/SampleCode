@@ -41,10 +41,18 @@ class Login extends React.Component {
     return (
       <div className="login-css">
        
-        User Name: <input id="input_username" type="text"/>
-        &nbsp; &nbsp; 
-        <button id="btn_login" type="button" className="btn btn-primary" onClick={this.handleClick}>Start</button> 
+        
+
+      
+          Enter your name 
+          <br/> <br/> 
+          <input id="input_username" type="text" className="input-lg login-input-css" />
+          <br/> <br/> 
+          <button id="btn_login" type="button" className="btn btn-primary btn-lg btn-block" onClick={this.handleClick}>Start</button> 
        
+
+       
+
      	</div>
     );
 
