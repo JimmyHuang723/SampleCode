@@ -42,7 +42,7 @@ html {
 
 .left-css {
   overflow: auto;
-  background-color: yellow;
+  background-color: #e8e8e8;
   height: 100%;
  
 /*  alternative to col-xx-xx
@@ -76,14 +76,17 @@ html {
 
 .message-chat {
   border-style: solid;
-  border-color: black;
+  border-color: #efe164;
+  border-radius: 15px 35px;
+  margin: 5px;
+
  /* height: 90px;*/
   font-size: 2vmin;
   /*background-color: grey;*/    
 }
 
 .message-announcement {
-  color:red;
+  color:#ed631a;
   height: 45px;
   font-size: 3vmin;
   text-align: center;
@@ -99,7 +102,8 @@ html {
 
 .member {
   border-style: solid;
-  border-color: blue;
+  border-color: #30c6d1;
+  border-radius: 10px;
   height: 40px;
   font-size: 2vmin;
   text-align: center;
