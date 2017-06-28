@@ -79,10 +79,13 @@ html {
   border-color: #efe164;
   border-radius: 15px 35px;
   margin: 5px;
-
+  
  /* height: 90px;*/
   font-size: 2vmin;
   /*background-color: grey;*/    
+
+  animation-name: message-chat-animation;
+  animation-duration: .3s;
 }
 
 .message-announcement {
@@ -91,6 +94,9 @@ html {
   font-size: 3vmin;
   text-align: center;
   /*background-color: grey;*/    
+
+  animation-name: message-announcement-animation;
+  animation-duration: .3s;
 }
 
 .type-area {
@@ -108,6 +114,37 @@ html {
   font-size: 2vmin;
   text-align: center;
   /*background-color: grey;*/    
+}
+
+
+@keyframes message-chat-animation
+{
+0% {transform:   translate(-200px);}
+10% {transform:  translate(-180px);}
+20% {transform:  translate(-160px);}
+30% {transform:  translate(-140px);}
+40% {transform:  translate(-120px);}
+50% {transform:  translate(-100px);}
+60% {transform:  translate(-80px);}
+70% {transform:  translate(-60px);}
+80% {transform:  translate(-40px);}
+90% {transform:  translate(-20px);}
+100% {transform: translate(0px);}
+}
+
+@keyframes message-announcement-animation
+{
+0% {transform:   translateY(-20px);}
+10% {transform:  translateY(-18px);}
+20% {transform:  translateY(-16px);}
+30% {transform:  translateY(-14px);}
+40% {transform:  translateY(-12px);}
+50% {transform:  translateY(-10px);}
+60% {transform:  translateY(-8px);}
+70% {transform:  translateY(-6px);}
+80% {transform:  translateY(-4x);}
+90% {transform:  translateY(-2px);}
+100% {transform: translateY(0px);}
 }
 
 
