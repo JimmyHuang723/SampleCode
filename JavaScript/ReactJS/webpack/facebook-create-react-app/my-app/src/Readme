@@ -1,6 +1,11 @@
 start server : 
-sudo nohup node server.js &
+  cd /var/www/html/react/webpack/facebook-create-react-app/my-app/src
+  sudo nohup node server.js &
 
 stop server : 
-ps aux | grep node
-kill -9 PID
+  ps aux | grep node
+  sudo kill -9 PID
+
+deploy client : 
+  npm run build
+  upload "build" folder to /var/www/html/react/webpack/facebook-create-react-app/my-app/
