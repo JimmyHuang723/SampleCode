@@ -1,0 +1,6 @@
+start server : 
+sudo nohup node server.js &
+
+stop server : 
+ps aux | grep node
+kill -9 PID

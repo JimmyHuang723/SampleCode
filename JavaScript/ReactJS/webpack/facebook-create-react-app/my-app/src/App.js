@@ -61,6 +61,8 @@ class App extends Component {
             name : res.join,
             online: true
           };
+    }else if(res.hasOwnProperty('leave')){
+      // nothing
     }else{
       console.log("Error : socket_recv : unknown message");
       return;
@@ -80,6 +82,23 @@ class App extends Component {
     }else if( res.hasOwnProperty('join') ){
       this.setState(function(prevState, props) {
         prevState.APP_DATA.left.member_list.push(new_member);
+        return {
+          APP_DATA : prevState.APP_DATA
+        };
+      });
+    }else if( res.hasOwnProperty('leave') ){
+      this.setState(function(prevState, props) {
+        var indexToRemove = -1;
+        prevState.APP_DATA.left.member_list.forEach((member, index) => {
+          if(member.name == res.leave){
+            indexToRemove = index;
+          }  
+        });
+
+        if(indexToRemove != -1){
+          prevState.APP_DATA.left.member_list.splice(indexToRemove, 1);
+        }
+        
         return {
           APP_DATA : prevState.APP_DATA
         };
