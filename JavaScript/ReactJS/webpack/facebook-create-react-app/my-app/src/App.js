@@ -63,12 +63,19 @@ class App extends Component {
           };
     }else if(res.hasOwnProperty('leave')){
       // nothing
+    }else if(res.hasOwnProperty('name_list')){
+      var new_members = res.name_list.map((name) => {
+        return { 
+          name : name,
+          online: true
+        };
+      });
     }else{
       console.log("Error : socket_recv : unknown message");
       return;
     }
 
-
+    // setState
     if(res.hasOwnProperty('message') || res.hasOwnProperty('announcement')){
       this.setState(function(prevState, props) {
         //var message_list = prevState.APP_DATA.middle.message_list.slice(); // copy array
@@ -86,6 +93,16 @@ class App extends Component {
           APP_DATA : prevState.APP_DATA
         };
       });
+    }else if( res.hasOwnProperty('name_list') ){
+      this.setState(function(prevState, props) {
+        new_members.forEach((member, index) => {
+          prevState.APP_DATA.left.member_list.push(member);
+        });
+
+        return {
+          APP_DATA : prevState.APP_DATA
+        };
+      });
     }else if( res.hasOwnProperty('leave') ){
       this.setState(function(prevState, props) {
         var indexToRemove = -1;
@@ -98,7 +115,7 @@ class App extends Component {
         if(indexToRemove != -1){
           prevState.APP_DATA.left.member_list.splice(indexToRemove, 1);
         }
-        
+
         return {
           APP_DATA : prevState.APP_DATA
         };
