@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css">
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>      
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js"></script>
+ 
+<body>
+
+<form action="/action_page.php">
+<select id="aaa" name="cars" style="width: 200px" multiple>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+  <option value="Toyota">Toyota</option>
+  <option value="Nissan">Nissan</option>
+  <option value="Benz">Benz</option>
+  <option value="Honda">Honda</option>
+</select>
+<input type="submit">
+</form>
+
+<p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
+
+</body>
+
+<script>
+$("#aaa").chosen();
+</script>
+
+</html>
+
