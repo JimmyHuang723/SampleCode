@@ -104,7 +104,15 @@ p { /*prevent conflict with bootstrap*/
 
 
 
-
+<!--
+<script>
+      // Callback from Cropper
+      function onImgDataURLReady(imageDataURL){
+        //Assume somewhere has :  <img id="resident_header_img" src="xxx.jpg"  />
+        document.getElementById('resident_header_img').setAttribute( 'src', imageDataURL );
+      }
+</script>
+-->
 
 
 <!--
