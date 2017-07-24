@@ -6,11 +6,13 @@ class TypeArea extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputImage : null 
+      inputImage : null,
+      textAreaValue : ""
     };
 
     // This binding is necessary to make `this` work in the callback
     this.handleClick = this.handleClick.bind(this);
+    this.onTextChange = this.onTextChange.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
   }
   
@@ -48,14 +50,19 @@ class TypeArea extends React.Component {
   }
 
   handleClick() {
-    this.props.on_send(document.getElementById("middle_textarea").value);
-    document.getElementById("middle_textarea").value = "";
+    this.props.on_send(this.state.textAreaValue);
+    this.setState({textAreaValue: ""});
   }
   
+  onTextChange(event) {
+    this.setState({textAreaValue: event.target.value});
+  }
+
   render() {
     return (
       <div className="type-area">
-        <textarea id="middle_textarea" className="form-control" name="typearea" rows="5" placeholder="Type a message..."/>        
+        <textarea value={this.state.textAreaValue} onChange={this.onTextChange}
+                  className="form-control" name="typearea" rows="5" placeholder="Type a message..."/>        
         <button type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Send</button>
         <input type="file" className=""
                onChange={this.onInputChange}
