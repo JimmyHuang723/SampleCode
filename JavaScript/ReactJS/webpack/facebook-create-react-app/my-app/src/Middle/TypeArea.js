@@ -6,11 +6,12 @@ class TypeArea extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     
+      inputImage : null 
     };
 
     // This binding is necessary to make `this` work in the callback
     this.handleClick = this.handleClick.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
   }
   
   componentDidMount() {
@@ -18,6 +19,7 @@ class TypeArea extends React.Component {
   }
 
   onInputChange(e) { 
+    var typeArea = this;
     console.log("fileInput.change ...");
     const file = e.target.files[0];
     if (file) {
@@ -27,7 +29,11 @@ class TypeArea extends React.Component {
         reader.onload = function () {
           //console.log("dataURL : " + reader.result);
           var imageDataURL = reader.result;
-          document.getElementById('inputImage').setAttribute( 'src', imageDataURL );
+          typeArea.setState(function(prevState, props) {
+            return {
+              inputImage : imageDataURL
+            };
+          });
         };
         reader.onerror = function (error) {
           console.log('reader error: ', error);
@@ -54,7 +60,7 @@ class TypeArea extends React.Component {
         <input type="file" className=""
                onChange={this.onInputChange}
                name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff"/>
-        <img className="input-image-css" id="inputImage" />       
+        <img className="input-image-css" src={this.state.inputImage} />       
       </div>
     );
   }
