@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> visualizer video </title> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+</head>
+<body>
+   <img id="play">
+   <div id="logger"> </div>
+
+   <script>
+       var count = 1;
+       var socket = io.connect("http://13.115.255.206:3000");
+       socket.on( 'stream', function(image){
+           console.log("recv image " + count);
+           count++;
+           
+           var img = document.getElementById('play');
+           img.src = image;
+           $('#logger').text(image);
+         
+       });	
+   </script>
+</body>
+</html>
