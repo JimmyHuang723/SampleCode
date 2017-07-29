@@ -17,8 +17,8 @@
         var canvas = document.getElementById("preview");
         var context = canvas.getContext("2d");     	
 
-       canvas.width = 800;
-       canvas.height = 600;
+       canvas.width = 340;
+       canvas.height = 160;
 
        context.width = canvas.width;
        context.height = canvas.height;
@@ -55,7 +55,7 @@
 
            setInterval(function(){
                viewVideo(video, context);
-           }, 500);
+           }, 100);
        });
 
     </script>
