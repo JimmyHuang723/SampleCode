@@ -7,7 +7,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 </head>
 <body>
-    <video src="" id="video" style="width:680px;height:320px;" autoplay="true">
+    <video src="" id="video" style="width:170px;height:80px;" autoplay="true">
     </video>
    
     <canvas style="display:none" id="preview">  </canvas>
@@ -17,14 +17,15 @@
         var canvas = document.getElementById("preview");
         var context = canvas.getContext("2d");     	
 
-       canvas.width = 340;
-       canvas.height = 160;
+       canvas.width = 170;
+       canvas.height = 80;
 
        context.width = canvas.width;
        context.height = canvas.height;
 
        var video = document.getElementById("video");
        var socket = io.connect("http://13.115.255.206:3000");
+       var count = 1;
 
        function logger(msg)
        {
@@ -41,8 +42,10 @@
        }
 
        function viewVideo(video, context){
-           context.drawImage(video,0,0,context.width, context.height);
+           context.drawImage(video,0,0,context.width, context.height);           
            socket.emit('stream', canvas.toDataURL('image/webp'));
+           console.log("sent image" + count);
+           count++;
        }
 
        $(function(){
