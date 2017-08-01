@@ -14,13 +14,11 @@ app.get('/', function (req, res) {
   res.send('Hello World!')
 });
 
-app.get('/hello', function (req, res) {
-  func.hello(req, res)
-});
+app.get('/hello', func.hello );
 
-app.get('/hello2', function (req, res) {
-  func.hello2(req, res)
-});
+app.get('/hello2',func.hello2 );
+
+app.get('/hello3',func.hello3 );
 
 app.post('/mongowrite', function (req, res) {
   var MongoClient = require('mongodb').MongoClient
