@@ -28,7 +28,7 @@ class App extends Component {
   socket_connect(){
     // Connect socket to server : 
     if(!this.socket){
-      this.socket = io.connect("http://13.115.255.206:3700");
+      this.socket = io.connect("http://jimmyh.hopto.org:3700");
       console.log("connect to server");
 
       this.socket.emit('send', { announcement: this.state.user_name+" has joined the chat..." });

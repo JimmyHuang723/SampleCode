@@ -4,11 +4,14 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "cors-prefetch-middleware": "^1.0.0",
     "express": "^4.15.3",
+    "images-upload-middleware": "^1.1.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
     "react-dom": "^15.5.4",
+    "react-images-uploader": "^1.1.0",
     "socket.io": "^2.0.3",
     "socket.io-client": "^2.0.3"
   },
