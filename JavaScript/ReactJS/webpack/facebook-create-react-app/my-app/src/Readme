@@ -1,3 +1,7 @@
+Runs the app in development mode : 
+  npm start
+  Open http://localhost:3000 to view it in the browser.
+
 start server : 
   cd /var/www/html/react/webpack/facebook-create-react-app/my-app/src
   sudo nohup node server.js &
@@ -9,3 +13,6 @@ stop server :
 deploy client : 
   npm run build
   upload "build" folder to /var/www/html/react/webpack/facebook-create-react-app/my-app/
+
+
+Reference : https://github.com/facebookincubator/create-react-app
