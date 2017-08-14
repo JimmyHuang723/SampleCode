@@ -9,7 +9,8 @@ class TypeArea extends React.Component {
       inputImage : null,
       textAreaValue : "",
       previewImgW : 0,
-      previewImgH : 0
+      previewImgH : 0,
+      textAreaPlaceholder : "Type a message..."
     };
 
     // This binding is necessary to make `this` work in the callback
@@ -41,9 +42,10 @@ class TypeArea extends React.Component {
             console.log("w : " + this.width + " h : " + this.height);
             // Set preview image size : 
             typeArea.setState(function(prevState, props) {
+              let defaultImgH = 80;
               return {
-                previewImgW : 150 * this.width / this.height,
-                previewImgH : 150
+                previewImgW : defaultImgH * this.width / this.height,
+                previewImgH : defaultImgH
               };
             });
           };
@@ -52,7 +54,8 @@ class TypeArea extends React.Component {
           var imageDataURL = reader.result;
           typeArea.setState(function(prevState, props) {
             return {
-              inputImage : imageDataURL
+              inputImage : imageDataURL,
+              textAreaPlaceholder : ""
             };
           });
 
@@ -81,6 +84,7 @@ class TypeArea extends React.Component {
                       );
     this.setState({textAreaValue: ""});
     this.setState({inputImage: null});
+    this.setState({textAreaPlaceholder: "Type a message..."});
   }
   
   onTextChange(event) {
@@ -90,8 +94,13 @@ class TypeArea extends React.Component {
   render() {
     return (
       <div className="type-area">
+        
+        <img className="type-area-image-css" src={this.state.inputImage} 
+             width={this.state.previewImgW} height={this.state.previewImgH} />  
+
         <textarea value={this.state.textAreaValue} onChange={this.onTextChange}
-                  className="form-control" name="typearea" rows="5" placeholder="Type a message..."/>        
+                  className="form-control" name="typearea" rows="5" 
+                  placeholder={this.state.textAreaPlaceholder}  />        
         <button type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Send</button>
         
         {/*
@@ -104,9 +113,7 @@ class TypeArea extends React.Component {
                onChange={this.onInputFileChange}
                name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff"/>
         </div>
-
-        <img className="input-image-css" src={this.state.inputImage} 
-             width={this.state.previewImgW} height={this.state.previewImgH} />            
+          
 
       </div>
     );

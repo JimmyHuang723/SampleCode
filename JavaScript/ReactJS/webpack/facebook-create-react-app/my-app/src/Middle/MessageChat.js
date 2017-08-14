@@ -24,7 +24,7 @@ class MessageChat extends React.Component {
   render() {
     let image = null;
     if (this.props.message.img){
-      image =  <img className="input-image-css" src={this.props.message.img} 
+      image =  <img className="chat-image-css" src={this.props.message.img} 
                 width={this.props.message.img_w} height={this.props.message.img_h} 
                 onClick={this.onClickImage}  />; 
     }

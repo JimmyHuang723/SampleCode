@@ -100,17 +100,21 @@ html {
 }
 
 .type-area {
-
+  position: absolute;
+  width: 90%;
   height: 15%;
   font-size: 2vmin;
   
 }
 
-.input-image-css {
-
+.type-area-image-css {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
 }
 
-.input-image-css:hover {
+.chat-image-css:hover {
   cursor: pointer;
 }
 
