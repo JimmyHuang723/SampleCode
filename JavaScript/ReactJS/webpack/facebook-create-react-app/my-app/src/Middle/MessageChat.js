@@ -1,22 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import Lightbox from 'react-images'; // https://github.com/jossmac/react-images
 
 class MessageChat extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     
+      displayLightbox : false 
     };
+
+    this.onClickImage = this.onClickImage.bind(this);
+    this.closeLightbox = this.closeLightbox.bind(this);
   }
   
-  
+  onClickImage() {
+    this.setState({displayLightbox : true});
+  }
+
+  closeLightbox() {
+    this.setState({displayLightbox : false});
+  }
   
   render() {
     let image = null;
     if (this.props.message.img){
       image =  <img className="input-image-css" src={this.props.message.img} 
-                width={this.props.message.img_w} height={this.props.message.img_h} />; 
+                width={this.props.message.img_w} height={this.props.message.img_h} 
+                onClick={this.onClickImage}  />; 
     }
 
     return (
@@ -30,6 +40,14 @@ class MessageChat extends React.Component {
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
         {this.props.message.text}
         {image}
+
+        <Lightbox
+          images={[{ src: this.props.message.img }]}
+          backdropClosesModal={true}
+          isOpen={this.state.displayLightbox}
+          onClose={this.closeLightbox}
+        />
+
         <br/><br/>    
       </div>
     );
