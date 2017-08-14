@@ -30,13 +30,25 @@ class TypeArea extends React.Component {
         reader.readAsDataURL(file);
         reader.onload = function () {
           //console.log("dataURL : " + reader.result);
+
+          // Get image size : 
+          var image = new Image();
+          image.src = reader.result;
+          image.onload = function() {
+            // access image size here 
+            console.log("w : " + this.width + " h : " + this.height);
+          };
+
+          // Set DataURL to State : 
           var imageDataURL = reader.result;
           typeArea.setState(function(prevState, props) {
             return {
               inputImage : imageDataURL
             };
           });
+
         };
+
         reader.onerror = function (error) {
           console.log('reader error: ', error);
         };
