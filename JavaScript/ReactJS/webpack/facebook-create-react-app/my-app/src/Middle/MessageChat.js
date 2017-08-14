@@ -13,6 +13,12 @@ class MessageChat extends React.Component {
   
   
   render() {
+    let image = null;
+    if (this.props.message.img){
+      image =  <img className="input-image-css" src={this.props.message.img} 
+                width={this.props.message.img_w} height={this.props.message.img_h} />; 
+    }
+
     return (
       <div className="message-chat">
         <img src={this.props.pic_url} className="img-circle" alt="" width="60" height="60"/>
@@ -22,7 +28,9 @@ class MessageChat extends React.Component {
         <span style={{fontStyle: "italic"}}>{this.props.time}</span>
         <br/>
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-        {this.props.message}
+        {this.props.message.text}
+        {image}
+       
       </div>
     );
   }

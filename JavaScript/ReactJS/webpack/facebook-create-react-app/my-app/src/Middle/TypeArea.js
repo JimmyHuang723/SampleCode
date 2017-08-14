@@ -71,8 +71,16 @@ class TypeArea extends React.Component {
   }
 
   handleClick() {
-    this.props.on_send(this.state.textAreaValue);
+    this.props.on_send( 
+                        {
+                          text : this.state.textAreaValue, 
+                          img : this.state.inputImage,
+                          img_w : this.state.previewImgW,
+                          img_h :  this.state.previewImgH
+                        }
+                      );
     this.setState({textAreaValue: ""});
+    this.setState({inputImage: null});
   }
   
   onTextChange(event) {
