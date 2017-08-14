@@ -110,6 +110,10 @@ html {
 
 }
 
+.input-image-css:hover {
+  cursor: pointer;
+}
+
 .member {
   border-style: solid;
   border-color: #30c6d1;
