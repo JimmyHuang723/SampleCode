@@ -65,14 +65,14 @@ class TypeArea extends React.Component {
                   className="form-control" name="typearea" rows="5" placeholder="Type a message..."/>        
         <button type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Send</button>
         
-        <MyUploader/>
-
         {/*
+        <MyUploader/>
+        */}
+
         <input type="file" className=""
                onChange={this.onInputFileChange}
                name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff"/>
-        <img className="input-image-css" src={this.state.inputImage} />    
-        */}
+        <img className="input-image-css" src={this.state.inputImage} />            
 
       </div>
     );

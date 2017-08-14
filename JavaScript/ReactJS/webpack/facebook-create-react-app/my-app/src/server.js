@@ -50,7 +50,7 @@ function remove_name(name){
 }
 
 
-
+/*
 // START : File upload
 //app.use('/media', express.static('./static/media')); 
 app.use(corsPrefetch['default']);
@@ -71,6 +71,7 @@ app.listen(portUpload, () => {
     console.log('Listen: ' + portUpload);
 });
 // END : File upload
+*/
 
 
 
