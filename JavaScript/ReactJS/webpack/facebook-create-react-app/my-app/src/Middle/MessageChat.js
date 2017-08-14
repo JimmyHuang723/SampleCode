@@ -30,7 +30,7 @@ class MessageChat extends React.Component {
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
         {this.props.message.text}
         {image}
-       
+        <br/><br/>    
       </div>
     );
   }
