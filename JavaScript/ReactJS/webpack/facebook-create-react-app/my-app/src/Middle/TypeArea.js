@@ -7,7 +7,9 @@ class TypeArea extends React.Component {
     super(props);
     this.state = {
       inputImage : null,
-      textAreaValue : ""
+      textAreaValue : "",
+      previewImgW : 150,
+      previewImgH : 150
     };
 
     // This binding is necessary to make `this` work in the callback
@@ -37,6 +39,13 @@ class TypeArea extends React.Component {
           image.onload = function() {
             // access image size here 
             console.log("w : " + this.width + " h : " + this.height);
+            // Set preview image size : 
+            typeArea.setState(function(prevState, props) {
+              return {
+                previewImgW : prevState.previewImgH * this.width / this.height,
+                previewImgH : prevState.previewImgH
+              };
+            });
           };
 
           // Set DataURL to State : 
@@ -84,7 +93,8 @@ class TypeArea extends React.Component {
         <input type="file" className=""
                onChange={this.onInputFileChange}
                name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff"/>
-        <img className="input-image-css" src={this.state.inputImage} />            
+        <img className="input-image-css" src={this.state.inputImage} 
+             width={this.state.previewImgW} height={this.state.previewImgH} />            
 
       </div>
     );
