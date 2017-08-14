@@ -8,8 +8,8 @@ class TypeArea extends React.Component {
     this.state = {
       inputImage : null,
       textAreaValue : "",
-      previewImgW : 150,
-      previewImgH : 150
+      previewImgW : 0,
+      previewImgH : 0
     };
 
     // This binding is necessary to make `this` work in the callback
@@ -42,8 +42,8 @@ class TypeArea extends React.Component {
             // Set preview image size : 
             typeArea.setState(function(prevState, props) {
               return {
-                previewImgW : prevState.previewImgH * this.width / this.height,
-                previewImgH : prevState.previewImgH
+                previewImgW : 150 * this.width / this.height,
+                previewImgH : 150
               };
             });
           };
@@ -98,9 +98,13 @@ class TypeArea extends React.Component {
         <MyUploader/>
         */}
 
-        <input type="file" className=""
+        <div className="fileUpload btn btn-primary">
+            <span>Upload a file</span>          
+            <input type="file" className="upload" 
                onChange={this.onInputFileChange}
                name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff"/>
+        </div>
+
         <img className="input-image-css" src={this.state.inputImage} 
              width={this.state.previewImgW} height={this.state.previewImgH} />            
 
