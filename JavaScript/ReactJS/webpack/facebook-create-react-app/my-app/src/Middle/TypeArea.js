@@ -84,10 +84,15 @@ class TypeArea extends React.Component {
                           img_h :  this.state.previewImgH
                         }
                       );
-    this.setState({textAreaValue: ""});
-    this.setState({inputImage: null});
-    this.setState({textAreaPlaceholder: "Type a message..."});
-    this.setState({uploading: true});
+ 
+    this.setState(
+      { textAreaValue: "",
+        inputImage: null,
+        textAreaPlaceholder: "Type a message...",
+        uploading: true,
+      }
+    );    
+    
   }
   
   onTextChange(event) {
