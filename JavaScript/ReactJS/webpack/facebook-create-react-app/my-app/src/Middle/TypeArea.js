@@ -108,7 +108,7 @@ class TypeArea extends React.Component {
         */}
 
         <div className="fileUpload btn btn-primary">
-            <span>Upload a file</span>          
+            <span>Upload an image</span>          
             <input type="file" className="upload" 
                onChange={this.onInputFileChange}
                name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff"/>
