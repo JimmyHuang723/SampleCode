@@ -51,6 +51,9 @@ class App extends Component {
             time : "Wed. 22:20", 
             pic_url : "http://dreamicus.com/data/image/image-07.jpg"
           };
+
+      var imageArrived = (res.message.img != null) ? true:false;
+          
     }else if(res.hasOwnProperty('announcement')){
       var new_message = { 
             type: "announcement",
@@ -80,6 +83,11 @@ class App extends Component {
       this.setState(function(prevState, props) {
         //var message_list = prevState.APP_DATA.middle.message_list.slice(); // copy array
         //message_list.push(new_message);
+  
+        // De-activate spinner for image uploading...
+        if(imageArrived){
+          prevState.APP_DATA.middle.type_area.uploading = false;          
+        }
 
         prevState.APP_DATA.middle.message_list.push(new_message);
         return {
@@ -128,6 +136,17 @@ class App extends Component {
     if(this.socket){
       message['user_name'] = this.state.user_name;
       this.socket.emit('send', message);
+
+      // Activate spinner for image uploading...
+      if(message.message.img != null){
+          this.setState(function(prevState, props) {
+            prevState.APP_DATA.middle.type_area.uploading = true;          
+            return {
+              APP_DATA : prevState.APP_DATA
+            };
+          });
+      }
+
     }else{
       console.log("error : socket not connected!");
     }
@@ -207,7 +226,7 @@ var g_APP_DATA = {
     */
     ],
     type_area : {
-
+        uploading: false
     }
   }
 };

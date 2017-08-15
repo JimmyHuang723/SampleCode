@@ -11,8 +11,7 @@ class TypeArea extends React.Component {
       textAreaValue : "",
       previewImgW : 0,
       previewImgH : 0,
-      textAreaPlaceholder : "Type a message...",
-      uploading : false
+      textAreaPlaceholder : "Type a message..."
     };
 
     // This binding is necessary to make `this` work in the callback
@@ -90,8 +89,7 @@ class TypeArea extends React.Component {
     this.setState(
       { textAreaValue: "",
         inputImage: null,
-        textAreaPlaceholder: "Type a message...",
-        uploading: uploading,
+        textAreaPlaceholder: "Type a message..."
       }
     );    
     
@@ -109,7 +107,7 @@ class TypeArea extends React.Component {
         <img className="type-area-image-css" src={this.state.inputImage} 
              width={this.state.previewImgW} height={this.state.previewImgH} />  
 
-        { this.state.uploading && <Spinner/>}
+        { this.props.data.uploading && <Spinner/>}
         <textarea value={this.state.textAreaValue} onChange={this.onTextChange}
                   className="form-control" name="typearea" rows="5" 
                   placeholder={this.state.textAreaPlaceholder}  />        
@@ -132,7 +130,7 @@ class TypeArea extends React.Component {
 
 
 TypeArea.propTypes = {
- 
+   
 };
 
 
