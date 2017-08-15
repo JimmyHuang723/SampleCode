@@ -85,11 +85,13 @@ class TypeArea extends React.Component {
                         }
                       );
  
+    let uploading = this.state.inputImage ? true:false;
+
     this.setState(
       { textAreaValue: "",
         inputImage: null,
         textAreaPlaceholder: "Type a message...",
-        uploading: true,
+        uploading: uploading,
       }
     );    
     
