@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MyUploader from './MyUploader';
+
 
 class TypeArea extends React.Component {
   constructor(props) {
@@ -103,10 +103,7 @@ class TypeArea extends React.Component {
                   placeholder={this.state.textAreaPlaceholder}  />        
         <button type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Send</button>
         
-        {/*
-        <MyUploader/>
-        */}
-
+       
         <div className="fileUpload btn btn-primary">
             <span>Upload an image</span>          
             <input type="file" className="upload" 
