@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import Spinner from 'react-spinner';
+import 'react-spinner/react-spinner.css';
 
 class TypeArea extends React.Component {
   constructor(props) {
@@ -10,7 +11,8 @@ class TypeArea extends React.Component {
       textAreaValue : "",
       previewImgW : 0,
       previewImgH : 0,
-      textAreaPlaceholder : "Type a message..."
+      textAreaPlaceholder : "Type a message...",
+      uploading : false
     };
 
     // This binding is necessary to make `this` work in the callback
@@ -85,6 +87,7 @@ class TypeArea extends React.Component {
     this.setState({textAreaValue: ""});
     this.setState({inputImage: null});
     this.setState({textAreaPlaceholder: "Type a message..."});
+    this.setState({uploading: true});
   }
   
   onTextChange(event) {
@@ -92,12 +95,14 @@ class TypeArea extends React.Component {
   }
 
   render() {
+
     return (
       <div className="type-area">
         
         <img className="type-area-image-css" src={this.state.inputImage} 
              width={this.state.previewImgW} height={this.state.previewImgH} />  
 
+        { this.state.uploading && <Spinner/>}
         <textarea value={this.state.textAreaValue} onChange={this.onTextChange}
                   className="form-control" name="typearea" rows="5" 
                   placeholder={this.state.textAreaPlaceholder}  />        
@@ -111,6 +116,7 @@ class TypeArea extends React.Component {
                name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff"/>
         </div>
           
+        
 
       </div>
     );

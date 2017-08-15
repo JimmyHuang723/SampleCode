@@ -13,6 +13,7 @@
     "react-dom": "^15.5.4",
     "react-images": "^0.5.5",
     "react-images-uploader": "^1.1.0",
+    "react-spinner": "^0.2.7",
     "socket.io": "^2.0.3",
     "socket.io-client": "^2.0.3"
   },
