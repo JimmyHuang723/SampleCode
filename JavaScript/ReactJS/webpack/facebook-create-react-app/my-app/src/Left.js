@@ -17,7 +17,8 @@ class Left extends React.Component {
       <div className="col-sm-2 left-css">
         <div className="" style={{height: "33%"}}/>
         <div className="" style={{height: "33%"}}>
-          <MemberList member_list={this.props.data.member_list} />
+          <MemberList member_list={this.props.data.member_list} 
+                      on_click_member={this.props.on_click_member}  />
         </div>  
         <div className="" style={{height: "33%"}}/>
       </div>

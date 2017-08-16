@@ -16,7 +16,10 @@ class MemberList extends React.Component {
     var output = [];
 
     this.props.member_list.forEach((member, index) => {
-      output.push(<Member key={index} name={member.name} online={member.online}/>);
+      output.push(
+                   <Member key={index} name={member.name} online={member.online}
+                           on_click_member={this.props.on_click_member} />
+                 );
     });
 
     return (

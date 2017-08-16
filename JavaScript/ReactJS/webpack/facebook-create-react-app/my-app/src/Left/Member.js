@@ -8,13 +8,17 @@ class Member extends React.Component {
     this.state = {
      
     };
+
+    this.onClickMember = this.onClickMember.bind(this);
   }
   
-  
+  onClickMember() {
+    this.props.on_click_member(this.props.name);
+  }
   
   render() {
     return (
-      <div className="member">
+      <div className="member" onClick={this.onClickMember}>
         {this.props.name}
       </div>
     );

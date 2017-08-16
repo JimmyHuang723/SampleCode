@@ -163,6 +163,10 @@ class App extends Component {
 
   }
 
+  on_click_member(name){
+    console.log("App.js on_click_member " + name);
+  }
+
   render() {
 
     if(this.state.page == "chat"){
@@ -173,7 +177,8 @@ class App extends Component {
       return (
         <div className="container width-height-full">
           <div className="row width-height-full"> 
-            <Left data={this.state.APP_DATA.left} on_send={this.socket_send}  />
+            <Left data={this.state.APP_DATA.left} on_send={this.socket_send} 
+                  on_click_member={this.on_click_member} />
             <Middle data={this.state.APP_DATA.middle} on_send={this.socket_send}  />
         </div>
         </div>
