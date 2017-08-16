@@ -18,6 +18,7 @@ class App extends Component {
     this.socket_send = this.socket_send.bind(this);
     this.socket_recv = this.socket_recv.bind(this);
     this.on_login = this.on_login.bind(this);
+    this.on_click_member = this.on_click_member.bind(this);
   }
 
   componentDidMount(){
