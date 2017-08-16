@@ -19,6 +19,12 @@ class Member extends React.Component {
   }
   
   render() {
+    if(this.props.isme){
+      var css_class ="member member-isme"; 
+    }else{
+      var css_class ="member"; 
+    }
+
     return (
             <Tooltip
               placement={'right'}
@@ -32,7 +38,7 @@ class Member extends React.Component {
               }}
               transitionName={"transitionName"}
              >
-               <div className="member" onClick={this.onClickMember}>
+               <div className={css_class} onClick={this.onClickMember}>
                  {this.props.name}
                </div>
              </Tooltip>   

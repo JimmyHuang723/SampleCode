@@ -153,6 +153,10 @@ html {
   cursor: pointer;
 }
 
+.member-isme {
+  background-color: yellow;  
+}
+
 @keyframes message-chat-animation
 {
 0% {transform:   translate(-200px);}

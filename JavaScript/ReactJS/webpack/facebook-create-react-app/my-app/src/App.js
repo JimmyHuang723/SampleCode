@@ -71,7 +71,8 @@ class App extends Component {
     }else if(res.hasOwnProperty('join')){
       var new_member = { 
             name : res.join,
-            online: true
+            online: true,
+            isme: (res.join == this.state.user_name)
           };
     }else if(res.hasOwnProperty('leave')){
       // nothing
@@ -79,7 +80,8 @@ class App extends Component {
       var new_members = res.name_list.map((name) => {
         return { 
           name : name,
-          online: true
+          online: true,
+          isme: false
         };
       });
     }else{
