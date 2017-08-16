@@ -19,6 +19,7 @@ class Middle extends React.Component {
 
   // debug
   handleClick() {
+
     var dummy = { 
                   type: "chat",
                   name: "Jimmy", online: false, 
@@ -55,16 +56,20 @@ class Middle extends React.Component {
   }
 
   render() {
-    // <button type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Get</button>    
     
     return (
       <div className="col-sm-10 middle-css">
         
+        {/* Debug only
+        <button type="button" className="btn btn-primary btn-block" onClick={this.handleClick}>Get</button>    
+        */}
+
         <MessageList message_list={this.props.data.message_list}/>
 
         
         <br/>
-        <TypeArea data={this.props.data.type_area} on_send={this.socket_send} />   
+        <TypeArea data={this.props.data.type_area} on_send={this.socket_send} 
+                  ref={(self) => { this.typeArea = self; }}  />   
      	</div>
     );
   }

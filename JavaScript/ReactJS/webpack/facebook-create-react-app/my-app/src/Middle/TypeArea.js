@@ -18,6 +18,7 @@ class TypeArea extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.onTextChange = this.onTextChange.bind(this);
     this.onInputFileChange = this.onInputFileChange.bind(this);
+    this.appendText = this.appendText.bind(this);
   }
   
   componentDidMount() {
@@ -97,6 +98,15 @@ class TypeArea extends React.Component {
   
   onTextChange(event) {
     this.setState({textAreaValue: event.target.value});
+  }
+
+  appendText(text) {
+    this.setState(function(prevState, props) {
+           
+      return {
+        textAreaValue : prevState.textAreaValue + text
+      };
+    });  
   }
 
   render() {

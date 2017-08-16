@@ -165,7 +165,7 @@ class App extends Component {
   }
 
   on_click_member(name){
-    console.log("App.js on_click_member " + name);
+    this.middle.typeArea.appendText("@"+name);
   }
 
   render() {
@@ -180,7 +180,8 @@ class App extends Component {
           <div className="row width-height-full"> 
             <Left data={this.state.APP_DATA.left} on_send={this.socket_send} 
                   on_click_member={this.on_click_member} />
-            <Middle data={this.state.APP_DATA.middle} on_send={this.socket_send}  />
+            <Middle data={this.state.APP_DATA.middle} on_send={this.socket_send}  
+                    ref={(self) => { this.middle = self; }}  />
         </div>
         </div>
       );
