@@ -27,6 +27,20 @@ class MessageChat extends React.Component {
   render() {
     //preview_image (uploaded)
     let preview_image = null;
+    var overlay = (
+         <div style={{ height: 500, width: 500 }}>
+                  <img className="chat-image-css" src={this.props.message.img} 
+                                  width={this.props.message.img_w} height={this.props.message.img_h} 
+                                  onClick={this.onClickImage}  />     
+                   <img className="chat-image-css" src={this.props.message.img} 
+                          width={this.props.message.img_w} height={this.props.message.img_h} 
+                          onClick={this.onClickImage}  />  
+                   <img className="chat-image-css" src={this.props.message.img} 
+                          width={this.props.message.img_w} height={this.props.message.img_h} 
+                          onClick={this.onClickImage}  />                                                   
+        </div>
+        );
+
     if (this.props.message.img){
       preview_image = (
                        <Tooltip
@@ -35,7 +49,7 @@ class MessageChat extends React.Component {
                         mouseLeaveDelay={0.1}
                         destroyTooltipOnHide={false}
                         trigger={Object.keys( {hover: 1} ) }               
-                        overlay={<div style={{ height: 20, width: 120 }}>Click to see full size</div>}
+                        overlay={overlay}
                         align={{
                           offset: [4, 0],
                         }}
