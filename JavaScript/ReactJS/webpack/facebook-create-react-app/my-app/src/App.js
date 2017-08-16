@@ -43,14 +43,22 @@ class App extends Component {
   }
 
   socket_recv(res) {
-    if(res.hasOwnProperty('message')){      
+    if(res.hasOwnProperty('message')){    
+      // Check if user is mentioned : 
+      if(res.message.text != undefined && res.message.text.includes("@"+this.state.user_name)){
+        var mentioned = true;
+      }else{
+        var mentioned = false;
+      }
+
       var new_message = { 
             type: "chat",
             name: res.user_name, 
             online: true, 
             message: res.message, 
             time : "Wed. 22:20", 
-            pic_url : "http://dreamicus.com/data/image/image-07.jpg"
+            pic_url : "http://dreamicus.com/data/image/image-07.jpg",
+            mentioned : mentioned
           };
 
       var imageArrived = (res.message.img != null) ? true:false;

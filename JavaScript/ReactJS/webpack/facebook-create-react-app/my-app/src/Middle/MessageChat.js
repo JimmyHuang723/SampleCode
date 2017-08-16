@@ -25,6 +25,7 @@ class MessageChat extends React.Component {
   }
   
   render() {
+    //preview_image (uploaded)
     let preview_image = null;
     if (this.props.message.img){
       preview_image = (
@@ -47,8 +48,15 @@ class MessageChat extends React.Component {
                       ); 
     }
 
+    // css class
+    if (this.props.mentioned){
+      var css_class = "message-chat message-chat-mentioned"; 
+    }else{
+      var css_class = "message-chat";
+    }
+
     return (
-      <div className="message-chat">
+      <div className={css_class}>
         <img src={this.props.pic_url} className="img-circle" alt="" width="60" height="60"/>
         &nbsp; 
         <span style={{fontWeight: "bold"}} >{this.props.name}</span>

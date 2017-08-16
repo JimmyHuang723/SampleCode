@@ -88,6 +88,10 @@ html {
   animation-duration: .3s;
 }
 
+.message-chat-mentioned {
+  background-color: yellow;  
+}
+
 .message-announcement {
   color:#ed631a;
   height: 45px;

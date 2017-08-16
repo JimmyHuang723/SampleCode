@@ -25,6 +25,7 @@ class MessageList extends React.Component {
                        message={message.message}
                        time={message.time}
                        pic_url={message.pic_url}
+                       mentioned={message.mentioned}
                     />);
       }else if(message.type == "announcement"){
         output.push(<MessageAnnouncement key={index} message={message.message} />);
