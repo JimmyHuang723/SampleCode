@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Lightbox from 'react-images'; // https://github.com/jossmac/react-images
+
 import Tooltip from 'rc-tooltip'; // https://github.com/react-component/tooltip
 import 'rc-tooltip/assets/bootstrap.css';
 
@@ -33,7 +34,7 @@ class MessageChat extends React.Component {
                         mouseLeaveDelay={0.1}
                         destroyTooltipOnHide={false}
                         trigger={Object.keys( {hover: 1} ) }               
-                        overlay={<div style={{ height: 50, width: 50 }}>Click to see full size</div>}
+                        overlay={<div style={{ height: 20, width: 120 }}>Click to see full size</div>}
                         align={{
                           offset: [4, 0],
                         }}

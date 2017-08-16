@@ -145,6 +145,9 @@ html {
   /*background-color: grey;*/    
 }
 
+.member:hover {
+  cursor: pointer;
+}
 
 @keyframes message-chat-animation
 {
