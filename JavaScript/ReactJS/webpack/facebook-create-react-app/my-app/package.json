@@ -8,6 +8,7 @@
     "express": "^4.15.3",
     "images-upload-middleware": "^1.1.1",
     "prop-types": "^15.5.10",
+    "rc-tooltip": "^3.4.8",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
     "react-dom": "^15.5.4",
