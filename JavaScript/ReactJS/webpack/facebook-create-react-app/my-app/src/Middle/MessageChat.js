@@ -27,6 +27,10 @@ class MessageChat extends React.Component {
   render() {
     //preview_image (uploaded)
     let preview_image = null;
+
+    // overlay is the elements shown in the tooltip dialog
+    var overlay = <div style={{ height: 20, width: 120 }}>Click to see full size</div>;
+    /* // test only
     var overlay = (
          <div style={{ height: 500, width: 500 }}>
                   <img className="chat-image-css" src={this.props.message.img} 
@@ -40,6 +44,7 @@ class MessageChat extends React.Component {
                           onClick={this.onClickImage}  />                                                   
         </div>
         );
+    */
 
     if (this.props.message.img){
       preview_image = (
