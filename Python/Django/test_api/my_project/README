@@ -2,3 +2,12 @@
  - pip install -r requirements.txt : Later it will be easier for a different developer (or you, if you need to re-create the environment) to install the same packages using the same versions
 
 
+1. virtualenv project_root
+2. cd project_root
+3. source bin/activate
+4. pip install -r requirements.txt
+5. cd mysite
+6. python manage.py runserver 0.0.0.0:8000
+
+
+
