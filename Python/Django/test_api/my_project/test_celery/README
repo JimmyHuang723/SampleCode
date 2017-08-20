@@ -1,0 +1,12 @@
+ http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html
+
+!! Below "tasks" is the module name (tasks.py)
+Run worker : nohup celery -A tasks worker --loglevel=info &
+Call task : python call_task.py
+See what tasks worker is working on : celery -A tasks inspect active
+
+
+
+RabbitMQ : sudo invoke-rc.d rabbitmq-server restart/stop/start
+
+
