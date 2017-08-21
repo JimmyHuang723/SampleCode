@@ -1,0 +1,95 @@
+#1	
+$IFM3471	
+? Type of Infection		
+@checkbox	
+[10] Urinary Tract Infection				
+[12] Respiratory Tract Infection				
+[14] Skin /Wound Infection				
+[16] Eye Infection				
+[18] GIT				
+[20] Oral Infection				
+[22] Other 				
+^^
+#2	
+$IFM3475	
+?Other 	
+~describe type of infection	
+@text					
+^^
+#3	
+$IFM3479	
+?Prescribed treatment 	
+~ eg name of antibiotic 	
+@text					
+^^
+#4	
+$IFM3483	
+?Length of antibiotic course		
+@radio	
+(12) The  course of antibiotic course is 5 days 				
+(14) The  course of antibiotic course is 1 week				
+(16) The  course of antibiotic course is 10 days 				
+(18) The  course of antibiotic course is long term 				
+(20) 2 courses of Antiobiotics are prescribed 				
+(22) Unknown 				
+^^
+#5	
+$IFM3487	
+?Other comments 	
+~type of organism (refer to pathology report)	
+@text					
+^^
+#6	
+$IFM3491	
+?Infection Chronic		
+@radio
+(10) Yes
+(20) No				
+^^
+#7	
+$IFM3495	
+?Date  Antiobiotics COMMENCED 		
+@date				
+^^
+#8	
+$IFM3499	
+?Date ANTIOBIOTIC COURSE COMPLETED 		
+@date					
+^^
+#9	
+$IFM3503	
+?INFECTIONS  NOT BEING TREATED WITH ANTIOBIOTIC THERAPY 		
+@radio	
+(10) N/A				
+(12) MRSA 				
+(14) VRE				
+(16) OTHER 				
+^^
+#10	
+$IFM3507	
+?OTHER INFECTIONS NOT BEING TREATED WITH ANTIOBIOTIC THERAPY 	
+~describe 	
+@text					
+^^
+#11	
+$IFM3511	
+?LOCATION of OTHER   INFECTION 		
+@text					
+^^
+#12
+$IFM3515	
+? Specimen  sent to pathology		
+@radio
+(10) Yes
+(20) No				
+^^
+#13	
+$IFM3519	
+?Date specimen  sent to Pathology 		
+@date				
+^^
+#14	
+$IFM3523	
+?Other Comments 		
+@text					
+^^

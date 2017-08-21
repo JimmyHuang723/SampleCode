@@ -1,0 +1,25 @@
+#1
+$HGC01
+?Date
+@date
+^^
+#2
+$HGC02
+?AM / PM / NS
+@radio
+(10)AM
+(20)PM
+(30)NS
+^^
+#3
+$HGC03
+?Hygiene
+@checkbox
+(10) Wash
+(20) Shower
+(30) Bath
+(40) Hair washed
+(50) Nail care
+(60) Shave
+(70) Teeth
+^^

@@ -1,0 +1,10 @@
+{
+    "_id": ObjectId("593d14cca7a691074c1fc0cd"),
+    "roleId": 0,
+    "roleName": "MyCareAdmin",
+    "parentRoleId": "5704952c97f48f0000000562",
+    "parentRoleName": "General Manager",
+    "bgColor": "#7bd148",
+    "level": 0,
+    "isEditable": false
+}

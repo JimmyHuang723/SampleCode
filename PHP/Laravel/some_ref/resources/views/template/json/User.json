@@ -1,0 +1,131 @@
+{
+    "_id": ObjectId("5796a114f7f382276c224af0"),
+    "SID": "8f1df96e-34e4-4e1f-916c-1848a8e78591",
+    "UserName": "1801",
+    "PassWord": "Osk8cWLGzagEm/KJc4c/aQ==",
+    "SGivenNames": "Chaolin",
+    "SSurname": "Chang",
+    "SHomePhone": "0407850388",
+    "SMobile": "0407850388",
+    "SEmail": "chang388@gmail.com",
+    "SDOB": "",
+    "SGender": "M",
+    "SResident": null,
+    "SDateOfResidency": null,
+    "SEmploymentType": "F",
+    "SStartDate": {
+        "Date": "2011-10-03T00:00:00",
+        "Epoch": 1317600000.0
+    },
+    "STerminationDate": {
+        "Date": "0001-01-01T00:00:00",
+        "Epoch": -2147483648
+    },
+    "SPermanentStartDate": {
+        "Date": "2011-10-03T00:00:00",
+        "Epoch": 1317600000.0
+    },
+    "SContractHours": 38,
+    "SContractDays": 0,
+    "SFax": "",
+    "SLanguages": "",
+    "SWorkVisa": "N",
+    "SStatus": "A",
+    "SDefaultDepartment": "2bbaaef3-fc6d-469f-a4bd-7a8ca562ed84",
+    "FacilityLocations": [],
+    "RoleName": "HO ADMINISTRATION",
+    "RoleShortName": "ADMIN",
+    "roles": [{
+            "roleId": "5769bdf6f7f35d23e8323568",
+            "roleName": "Everyone"
+        },
+        {
+            "roleId": "580eed429318a80a6490a529",
+            "roleName": "GM - Project & Innovation"
+        }
+    ],
+    "facilities": [{
+            "facilityId": "1135",
+            "facilityName": "Head Office"
+        },
+        {
+            "facilityId": "1136",
+            "facilityName": "Elly Kay"
+        },
+        {
+            "facilityId": "1141",
+            "facilityName": "Caulfield"
+        },
+        {
+            "facilityId": "1137",
+            "facilityName": "Grossard Court"
+        },
+        {
+            "facilityId": "1138",
+            "facilityName": "Ruckers Hill"
+        },
+        {
+            "facilityId": "1066",
+            "facilityName": "The Mews"
+        },
+        {
+            "facilityId": "1133",
+            "facilityName": "The Gables"
+        }
+    ],
+    "FunctionPermission": null,
+    "RoleNames": null,
+    "FacilityIds": null,
+    "UpdateTime": ISODate("2016-08-10T22:54:24.537Z"),
+    "HrFacilities": [{
+            "facilityId": "1139",
+            "facilityName": "Westgarth"
+        },
+        {
+            "facilityId": "1135",
+            "facilityName": "Hawthorn"
+        },
+        {
+            "facilityId": "1141",
+            "facilityName": "Caulfield"
+        },
+        {
+            "facilityId": "1136",
+            "facilityName": "Elly Kay"
+        },
+        {
+            "facilityId": "1137",
+            "facilityName": "Grossard Court"
+        },
+        {
+            "facilityId": "1066",
+            "facilityName": "The Mews"
+        },
+        {
+            "facilityId": "1140",
+            "facilityName": "Sapphire Care Oakleigh"
+        },
+        {
+            "facilityId": "1141",
+            "facilityName": "Caulfield"
+        },
+        {
+            "facilityId": "1117",
+            "facilityName": "Hilltop"
+        },
+        {
+            "facilityId": "1133",
+            "facilityName": "The Gables"
+        },
+        {
+            "facilityId": "1134",
+            "facilityName": "Brighton"
+        },
+        {
+            "facilityId": "1138",
+            "facilityName": "Ruckers Hill"
+        }
+    ],
+    "SNumber": "HO1801",
+    "OldUserName": "chaolinc"
+}

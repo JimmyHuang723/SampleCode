@@ -1,0 +1,345 @@
+#1	
+$ADR1011	
+?Assessment information source		
+@checkbox	
+[10] Family meeting 				
+[12] The Resident 				
+[14] ACCR				
+[16] The Residents GP				
+[18] Hospital Transfer Letter 				
+^^
+#2	
+$ADR1015	
+?Other information source		
+@text					
+^^
+#3	
+$ADR1019	
+?Reason for admission /diagnosis- Use a complete sentence 	
+@text					
+^^
+#4	
+$ADR1023	
+?Admission baseline Temperature, Pulse, Respiration & BGL 		
+@text					
+^^
+#5	
+$ADR1027	
+?Admission baseline Blood Pressure 		
+@text					
+^^
+#6	
+$ADR1031	
+?Admission baseline pupils reacting and size		
+@text					
+^^
+#7	
+$ADR1035	
+?Physical Appearance- Use a sentence|To maintain dignity and social standing amongst the residents peers	
+@text		
+>obs=Body Care and Personal Hygiene
+>goal=Body Care and Personal Hygiene			
+^^
+#8	
+$ADR1039	
+?Language Spoken- Use a sentence|To enable effective communication through, communication cards (if applicable) active listening and observing for non verbal cues. 	
+@text		
+>obs=Communication and Language	
+>goal=Communication and Language		
+^^
+#9	
+$ADR1043	
+?Communication 		
+@checkbox	
+[10] The resident has NO  hearing deficits 				
+[12] The resident has  NO vision deficits 				
+[14] The resident has NO  speech deficits 				
+[16] The resident has NO comprehension deficits 				
+[18] The resident has vision deficits|To optimise the residents vision acuity through ensuring that prescription lenses (glasses) are worn.				
+[20] The resident has hearing deficits|To optimise the residents hearing through the use of aids and/or visual cues and touch.				
+[22] The resident has speech deficits|To enable effective communication through active listening and observation of non verbal cues.				
+[24] The resident has comprehension deficits|To enable effective communication through, communication cards (if applicable) active listening and observing for non verbal cues.	
+>obs=Communication and Language
+>goal=Communication and Language		
+^^
+#10	
+$ADR1047	
+?Describe Communication Deficits- Describe in a sentence|To enable effective communication through, communication cards (if applicable) active listening and observing for non verbal cues. 
+@text		
+>obs=Communication and Language
+>goal=Communication and Language			
+^^
+#11	
+$ADR1051	
+?Communication Interventions- Describe in a sentence 
+@text				
+>intv=Communication and Language	
+^^
+#12	
+$ADR1055	
+?Mobility and Transfers 		
+@radio			
+(12) The resident requires NO assistance with mobility and transfers 				
+(14) The resident requires assistance with mobility and transfers|To ensure that the resident maintains or improves their mobility through the use of appropriate aids as assessed	
+>obs=Movement and Transfers
+>goal=Mobility and Transfers		
+^^
+#13	
+$ADR1059	
+?Falls- If yes complete Falls Risk Assessment
+@radio		
+(12) The resident has NO History of Falls 				
+~If yes complete Falls Risk assessment 		
+(14) The resident has a history of Falls|Ensure that the resident can safely ambulated with reduced risk of falls through assessed interventions 	
+>obs=Movement and Transfers	
+>goal=Mobility and Transfers		
+^^
+#14	
+$ADR1063	
+?Falls Prevention - Describe aids used 		
+@text				
+>intv=Movement and Transfers	
+^^
+#15	
+$ADR1067	
+?Mobility - Reason why the resident requires assistance eg. history of stroke 	
+@text		
+>obs=Movement and Transfers			
+^^
+#16	
+$ADR1071	
+?Bed mobility 		
+@radio				
+(12) No assistance required in bed mobility|Ensure that the resident maintains their independence in mobility				
+(14) 1 x staff required to assist with bed mobility/transfers|Ensure that the resident is able to transfer and move safely and effectively			
+(16) 2 x staff required to assist with bed mobility/transfers|Ensure that the resident is able to transfer and move safely and effectively	
+>obs=Mobility and Transfers	
+>goal=Mobility and Transfers		
+^^
+#17	
+$ADR1075	
+?Mobility and Transfers- Describe type of assistance and aids required 	
+@text				
+>intv=Movement and Transfers	
+^^
+#18	
+$ADR1079	
+?Meals and Drinks- Reason why the resident requires assistance eg. resident has a Stroke|To optimise independence with Nutrition and Hydration and to assist where necessary to maintain good dietary intake necessary to maintain or improve general health.	
+@text		
+>obs=Meals and Drinks	
+>goal=Meals and Drinks		
+^^
+#19	
+$ADR1083	
+?Nutrition and Hydration- Describe assistance required; Also complete Catering Menu choices and Dietary Request  	
+@text				
+>intv=Meals and Drinks	
+^^
+#20	
+$ADR1087	
+?Hygiene and grooming- Reason why the resident requires assistance eg The resident has a Cognitive Impairment|To optimise independence with activities of daily living and to assist where necessary to maintain good personal hygiene and grooming.	
+@text		
+>obs=Body Care and Personal Hygiene
+>goal=Body Care and Personal Hygiene			
+^^
+#21	
+$ADR1091	
+?Describe type of assistance with hygiene and grooming 		
+@text				
+>intv=Body Care and Personal Hygiene	
+^^
+#22	
+$ADR1095	
+?Describe Hygiene  and Grooming preferences		
+@text				
+>intv=Body Care and Personal Hygiene	
+^^
+#23	
+$ADR1099	
+?Oral and Dental 		
+@checkbox	
+[10] The resident  has their own teeth|To promote good oral and dental hygiene 				
+[12] The resident  has own upper teeth|To promote good oral and dental hygiene				
+[14] The resident  has own lower teeth|To promote good oral and dental hygiene				
+[16] The resident  has upper dentures|To promote gum health				
+[18] The resident has lower dentures|To promote gum health			
+[20] The resident has a partial dentures|To promote good oral and dental hygiene 				
+[22] The resident has no teeth|To promote gum health	
+>obs=Oral and Dental		
+>goal=Oral and Dental	
+^^
+#24
+$ADR1103	
+?Oral and dental- number of teeth. Use a complete sentence 	
+@text		
+>obs=Oral and Dental			
+^^
+#25	
+$ADR1107	
+?Oral and dental- assistance  required. Use complete sentence 
+@text				
+>intv=Oral and Dental	
+^^
+#26	
+$ADR1111	
+?Skin - Condition. Describe; include pressure areas & wounds|To maintain or improve the residents skin integrity 	
+@text		
+>obs=Skin Care
+>goal=Skin Care	
+^^
+#27	
+$ADR1115	
+?Skin Care- assistance required 		
+@text				
+>intv=Toileting and Bladder	
+^^
+#28	
+$ADR1119	
+?Pressure Areas		
+@radio				
+(12) The resident requires nil assistance with pressure care|To maintain or improve the residents skin integrity 				
+(14) The resident requires 4/24 repositioning			
+(16) The resident requires 3/24 repositioning				
+(18) The resident requires 2/24 repositioning		
+>intv=Skin Care 
+>goal=Skin Care	
+^^
+#29	
+$ADR1123	
+?Continence - Urinary 	
+@radio					
+(12) The resident is continent  of urine|Maintain or improve the residents current level of continence though natural toileting and the use of aids as assessed 				
+(14) The resident is NOT continent  of urine|Maintain or improve the residents current level of continence though natural toileting and the use of aids as assessed 
+>obs=Toileting and Bladder
+>goal=Toileting and Bladder			
+^^
+#30	
+$ADR1127	
+?Describe type of Urinary Incontinence 		
+@text		
+>obs=Toileting and Bladder			
+^^
+#31	
+$ADR1131	
+?Urinary Incontinence- Assistance required. Describe; include toileting times and aids used 	
+@text				
+>intv=Toileting and Bladder	
+^^
+#32	
+$ADR1135	
+?Continence - Faecal		
+@radio				
+(12) The resident is continent  of faeces|Maintain or improve the residents current level of continence though natural toileting and the use of aids as assessed				
+(14) The resident is NOT continent of faeces|Maintain or improve the residents current level of continence though natural toileting and the use of aids as assessed
+>obs=Toileting and Bowel
+>goal=Toileting and Bowel			
+^^
+#33	
+$ADR1139	
+?Describe Bowel History eg prone to constipation, triggers. Use a complete sentence 	
+@text		
+>obs=Toileting and Bowel			
+^^
+#34	
+$ADR1143	
+?Bowel Management - Assistance required. Describe; include toileting times and aids used 	
+@text				
+>intv=Toileting and Bowel	
+^^
+#35	
+$ADR1147	
+?Pain - Describe including type and location|To be as pain free as possible		
+@text		
+>obs=Pain Management
+>goal=Pain Management		
+^^
+#36	
+$ADR1151	
+?Pain Management - Describe 		
+@text				
+>intv=Pain Management	
+^^
+#37	
+$ADR1155	
+?Sleep - preferred sleeping  and settling time|Ensure that the resident has an undisturbed good nights sleep		
+@text		
+>obs=Sleep and Settling 
+>goal=Sleep and Settling			
+^^
+#38	
+$ADR1159	
+?Sleep Routine 		
+@text				
+>intv=Sleep and Settling 	
+^^
+#39	
+$ADR1163	
+?Behaviour- Describe; include triggers|Reduce episodes of behaviour through interventions as determined from known triggers 	 	
+@text		
+>obs=Behaviour	
+>goal=Behaviour		
+^^
+#40	
+$ADR1167	
+?Behaviour  - Interventions used to reduce behaviours exhibited	
+@text				
+>intv=Behaviour	
+^^
+#41	
+$ADR1171	
+?Risk - Describe|To reduce or mitigate risky activity or behaviour whilst maintaining the residents rights to choice and decision making 		
+@text		
+>obs=Risk	
+>goal=Risk		
+^^
+#42	
+$ADR1175	
+?Risk- Interventions used to reduce risk 		
+@text				
+>intv=Risk	
+^^
+#43	
+$ADR1179	
+?Medication- If yes complete self administration assessment 		
+@radio				
+(12) The resident can self administer own medications|Ensure that the resident can administer medication in a safe and effective manner as ordered				
+(14) The resident can NOT self administer medications|Ensure safe the administration of medication	
+>obs=Medication
+>goal=Medication			
+^^
+#44	
+$ADR1183	
+?Medication-  Reason why the resident requires assistance 		
+@text		
+>obs=Medication			
+^^
+#45	
+$ADR1187	
+?Medications- assistance required 		
+@text				
+>intv=Medication	
+^^
+#46	
+$ADR1191	
+?Clinical- If yes to any, complete relevant Pathway 	 	
+@checkbox	
+[10] The resident has NIL Clinical Issues 					
+[12] The resident has a Wound|Promote wound healing				 		
+[14] The resident has a PEG|Ensure that the PEG tube remains patent				 		
+[16] The resident has MRSA|Ensure that the MRSA source is localised					
+[18] The resident has VRE|Ensure that the VRE source is localised					
+[20] The resident has an Infection|Ensure that the infection is contained					
+[22] The resident has a IDC / SPC|SPC|Ensure that the IDC/SPC tube is patent and infection free				 		
+[24] The resident is a INSULIN dependent Diabetic|To maintain stable Blood Glucose Levels				 		
+[26] The resident is a NON  INSULIN dependent Diabetic|To maintain stable Blood Glucose Levels		
+[28] The resident has acute pain|To be as pain free as possible		 		
+[30] The resident has chronic pain|To be as pain free as possible	
+>obs=Clinical Issues	
+>goal=Clinical Issues		
+^^
+#47	
+$ADR1195	
+?Other Comments 		
+@text				
+>intv=Clinical Issues	
+^^

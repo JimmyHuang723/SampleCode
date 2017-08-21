@@ -1,0 +1,283 @@
+{
+    "_id": ObjectId("590e8100ccb0b7d40772164d"),
+    "Process": "admission",
+    "Title": "Generate admission checklist",
+    "IsActive": 1,
+    "Rules": [{
+            "Title": "Day 1",
+            "Forms": [
+                926,
+                950,
+                963,
+                940,
+                946,
+                947,
+                952,
+                971,
+                803,
+                799,
+                863,
+                762,
+                968,
+                951,
+                925
+            ],
+            "StartDay": 0,
+            "StopDay": 0
+        },
+        {
+            "Title": "Day 2 - 7",
+            "Forms": [
+                960,
+                962,
+                964,
+                969,
+                966,
+                961
+            ],
+            "StartDay": 2,
+            "StopDay": 7
+        },
+        {
+            "Title": "Day 8 - 15",
+            "Forms": [
+                953,
+                956,
+                954,
+                955,
+                965,
+                970,
+                778,
+                957
+            ],
+            "StartDay": 8,
+            "StopDay": 15
+        },
+        {
+            "Title": "Day 16 - 21",
+            "Forms": [
+                948,
+                776,
+                777
+            ],
+            "StartDay": 16,
+            "StopDay": 21
+        }
+    ],
+    "updated_at": ISODate("2017-06-07T09:42:42.000Z"),
+    "RulesJson": "[ \r\n        {\r\n            \"Title\" : \"Day 1\",\r\n            \"Forms\" : [ \r\n                926, \r\n                950, \r\n                963, \r\n                940, \r\n                946, \r\n                947, \r\n                952, \r\n                971, \r\n                803, \r\n                799, \r\n                863, \r\n                762, \r\n                968, \r\n                951, \r\n                925\r\n            ],\r\n            \"StartDay\" : 0,\r\n            \"StopDay\" : 0\r\n        }, \r\n        {\r\n            \"Title\" : \"Day 2 - 7\",\r\n            \"Forms\" : [ \r\n                960, \r\n                962, \r\n                964, \r\n                969, \r\n                966, \r\n                961\r\n            ],\r\n            \"StartDay\" : 2,\r\n            \"StopDay\" : 7\r\n        }, \r\n        {\r\n            \"Title\" : \"Day 8 - 15\",\r\n            \"Forms\" : [ \r\n                953, \r\n                956, \r\n                954, \r\n                955, \r\n                965, \r\n                970, \r\n                778, \r\n                957\r\n            ],\r\n            \"StartDay\" : 8,\r\n            \"StopDay\" : 15\r\n        }, \r\n        {\r\n            \"Title\" : \"Day 16 - 21\",\r\n            \"Forms\" : [ \r\n                948, \r\n                776, \r\n                777\r\n            ],\r\n            \"StartDay\" : 16,\r\n            \"StopDay\" : 21\r\n        }\r\n    ]",
+    "Code": "451",
+    "HasError": false,
+    "Form": null
+}
+
+{
+    "_id": ObjectId("591315bbccb0b7d407721652"),
+    "Process": null,
+    "Title": "Check if Falls Risk assessment is required after an Admission Permanent is complete",
+    "IsActive": 1,
+    "RulesJson": "[\r\n{\r\n  \"If\": {\"Field\":\"ADP1335\", \"Operand\":\"=\", \"Value\":\"ADP1335-10\"},\r\n  \"Then\": {\"Action\":\"assessment\", \"FormID\": 762, \"StartDay\": 0, \"StopDay\":7}\r\n},\r\n{\r\n  \"If\": {\"Field\":\"ADP1335\", \"Operand\":\"=\", \"Value\":\"ADP1335-10\"},\r\n  \"Then\": {\"Action\":\"assessment\", \"FormID\": 5030, \"StartDay\": 0, \"StopDay\":7}\r\n}\r\n]",
+    "Rules": [{
+            "If": {
+                "Field": "ADP1335",
+                "Operand": "=",
+                "Value": "ADP1335-10"
+            },
+            "Then": {
+                "Action": "assessment",
+                "FormID": 762,
+                "StartDay": 0,
+                "StopDay": 7
+            }
+        },
+        {
+            "If": {
+                "Field": "ADP1335",
+                "Operand": "=",
+                "Value": "ADP1335-10"
+            },
+            "Then": {
+                "Action": "assessment",
+                "FormID": 5030,
+                "StartDay": 0,
+                "StopDay": 7
+            }
+        }
+    ],
+    "HasError": false,
+    "updated_at": ISODate("2017-06-07T10:40:52.000Z"),
+    "Form": {
+        "FormId": "57425da73b4d8b8014010fea",
+        "FormName": "Admission Permanent",
+        "FormCode": 1024,
+        "FormID": 950
+    },
+    "Code": "701"
+}
+
+{
+    "_id": ObjectId("5937fbfca54d7517772d700a"),
+    "Code": "705",
+    "Title": "Room Change",
+    "Process": null,
+    "IsActive": 1,
+    "RulesJson": "[\r\n{\r\n  \"If\": {\"Field\":\"RMC01\", \"Operand\":\"!=\", \"Value\":\"NULL\"},\r\n  \"Then\": {\"Action\":\"room-change\"}\r\n}\r\n]",
+    "Rules": [{
+        "If": {
+            "Field": "RMC01",
+            "Operand": "!=",
+            "Value": "NULL"
+        },
+        "Then": {
+            "Action": "room-change"
+        }
+    }],
+    "HasError": false,
+    "Form": {
+        "FormId": "5937f775a54d75134b7debf4",
+        "FormName": "Room Change",
+        "FormCode": null,
+        "FormID": 5101
+    },
+    "updated_at": ISODate("2017-06-07T13:14:02.000Z"),
+    "created_at": ISODate("2017-06-07T13:13:32.000Z")
+}
+
+{
+    "_id": ObjectId("59128d6dccb0b7d407721651"),
+    "Process": null,
+    "Title": "Find field for Weight chart",
+    "IsActive": 1,
+    "RulesJson": "[\r\n{\r\n  \"If\": {\"Field\":\"W1010\", \"Operand\":\"!=\", \"Value\":\"NULL\"},\r\n  \"Then\": {\"Action\":\"use-value\"}\r\n}\r\n]",
+    "Rules": [{
+        "If": {
+            "Field": "W1010",
+            "Operand": "!=",
+            "Value": "NULL"
+        },
+        "Then": {
+            "Action": "use-value"
+        }
+    }],
+    "HasError": false,
+    "Form": {
+        "FormId": "58f2dd315cd3990138060ff7",
+        "FormName": "Weight Chart",
+        "FormCode": 1432,
+        "FormID": 5032
+    },
+    "updated_at": ISODate("2017-06-07T09:42:24.000Z"),
+    "Code": "123"
+}
+
+{
+    "_id": ObjectId("59375b73a54d7517772d6c8f"),
+    "Title": "Generate resident of the day checklist",
+    "Process": "resident-of-the-day",
+    "IsActive": 1,
+    "RulesJson": "[ \r\n        {\r\n            \"Title\" : \"AM\",\r\n            \"Forms\" : [ \r\n              953, 954, 956, 971, 940, 947, 946, 964, 969\r\n            ],\r\n            \"StartDay\" : 0,\r\n            \"StopDay\" : 0\r\n        }, \r\n        {\r\n            \"Title\" : \"PM\",\r\n            \"Forms\" : [ \r\n              965, 962, 960, 961, 948, 966, 762, 968, 963\r\n            ],\r\n            \"StartDay\" : 0,\r\n            \"StopDay\" : 0\r\n        },\r\n        {\r\n            \"Title\" : \"NT\",\r\n            \"Forms\" : [ \r\n              970\r\n            ],\r\n            \"StartDay\" : 0,\r\n            \"StopDay\" : 0\r\n        }\r\n    ]",
+    "Rules": [{
+            "Title": "AM",
+            "Forms": [
+                953,
+                954,
+                956,
+                971,
+                940,
+                947,
+                946,
+                964,
+                969
+            ],
+            "StartDay": 0,
+            "StopDay": 0
+        },
+        {
+            "Title": "PM",
+            "Forms": [
+                965,
+                962,
+                960,
+                961,
+                948,
+                966,
+                762,
+                968,
+                963
+            ],
+            "StartDay": 0,
+            "StopDay": 0
+        },
+        {
+            "Title": "NT",
+            "Forms": [
+                970
+            ],
+            "StartDay": 0,
+            "StopDay": 0
+        }
+    ],
+    "HasError": false,
+    "updated_at": ISODate("2017-06-07T09:42:04.000Z"),
+    "created_at": ISODate("2017-06-07T01:48:35.000Z"),
+    "Form": null,
+    "Code": "9x9"
+}
+
+{
+    "_id": ObjectId("59377df2a54d7517772d6de9"),
+    "Title": "Discharge a resident",
+    "Process": null,
+    "IsActive": 1,
+    "RulesJson": "[\r\n{\r\n  \"If\": {\"Field\":\"DISF11\", \"Operand\":\"!=\", \"Value\":\"NULL\"},\r\n  \"Then\": {\"Action\":\"resident-movement\"}\r\n}\r\n]",
+    "Rules": [{
+        "If": {
+            "Field": "DISF11",
+            "Operand": "!=",
+            "Value": "NULL"
+        },
+        "Then": {
+            "Action": "resident-movement"
+        }
+    }],
+    "HasError": false,
+    "Form": {
+        "FormId": "5935efd6a54d7517772d4db9",
+        "FormName": "Discharge Form",
+        "FormCode": null,
+        "FormID": 5078
+    },
+    "updated_at": ISODate("2017-06-07T10:44:29.000Z"),
+    "created_at": ISODate("2017-06-07T04:15:46.000Z"),
+    "Code": "702"
+}
+
+{
+    "_id": ObjectId("59128a1fccb0b7d407721650"),
+    "Process": null,
+    "Action": "plot_chart",
+    "FormID": 5028,
+    "FieldCode": "BGL2",
+    "Title": "Find field for BGL chart",
+    "IsActive": 1,
+    "Rules": [{
+        "If": {
+            "Field": "BGL2",
+            "Operand": "!=",
+            "Value": "NULL"
+        },
+        "Then": {
+            "Action": "use-value"
+        }
+    }],
+    "updated_at": ISODate("2017-06-07T09:42:32.000Z"),
+    "RulesJson": "[\r\n{\r\n  \"If\": {\"Field\":\"BGL2\", \"Operand\":\"!=\", \"Value\":\"NULL\"},\r\n  \"Then\": {\"Action\":\"use-value\"}\r\n}\r\n]",
+    "Form": {
+        "FormId": "591238395cd399970a0dd97d",
+        "FormName": "BGL",
+        "FormCode": 1448,
+        "FormID": 5028
+    },
+    "HasError": false,
+    "Code": "125"
+}

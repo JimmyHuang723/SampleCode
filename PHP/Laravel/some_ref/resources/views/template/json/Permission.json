@@ -1,0 +1,202 @@
+{
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1b7ea7a691074c1fc0e2",
+    "menuName": "Spotlight",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+}
+
+{
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1bcca7a691074c1fc0e4",
+    "menuName": "Dashboard",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+}
+
+{
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d13c7a7a691074c1fc0b5",
+    "menuName": "Residents",
+    "permissionType": "0",
+    "enableEdit": true,
+    "enableDelete": true
+}
+
+{
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1bd7a7a691074c1fc0e6",
+    "menuName": "Care",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+}
+
+{
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Care Plan",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Progress notes",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "BGL Charts",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Operations",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Handover",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Catering Dietary",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Breakfast Beverage",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Toileting Times",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Wound Review",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Reports",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Assessment Matrix",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Care Plan Matrix",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Incidents",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Infections",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Export",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Admin",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Enquiries",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Admissions",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Resident Movements",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Facilities",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+} {
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Forms",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+}
+
+{
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "Workflow",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+}
+
+{
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "menuId": "593d1be7a7a691074c1fc0e8",
+    "menuName": "MyHub",
+    "permissionType": "0",
+    "enableEdit": false,
+    "enableDelete": false
+}

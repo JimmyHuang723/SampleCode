@@ -1,0 +1,40 @@
+#1
+$FBC01
+?Date
+@date
+^^
+#2
+$FBC02
+?Time
+@time
+^^
+#3
+$FBC03
+?Blood pressure
+@number
+^^
+#4
+$FBC04
+?Pulse
+@number
+^^
+#5
+$FBC05
+?Respiratory Rate
+@number
+^^
+#6
+$FBC06
+?Temperature
+@number
+^^
+#7
+$FBC07
+?Sa O2
+@number
+^^
+#8
+$FBC08
+?Comment
+@text
+^^

@@ -1,0 +1,33 @@
+#1
+$SLC01
+?Date
+@date
+^^
+#2
+$SLC02
+?Time
+@radio
+(10)2400 - 0100
+(20)0100 - 0200 
+(20)0200 - 0300
+(20)0300 - 0400
+(20)0400 - 0500
+(20)0500 - 0600
+(20)0600 - 0700
+(20)0700 - 0800
+^^
+#3
+$SLC03
+?Code
+@radio
+(R) Resting
+(S) Sleeping
+(SR) Sleeping but restless
+(A) Awake
+(AK) Awakw & active
+^^
+#4
+$SLC04
+?What did you do?
+@text
+^^

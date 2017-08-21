@@ -1,0 +1,23 @@
+{
+    "_id": ObjectId("593d14fe749d4f370ba58c25"),
+    "userId": "8f1df96e-34e4-4e1f-916c-1848a8e78591",
+    "roleId": "5704952c97f48f0000000562",
+    "user": null,
+    "role": null
+}
+
+{
+    "_id": ObjectId("593d14fe749d4f370ba58c26"),
+    "userId": "8f1df96e-34e4-4e1f-916c-1848a8e78591",
+    "roleId": "5769bdf6f7f35d23e8323568",
+    "user": null,
+    "role": null
+}
+
+{
+    "_id": ObjectId("593d14fe749d4f370ba58c27"),
+    "userId": "8f1df96e-34e4-4e1f-916c-1848a8e78591",
+    "roleId": "593d14cca7a691074c1fc0cd",
+    "user": null,
+    "role": null
+}

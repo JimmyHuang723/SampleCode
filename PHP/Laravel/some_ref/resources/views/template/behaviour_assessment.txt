@@ -1,0 +1,235 @@
+#1
+$A10886
+?Known challenging behaviours
+@checkbox
+[12] The resident exhibits interfering behaviour whilst wandering
+[14] The resident enters inappropriate places e.g. other residents bedrooms, clinical areas
+[16] The resident expresses verbal refusal of care.
+[18] The resident expresses verbal disruption to others
+[20] The resident exhibits suspiciousness/delusional thoughts/verbal accusations
+[22] The resident expresses verbally inappropriate behaviour eg swearing, offensive language, sexual remarks
+[24] The resident exhibits physically threatening behaviour/s
+[26] The resident exhibits physically aggressive behaviour/s
+[28] The resident exhibits socially inappropriate behaviour eg disrobing, spitting, touching, etc
+[30] The resident is constantly physically agitated eg inability to sit still, tapping, rocking, etc
+[32] The resident exhibits risk taking behaviour eg smoking, leaving the building, etc
+[34] The resident exhibits wandering and pacing behaviour
+>obs=Behaviour
+^^
+#2
+$A10890
+?Other observed  behaviours ( Verbal , Physical  Wandering )
+~Use complete sentence
+@text
+>obs=Behaviour
+^^
+#3
+$A10894
+?Health Factors Medical
+@checkbox
+[12] The Resident has a diagnosis of Dementia
+[14] The Resident is diagnosed with Dementia with Alzheimer's type
+[16] The Resident has a Mental Health diagnosis eg Schizophrenia, Bipolar, etc
+[18] The Resident has a diagnosis of Depression
+[20] The Resident has a history of Headache/Migraine
+[22] The Resident has Sleep disturbances/Deprivation
+[24] The Resident has a Cognitive Impairment
+[26] The Resident has a history of Constipation
+[28] The Resident has Chronic Pain
+>obs=Behaviour
+^^
+#4
+$A10898
+?Other Health Factors Medical
+~Describe in a complete sentence
+@text
+>obs=Behaviour
+^^
+#5
+$A10902
+?Psycho-social influences
+@checkbox
+[10] -
+[12] The Resident has had a recent loss /bereavement
+[14] The Resident has a signifiant wartime experience
+[16] The Resident has a past history of Mental Illness
+>obs=Behaviour
+^^
+#6
+$A10906
+?Other Psycho-social influences
+~Describe in a complete sentence
+@text
+>obs=Behaviour
+^^
+#7
+$A10910
+?Triggers for Behaviour
+@checkbox
+[10] Pain is a trigger
+[12] Fear is a trigger
+[14] Past experiences is a trigger
+[16] Boredom or social isolation is a trigger
+[18] Missing companion/partner is a trigger
+[20] Fatigue is a trigger
+[22] Particular smells is a trigger
+[24] Request for extra attention is a trigger
+[26] Particular objects is a trigger i.e soap, towel, facewasher, walking frame, etc
+[28] Specific people is a trigger i.e other residents, visitors, staff
+[30] Resident specific request/s is a trigger
+>obs=Behaviour
+^^
+#8
+$A10914
+?Other triggers
+~Describe in a complete sentence
+@text
+>obs=Behaviour
+^^
+#9
+$A10918
+?Physically Aggressive:  Was resident causing injury to self or others?
+@radio
+(12) Yes
+(14) No
+^^
+#10
+$A10922
+?Episode of Physically Aggressive behaviour - Was incident form completed?
+@radio
+(12) Yes
+(14) No
+^^
+#11
+$A10926
+?The resident requires a referral to:
+@checkbox
+[12] Own GP/Doctor
+[14] Geriatrician
+[16] Psychogeriatrician
+[18] External Providers eg APATT
+^^
+#12
+$A10930
+?Other Observations
+@text
+>obs=Behaviour
+^^
+#13
+$A10934
+?Goals
+~Use complete sentence
+@text
+>goal=Behaviour
+^^
+#14
+$A10938
+?Environmental Interventions
+@checkbox
+[10] Reduce environmental noise
+[12] Ensure a clear pathway and that there are no obstacles in the way
+[14] Lower the bed height to suit the residents assessed needs
+[16] Appropriate mobility aids within easy reach
+[18] Appropriate signage and visual reminders to aid orientation eg use picture cards
+[20] Seating to meet the needs of individual residents i.e. do not sit residents together that have identified issues
+[22] Assess environment for risks and remove all potential obstacles
+[24] Offer a quiet, calming atmosphere i.e  use of music
+[26] Provide safe areas for residents to wander with activity stations
+[28] Provide familiar objects from the resident's home eg photo albums, furniture, etc
+[30] Ensure areas are well lit
+[32] Provide a calm environment, reducing stimulation and noise
+[34] Ensure room temperature is appropriate
+>intv=Behaviour
+^^
+#15
+$A10942
+?Other Environmental Interventions
+~Describe in a complete sentence
+@text
+>intv=Behaviour
+^^
+#16
+$A10946
+?Health Factors Medical  Interventions
+@checkbox
+[10] Review of continence program as directed
+[12] Medication review as directed
+[14] Monitor vital signs as directed
+>intv=Behaviour
+^^
+#17
+$A10950
+?Other Health Factors Medical  Interventions
+~Describe in a complete sentence
+@text
+>intv=Behaviour
+^^
+#18
+$A10954
+?Clinical Interventions
+@checkbox
+[10] Increase supervison & observation when supervising the resident ambulating
+[12] Regular evaluation & monitoring of conditions that may alter behaviour eg noise level
+[14] Provide individualised/structured routines eg toileting, naps, exercise, inclusion in cognitively appropriate activities
+[16] Ensure the resident wears appropriate footwear
+[18] Ensure the resident wears body padding (hip protectors)
+>intv=Behaviour
+^^
+#19
+$A10958
+?Other Clinical Interventions
+~Describe in a complete sentence
+@text
+>intv=Behaviour
+^^
+#20
+$A10962
+?Communication Interventions
+@checkbox
+[10] Avoid confrontation
+[12] Use of language /picturecards
+[14] Use translator if the resident is of Non English Speaking Background
+[16] Speak with a calm and reassuring tone
+[18] Offer explanation and small step-by-step instructions
+[20] Ensure the resident is using their visual/hearing aids
+[22] Use distraction communication techniques when speaking to the resident
+>intv=Behaviour
+^^
+#21
+$A10966
+?Other Communication Interventions
+~Describe in a complete sentence/s
+@text
+>intv=Behaviour
+^^
+#22
+$A10970
+?Psycho-social interventions
+@checkbox
+[10] As per Doctor, APATT, DBMAS instructions
+[12] Ensure active listening
+[14] Provide massage
+[16] Provide companionship
+[18] Decrease multi-sensory stimulation
+[20] Encourage participation in lifestyle programs
+>intv=Behaviour
+^^
+#23
+$A10974
+?Other Psycho-social interventions
+~Describe in a complete sentence
+@text
+>intv=Behaviour
+^^
+#24
+$A10978
+?Other interventions - refer to lifestyle assessments re specific past experiences likes /dislikes
+~Use a complete sentence
+@text
+>intv=Behaviour
+^^
+#25
+$A10982
+?Other comments  relating to interventions
+@text
+>intv=Behaviour
