@@ -1,0 +1,39 @@
+{
+  "name": "redesign_wol",
+  "version": "1.0.0",
+  "description": "WOL redesign with react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack -d --watch",
+    "build": "webpack -p"
+  },
+  "author": "Anjan Raj Shakya",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.16.1",
+    "dateformat": "^2.0.0",
+    "immutable": "^3.8.1",
+    "lodash": "^4.17.4",
+    "react": "^15.5.4",
+    "react-clickoutside": "^1.0.4",
+    "react-dom": "^15.5.4",
+    "react-modal": "^1.7.7",
+    "react-portal-tooltip": "^1.1.5",
+    "react-redux": "^5.0.5",
+    "react-sortable-hoc": "^0.6.3",
+    "react-spinner": "^0.2.7",
+    "redux": "^3.6.0",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^0.15.6",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^2.6.0"
+  }
+}

@@ -1,0 +1,109 @@
+import * as ChecklistSettingsAction from './checklistSettings';
+import {List, Map, fromJS } from 'immutable';
+import axios from 'axios';
+import { takeLatest, put, call } from 'redux-saga/effects';
+import 'regenerator-runtime/runtime';
+
+
+const INIT_CHECKLIST_START =  'wbonline/chcklistSettings/INIT_CHECKLIST_START';
+const INIT_CHECKLIST_SUCCESS =  'wbonline/chcklistSettings/INIT_CHECKLIST_SUCCESS';
+const INIT_CHECKLIST_ERROR =  'wbonline/chcklistSettings/INIT_CHECKLIST_ERROR';
+
+const CHANGE_CHECKLIST_CATEGORY =  'wbonline/chcklistSettings/CHANGE_CHECKLIST_CATEGORY';
+const CHANGE_CHECKLIST_SUB_CATEGORY =  'wbonline/chcklistSettings/CHANGE_CHECKLIST_SUB_CATEGORY';
+
+const LOAD_CHECKLIST_ITEM_START =  'wbonline/chcklistSettings/LOAD_CHECKLIST_ITEM_START';
+const LOAD_CHECKLIST_ITEM_SUCCESS =  'wbonline/chcklistSettings/LOAD_CHECKLIST_ITEM_SUCCESS';
+const LOAD_CHECKLIST_ITEM_ERROR =  'wbonline/chcklistSettings/LOAD_CHECKLIST_ITEM_ERROR';
+
+const UPDATE_CHECKLIST_ITEM_START =  'wbonline/chcklistSettings/UPDATE_CHECKLIST_ITEM_START';
+const UPDATE_CHECKLIST_ITEM_SUCCESS =  'wbonline/chcklistSettings/UPDATE_CHECKLIST_ITEM_SUCCESS';
+const UPDATE_CHECKLIST_ITEM_ERROR =  'wbonline/chcklistSettings/UPDATE_CHECKLIST_ITEM_ERROR';
+
+const UPDATE_CHECKLIST_NEW_ITEM =  'wbonline/chcklistSettings/UPDATE_CHECKLIST_NEW_ITEM';
+const ADD_CHECKLIST_NEW_ITEM_START =  'wbonline/chcklistSettings/ADD_CHECKLIST_NEW_ITEM_START';
+const ADD_CHECKLIST_NEW_ITEM_SUCCESS =  'wbonline/chcklistSettings/ADD_CHECKLIST_NEW_ITEM_SUCCESS';
+const ADD_CHECKLIST_NEW_ITEM_ERROR =  'wbonline/chcklistSettings/ADD_CHECKLIST_NEW_ITEM_ERROR';
+
+const ADD_CHECKLIST_NEW_SUB_CATEGORY_START =  'wbonline/chcklistSettings/ADD_CHECKLIST_NEW_SUB_CATEGORY_START';
+const ADD_CHECKLIST_NEW_SUB_CATEGORY_SUCCESS =  'wbonline/chcklistSettings/ADD_CHECKLIST_NEW_SUB_CATEGORY_SUCCESS';
+const ADD_CHECKLIST_NEW_SUB_CATEGORY_ERROR =  'wbonline/chcklistSettings/ADD_CHECKLIST_NEW_SUB_CATEGORY_ERROR';
+
+const CHECK_CHECKLIST_ALL_ITEMS = 'wbonline/chcklistSettings/CHECK_CHECKLIST_ALL_ITEMS';
+const CHECK_CHECKLIST_ITEM = 'wbonline/chcklistSettings/CHECK_CHECKLIST_ITEM';
+
+const REMOVE_CHECKLIST_ITEMS_START = 'wbonline/chcklistSettings/REMOVE_CHECKLIST_ITEMS_START';
+const REMOVE_CHECKLIST_ITEMS_SUCCESS = 'wbonline/chcklistSettings/REMOVE_CHECKLIST_ITEMS_SUCCESS';
+const REMOVE_CHECKLIST_ITEMS_ERROR = 'wbonline/chcklistSettings/REMOVE_CHECKLIST_ITEMS_ERROR';
+
+const ASSIGN_CHECKLIST_ITEM_START = 'wbonline/chcklistSettings/ASSIGN_CHECKLIST_ITEM_START';
+const ASSIGN_CHECKLIST_ITEM_SUCCESS = 'wbonline/chcklistSettings/ASSIGN_CHECKLIST_ITEM_SUCCESS';
+const ASSIGN_CHECKLIST_ITEM_ERROR = 'wbonline/chcklistSettings/ASSIGN_CHECKLIST_ITEM_ERROR';
+
+const LOAD_CHECKLIST_ITEM_TASK_START = 'wbonline/chcklistSettings/LOAD_CHECKLIST_ITEM_TASK_START';
+const LOAD_CHECKLIST_ITEM_TASK_SUCCESS = 'wbonline/chcklistSettings/LOAD_CHECKLIST_ITEM_TASK_SUCCESS';
+const LOAD_CHECKLIST_ITEM_TASK_ERROR = 'wbonline/chcklistSettings/LOAD_CHECKLIST_ITEM_TASK_ERROR';
+
+const ADD_CHECKLIST_ITEM_TASK_START = 'wbonline/chcklistSettings/ADD_CHECKLIST_ITEM_TASK_START';
+const ADD_CHECKLIST_ITEM_TASK_SUCCESS = 'wbonline/chcklistSettings/ADD_CHECKLIST_ITEM_TASK_SUCCESS';
+const ADD_CHECKLIST_ITEM_TASK_ERROR = 'wbonline/chcklistSettings/ADD_CHECKLIST_ITEM_TASK_ERROR';
+
+const UPDATE_CHECKLIST_SUB_TASK_ITEM_START =  'wbonline/chcklistSettings/UPDATE_CHECKLIST_SUB_TASK_ITEM_START';
+const UPDATE_CHECKLIST_SUB_TASK_ITEM_SUCCESS =  'wbonline/chcklistSettings/UPDATE_CHECKLIST_SUB_TASK_ITEM_SUCCESS';
+const UPDATE_CHECKLIST_SUB_TASK_ITEM_ERROR =  'wbonline/chcklistSettings/UPDATE_CHECKLIST_SUB_TASK_ITEM_ERROR';
+
+const REMOVE_CHECKLIST_SUB_TASK_ITEM_START =  'wbonline/chcklistSettings/REMOVE_CHECKLIST_SUB_TASK_ITEM_START';
+const REMOVE_CHECKLIST_SUB_TASK_ITEM_SUCCESS =  'wbonline/chcklistSettings/REMOVE_CHECKLIST_SUB_TASK_ITEM_SUCCESS';
+const REMOVE_CHECKLIST_SUB_TASK_ITEM_ERROR =  'wbonline/chcklistSettings/REMOVE_CHECKLIST_SUB_TASK_ITEM_ERROR';
+
+const SORT_CHECKLIST_SUB_TASK_ITEMS_START =  'wbonline/chcklistSettings/SORT_CHECKLIST_SUB_TASK_ITEMS_START';
+const SORT_CHECKLIST_SUB_TASK_ITEMS_SUCCESS =  'wbonline/chcklistSettings/SORT_CHECKLIST_SUB_TASK_ITEMS_SUCCESS';
+const SORT_CHECKLIST_SUB_TASK_ITEMS_ERROR =  'wbonline/chcklistSettings/SORT_CHECKLIST_SUB_TASK_ITEMS_ERROR';
+
+const SORT_CHECKLIST_ITEMS_START =  'wbonline/chcklistSettings/SORT_CHECKLIST_ITEMS_START';
+const SORT_CHECKLIST_ITEMS_SUCCESS =  'wbonline/chcklistSettings/SORT_CHECKLIST_ITEMS_SUCCESS';
+const SORT_CHECKLIST_ITEMS_ERROR =  'wbonline/chcklistSettings/SORT_CHECKLIST_ITEMS_ERROR';
+
+const REMOVE_CHECKLIST_SUB_TASK_ITEMS_START =  'wbonline/chcklistSettings/REMOVE_CHECKLIST_SUB_TASK_ITEMS_START';
+const REMOVE_CHECKLIST_SUB_TASK_ITEMS_SUCCESS =  'wbonline/chcklistSettings/REMOVE_CHECKLIST_SUB_TASK_ITEMS_SUCCESS';
+const REMOVE_CHECKLIST_SUB_TASK_ITEMS_ERROR =  'wbonline/chcklistSettings/REMOVE_CHECKLIST_SUB_TASK_ITEMS_ERROR';
+
+const CHECK_CHECKLIST_SUB_TASK_ITEM =  'wbonline/chcklistSettings/CHECK_CHECKLIST_SUB_TASK_ITEM';
+
+function removeChecklistItemsWithSaga(ids) {
+    return  axios.post('/assets/siud/d/setting/checklistItems.php', [{
+        criteria:{
+            member: WB.user.contact,
+            ids: ids
+        }
+    }]);
+}
+
+function* removeChecklists(action) {
+    try {
+        let ids = [];
+        action.payload.items.map((item) => {
+            ids.push(item.get('id'));
+        });
+        //delete the parent tasks if present
+        //delete the child subtasks then
+        //then update or reload the page
+        const response = yield call(removeChecklistItemsWithSaga, ids);
+        yield put({type: REMOVE_CHECKLIST_ITEMS_SUCCESS, payload: {deletedItemIds: ids} });
+    } catch(e) {
+        yield put({type: REMOVE_CHECKLIST_ITEMS_ERROR});
+    }
+}
+
+function* checklistSaga() {
+  yield takeLatest(REMOVE_CHECKLIST_ITEMS_START, removeChecklists);
+}
+
+export default checklistSaga;
+
+// case REMOVE_CHECKLIST_SUB_TASK_ITEM_START:
+// case REMOVE_CHECKLIST_SUB_TASK_ITEM_SUCCESS:
+// case REMOVE_CHECKLIST_SUB_TASK_ITEM_ERROR:
+// case REMOVE_CHECKLIST_ITEMS_START:
+// case REMOVE_CHECKLIST_ITEMS_SUCCESS:
+// case REMOVE_CHECKLIST_ITEMS_ERROR:

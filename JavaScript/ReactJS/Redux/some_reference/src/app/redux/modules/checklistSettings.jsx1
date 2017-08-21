@@ -1,0 +1,859 @@
+import {List, Map, fromJS } from 'immutable';
+import axios from 'axios';
+
+const INIT_CHECKLIST_START =  'wbonline/chcklistSettings/INIT_CHECKLIST_START';
+const INIT_CHECKLIST_SUCCESS =  'wbonline/chcklistSettings/INIT_CHECKLIST_SUCCESS';
+const INIT_CHECKLIST_ERROR =  'wbonline/chcklistSettings/INIT_CHECKLIST_ERROR';
+
+const CHANGE_CHECKLIST_CATEGORY =  'wbonline/chcklistSettings/CHANGE_CHECKLIST_CATEGORY';
+const CHANGE_CHECKLIST_SUB_CATEGORY =  'wbonline/chcklistSettings/CHANGE_CHECKLIST_SUB_CATEGORY';
+
+const LOAD_CHECKLIST_ITEM_START =  'wbonline/chcklistSettings/LOAD_CHECKLIST_ITEM_START';
+const LOAD_CHECKLIST_ITEM_SUCCESS =  'wbonline/chcklistSettings/LOAD_CHECKLIST_ITEM_SUCCESS';
+const LOAD_CHECKLIST_ITEM_ERROR =  'wbonline/chcklistSettings/LOAD_CHECKLIST_ITEM_ERROR';
+
+const UPDATE_CHECKLIST_ITEM_START =  'wbonline/chcklistSettings/UPDATE_CHECKLIST_ITEM_START';
+const UPDATE_CHECKLIST_ITEM_SUCCESS =  'wbonline/chcklistSettings/UPDATE_CHECKLIST_ITEM_SUCCESS';
+const UPDATE_CHECKLIST_ITEM_ERROR =  'wbonline/chcklistSettings/UPDATE_CHECKLIST_ITEM_ERROR';
+
+const UPDATE_CHECKLIST_NEW_ITEM =  'wbonline/chcklistSettings/UPDATE_CHECKLIST_NEW_ITEM';
+const ADD_CHECKLIST_NEW_ITEM_START =  'wbonline/chcklistSettings/ADD_CHECKLIST_NEW_ITEM_START';
+const ADD_CHECKLIST_NEW_ITEM_SUCCESS =  'wbonline/chcklistSettings/ADD_CHECKLIST_NEW_ITEM_SUCCESS';
+const ADD_CHECKLIST_NEW_ITEM_ERROR =  'wbonline/chcklistSettings/ADD_CHECKLIST_NEW_ITEM_ERROR';
+
+const ADD_CHECKLIST_NEW_SUB_CATEGORY_START =  'wbonline/chcklistSettings/ADD_CHECKLIST_NEW_SUB_CATEGORY_START';
+const ADD_CHECKLIST_NEW_SUB_CATEGORY_SUCCESS =  'wbonline/chcklistSettings/ADD_CHECKLIST_NEW_SUB_CATEGORY_SUCCESS';
+const ADD_CHECKLIST_NEW_SUB_CATEGORY_ERROR =  'wbonline/chcklistSettings/ADD_CHECKLIST_NEW_SUB_CATEGORY_ERROR';
+
+const CHECK_CHECKLIST_ALL_ITEMS = 'wbonline/chcklistSettings/CHECK_CHECKLIST_ALL_ITEMS';
+const CHECK_CHECKLIST_ITEM = 'wbonline/chcklistSettings/CHECK_CHECKLIST_ITEM';
+
+const REMOVE_CHECKLIST_ITEMS_START = 'wbonline/chcklistSettings/REMOVE_CHECKLIST_ITEMS_START';
+const REMOVE_CHECKLIST_ITEMS_SUCCESS = 'wbonline/chcklistSettings/REMOVE_CHECKLIST_ITEMS_SUCCESS';
+const REMOVE_CHECKLIST_ITEMS_ERROR = 'wbonline/chcklistSettings/REMOVE_CHECKLIST_ITEMS_ERROR';
+
+const ASSIGN_CHECKLIST_ITEM_START = 'wbonline/chcklistSettings/ASSIGN_CHECKLIST_ITEM_START';
+const ASSIGN_CHECKLIST_ITEM_SUCCESS = 'wbonline/chcklistSettings/ASSIGN_CHECKLIST_ITEM_SUCCESS';
+const ASSIGN_CHECKLIST_ITEM_ERROR = 'wbonline/chcklistSettings/ASSIGN_CHECKLIST_ITEM_ERROR';
+
+const LOAD_CHECKLIST_ITEM_TASK_START = 'wbonline/chcklistSettings/LOAD_CHECKLIST_ITEM_TASK_START';
+const LOAD_CHECKLIST_ITEM_TASK_SUCCESS = 'wbonline/chcklistSettings/LOAD_CHECKLIST_ITEM_TASK_SUCCESS';
+const LOAD_CHECKLIST_ITEM_TASK_ERROR = 'wbonline/chcklistSettings/LOAD_CHECKLIST_ITEM_TASK_ERROR';
+
+const ADD_CHECKLIST_ITEM_TASK_START = 'wbonline/chcklistSettings/ADD_CHECKLIST_ITEM_TASK_START';
+const ADD_CHECKLIST_ITEM_TASK_SUCCESS = 'wbonline/chcklistSettings/ADD_CHECKLIST_ITEM_TASK_SUCCESS';
+const ADD_CHECKLIST_ITEM_TASK_ERROR = 'wbonline/chcklistSettings/ADD_CHECKLIST_ITEM_TASK_ERROR';
+
+const UPDATE_CHECKLIST_SUB_TASK_ITEM_START =  'wbonline/chcklistSettings/UPDATE_CHECKLIST_SUB_TASK_ITEM_START';
+const UPDATE_CHECKLIST_SUB_TASK_ITEM_SUCCESS =  'wbonline/chcklistSettings/UPDATE_CHECKLIST_SUB_TASK_ITEM_SUCCESS';
+const UPDATE_CHECKLIST_SUB_TASK_ITEM_ERROR =  'wbonline/chcklistSettings/UPDATE_CHECKLIST_SUB_TASK_ITEM_ERROR';
+
+const REMOVE_CHECKLIST_SUB_TASK_ITEM_START =  'wbonline/chcklistSettings/REMOVE_CHECKLIST_SUB_TASK_ITEM_START';
+const REMOVE_CHECKLIST_SUB_TASK_ITEM_SUCCESS =  'wbonline/chcklistSettings/REMOVE_CHECKLIST_SUB_TASK_ITEM_SUCCESS';
+const REMOVE_CHECKLIST_SUB_TASK_ITEM_ERROR =  'wbonline/chcklistSettings/REMOVE_CHECKLIST_SUB_TASK_ITEM_ERROR';
+
+const SORT_CHECKLIST_SUB_TASK_ITEMS_START =  'wbonline/chcklistSettings/SORT_CHECKLIST_SUB_TASK_ITEMS_START';
+const SORT_CHECKLIST_SUB_TASK_ITEMS_SUCCESS =  'wbonline/chcklistSettings/SORT_CHECKLIST_SUB_TASK_ITEMS_SUCCESS';
+const SORT_CHECKLIST_SUB_TASK_ITEMS_ERROR =  'wbonline/chcklistSettings/SORT_CHECKLIST_SUB_TASK_ITEMS_ERROR';
+
+const SORT_CHECKLIST_ITEMS_START =  'wbonline/chcklistSettings/SORT_CHECKLIST_ITEMS_START';
+const SORT_CHECKLIST_ITEMS_SUCCESS =  'wbonline/chcklistSettings/SORT_CHECKLIST_ITEMS_SUCCESS';
+const SORT_CHECKLIST_ITEMS_ERROR =  'wbonline/chcklistSettings/SORT_CHECKLIST_ITEMS_ERROR';
+
+const REMOVE_CHECKLIST_SUB_TASK_ITEMS_START =  'wbonline/chcklistSettings/REMOVE_CHECKLIST_SUB_TASK_ITEMS_START';
+const REMOVE_CHECKLIST_SUB_TASK_ITEMS_SUCCESS =  'wbonline/chcklistSettings/REMOVE_CHECKLIST_SUB_TASK_ITEMS_SUCCESS';
+const REMOVE_CHECKLIST_SUB_TASK_ITEMS_ERROR =  'wbonline/chcklistSettings/REMOVE_CHECKLIST_SUB_TASK_ITEMS_ERROR';
+
+const CHECK_CHECKLIST_SUB_TASK_ITEM =  'wbonline/chcklistSettings/CHECK_CHECKLIST_SUB_TASK_ITEM';
+
+export default (state = fromJS({
+    assignToIsOpen: false,
+    categories: List(),
+    subCategories: List(),
+    activeSubCategories: List(),
+    activeCategory: Map(),
+    activeSubCategory: Map(),
+    events: List(),
+    activeEvents: List(),
+    processing: false,
+    checklistItems: List(),
+    newItem: fromJS({
+        id: '0', 
+        priority: '0', 
+        name: '', 
+        createdBy: '', 
+        assignedBy: '',
+        assignTo: '',
+        assignToRoles: '',
+        schedulePeriodCount: '',
+        schedulePeriod: '',
+        scheduleEventId: '',
+        scheduleBeforeAfter: ''
+    }),
+    assignToOptions: List(),
+    assignItem: Map()
+}), action) => {
+        let payload = action.payload;
+        let subCategories = List();
+        let activeSubCategories = List();
+        let activeCategory = Map();
+        let activeSubCategory = Map();
+        let categories = List();
+        let checklistItems = state.get('checklistItems');
+        let activeEvents = List();
+        let events = List();
+        let index = -1;
+        // let checklistItemTasks = state.get('checklistItemTasks');
+        switch(action.type) {
+            case INIT_CHECKLIST_START:
+                state = state.set('processing', true);
+                state = state.set('categories', List());
+                state = state.set('subCategories', List());
+                state = state.set('events', List());
+
+            break;
+            case INIT_CHECKLIST_SUCCESS:
+                state = state.set('processing', false);
+                state = state.set('categories', payload.categories);
+                state = state.set('events', payload.events);
+                state = state.set('subCategories', payload.subCategories);
+                state = state.set('assignToOptions', payload.assignToOptions)
+            break;
+            case INIT_CHECKLIST_ERROR:
+                state = state.set('processing', false);
+            break;
+            case CHANGE_CHECKLIST_CATEGORY:
+                //update categories tab status
+                let selectedCategory = payload.selectedCategory;
+                categories = state.get('categories').map((category) => {
+                    if(category.get('id') == selectedCategory.get('id')) {
+                        activeCategory = category.set('status', 'active');
+                        return activeCategory;
+                    } else {
+                        return category.set('status', 'inactive');
+                    }
+                });
+
+                activeSubCategories = payload.activeSubCategories;
+                activeSubCategories = activeSubCategories.map((item)=> item.set('status', 'inactive'));
+                
+                events = state.get('events');
+                activeEvents = events.filter(item => item.get('clec_category') == activeCategory.get('id'));
+
+                state = state.set('activeEvents', activeEvents);
+                state = state.set('checklistItems', List());
+                state = state.set('categories', categories);
+                state = state.set('activeCategory', activeCategory);
+                state = state.set('activeSubCategories', activeSubCategories);
+            break;
+            case CHANGE_CHECKLIST_SUB_CATEGORY:
+                // change status of active subcategories 
+                let selectedSubCategory = payload.selectedSubCategory;
+                activeSubCategories = state.get('activeSubCategories');
+                activeSubCategories =  activeSubCategories.map((item) => {
+                    if(item.get('id') == selectedSubCategory.get('id')) {
+                        activeSubCategory = item.set('status', 'active');
+                        return activeSubCategory;
+                    } else {
+                        return item.set('status', 'inactive');
+                    }
+                });
+                let newItem = fromJS({
+                    id: '0', 
+                    priority: '0', 
+                    name: '', 
+                    createdBy: '', 
+                    assignedBy: '',
+                    assignTo: '',
+                    schedulePeriodCount: '',
+                    schedulePeriod: '',
+                    scheduleEventId: '',
+                    scheduleBeforeAfter: ''
+                });
+                state = state.set('newItem', newItem);
+                state = state.set('checklistItems', List());
+                state = state.set('activeSubCategories', activeSubCategories);
+                state = state.set('activeSubCategory', activeSubCategory);
+                state = state.set('activeSubCategory', activeSubCategory);
+            break;
+            case LOAD_CHECKLIST_ITEM_START:
+                state = state.set('processing', true);
+            break;
+            case LOAD_CHECKLIST_ITEM_SUCCESS:
+                state = state.set('checklistItems', payload.checklistItems);
+                state = state.set('processing', false);
+            break;
+            case LOAD_CHECKLIST_ITEM_ERROR:
+                state = state.set('processing', false);
+            break;
+            case UPDATE_CHECKLIST_ITEM_START:
+                state = state.set('processing', true);
+            break;
+            case UPDATE_CHECKLIST_ITEM_SUCCESS:
+                state = state.set('processing', false);
+            break;
+            case UPDATE_CHECKLIST_ITEM_ERROR:
+                state = state.set('processing', false);
+            break;
+            case UPDATE_CHECKLIST_NEW_ITEM:
+                state = state.set('newItem', payload.updatedNewItem);
+            break;
+            case ADD_CHECKLIST_NEW_ITEM_START:
+                state = state.set('assignToIsOpen', false);
+                state = state.set('processing', true);
+            break;
+            case ADD_CHECKLIST_NEW_ITEM_SUCCESS:
+                state = state.set('processing', false);
+            break;
+            case ADD_CHECKLIST_NEW_ITEM_ERROR:
+                state = state.set('processing', false);
+            break;
+            case ADD_CHECKLIST_NEW_SUB_CATEGORY_START:
+                state = state.set('processing', true);
+            break;
+            case ADD_CHECKLIST_NEW_SUB_CATEGORY_SUCCESS:
+                activeSubCategories = state.get('activeSubCategories');
+                let newSubCategory = payload.newSubCategory.set('status', 'inactive');
+                activeSubCategories = activeSubCategories.push(newSubCategory);
+
+                subCategories = state.get('subCategories');
+                subCategories = subCategories.push(newSubCategory);
+                
+                state = state.set('activeSubCategories', activeSubCategories);
+                state = state.set('subCategories', subCategories);
+                state = state.set('processing', false);
+            break;
+            case ADD_CHECKLIST_NEW_SUB_CATEGORY_ERROR:
+                state = state.set('processing', false);
+            break;
+            case CHECK_CHECKLIST_ALL_ITEMS:
+                state = state.set('checklistItems', payload.checkedItems);
+            break;
+            case CHECK_CHECKLIST_ITEM:
+                index = checklistItems.findIndex(item => {
+                    return item.get('id') === payload.checklistItem.get('id');
+                });
+                if (index > -1) {
+                    checklistItems = checklistItems.set(index, payload.checklistItem);
+                }
+                state = state.set('checklistItems', checklistItems);
+            break;
+            case REMOVE_CHECKLIST_ITEMS_START:
+                state = state.set('processing', true);
+            break;
+            case REMOVE_CHECKLIST_ITEMS_SUCCESS:
+                state = state.set('processing', false);
+                let deletedItemIds = payload.deletedItemIds;
+                let newItemList = List();
+                checklistItems.map((item) => {
+                    if(deletedItemIds.indexOf(item.get('id')) <0) {
+                        newItemList = newItemList.push(item);
+                    }
+                });
+                state = state.set('checklistItems', newItemList);
+                state = state.set('processing', false);
+            break;
+            case REMOVE_CHECKLIST_ITEMS_ERROR:
+                state = state.set('processing', false);
+            break;
+            case ASSIGN_CHECKLIST_ITEM_START:
+                state = state.set('assignToIsOpen', false);
+                state = state.set('processing', true);
+            break;
+            case ASSIGN_CHECKLIST_ITEM_SUCCESS:
+                index = checklistItems.findIndex(item => {
+                    return item.get('id') === payload.checklistItem.get('id');
+                });
+
+                if (index > -1) {
+                    checklistItems = checklistItems.set(index, payload.checklistItem);
+                }
+                state = state.set('checklistItems', checklistItems);
+                state = state.set('processing', false);
+            break;
+            case ASSIGN_CHECKLIST_ITEM_ERROR:
+                state = state.set('processing', false);
+            break;
+            case LOAD_CHECKLIST_ITEM_TASK_START:
+            case ADD_CHECKLIST_ITEM_TASK_START:
+                state = state.set('processing', true);
+            break;
+            case LOAD_CHECKLIST_ITEM_TASK_SUCCESS:
+            case ADD_CHECKLIST_ITEM_TASK_SUCCESS:
+                state = state.set('processing', false);
+                index = checklistItems.findIndex(item => {
+                    return item.get('id') === payload.checklistItem.get('id');
+                });
+
+                if (index > -1) {
+                    checklistItems = checklistItems.set(index, payload.checklistItem);
+                }
+                state = state.set('checklistItems', checklistItems);
+                // state = state.set('checklistItems', checklistItems.set('tasks', payload.tasks));
+                // checklistItemTasks = checklistItemTasks.set(payload.checklistItemId, payload.tasks);
+                // state = state.set('checklistItemTasks', checklistItemTasks);
+            break;
+            case LOAD_CHECKLIST_ITEM_TASK_ERROR:
+            case ADD_CHECKLIST_ITEM_TASK_ERROR:
+                state = state.set('processing', false);
+            break;
+            case UPDATE_CHECKLIST_SUB_TASK_ITEM_START:
+                index = checklistItems.findIndex(item => {
+                    return item.get('id') === payload.checklistSubTaskItem.get('clItemId');
+                });
+                if (index > -1) {
+                    checklistItems = checklistItems.update(index, (item)=>{
+                        let subTasks = item.get('tasks');
+                        subTasks = subTasks.map( task => {
+                            if(task.get('id') == payload.checklistSubTaskItem.get('id')) {
+                                task = payload.checklistSubTaskItem;
+                            }
+                            return task;
+                        });
+                        return item.set('tasks', subTasks);
+                    });
+                    state = state.set('checklistItems', checklistItems);
+                }
+                state = state.set('processing', true);
+            break;
+            case UPDATE_CHECKLIST_SUB_TASK_ITEM_SUCCESS:
+                state = state.set('processing', false);
+            break;
+            case UPDATE_CHECKLIST_SUB_TASK_ITEM_ERROR:
+                state = state.set('processing', false);
+            break;
+            case SORT_CHECKLIST_SUB_TASK_ITEMS_START:
+                index = checklistItems.findIndex(item => {
+                    return item.get('id') === payload.checklistItem.get('id');
+                });
+                if (index > -1) {
+                    checklistItems = checklistItems.set(index, payload.checklistItem);
+                }
+                state = state.set('checklistItems', checklistItems);
+            break;
+            case SORT_CHECKLIST_SUB_TASK_ITEMS_SUCCESS:
+            break;
+            case SORT_CHECKLIST_SUB_TASK_ITEMS_ERROR:
+            break;
+
+            case REMOVE_CHECKLIST_SUB_TASK_ITEM_START:
+                state = state.set('processing', true);
+            break;
+            case REMOVE_CHECKLIST_SUB_TASK_ITEM_SUCCESS:
+                index = checklistItems.findIndex(item => {
+                    return item.get('id') === payload.checklistSubTaskItem.get('clItemId');
+                });
+                if (index > -1) {
+                    checklistItems = checklistItems.update(index, (item)=>{
+                        let newSubTasks = List();
+                        item.get('tasks').map( task => {
+                            if(task.get('id') != payload.checklistSubTaskItem.get('id')) {
+                                newSubTasks = newSubTasks.push(task);
+                            }
+                        });
+                        return item.set('tasks', newSubTasks);
+                    });
+                    state = state.set('checklistItems', checklistItems);
+                }
+                state = state.set('processing', false);
+            break;
+            case REMOVE_CHECKLIST_SUB_TASK_ITEM_ERROR:
+                state = state.set('processing', false);
+            break;
+
+            case SORT_CHECKLIST_ITEMS_START:
+                state = state.set('processing', true);
+                state = state.set('checklistItems', payload.checklistItems);
+            break;
+            case SORT_CHECKLIST_ITEMS_SUCCESS:
+            case SORT_CHECKLIST_ITEMS_ERROR:
+                state = state.set('processing', false);
+            break;
+
+            case CHECK_CHECKLIST_SUB_TASK_ITEM:
+                 index = checklistItems.findIndex(item => {
+                     return item.get('id') === payload.item.get('id');
+                 });
+                 if (index > -1) {
+                     checklistItems = checklistItems.set(index, payload.item);
+                 }
+                 state = state.set('checklistItems', checklistItems);
+            break;
+
+            case REMOVE_CHECKLIST_SUB_TASK_ITEMS_START:
+                state = state.set('processing', true);
+            break;
+            case REMOVE_CHECKLIST_SUB_TASK_ITEMS_SUCCESS:
+                state = state.set('processing', false);
+                let deletedSubTaskItemIds = payload.deletedSubTaskItemIds;
+                let newCheckListItems = List();
+                let newTaskList = List();
+                checklistItems.map((item) => {
+                    if(item.has('tasks')){
+                        newTaskList = List();
+                        item.get('tasks').map(subTaskItem => {
+                            if(deletedSubTaskItemIds.indexOf(subTaskItem.get('id')) <0) {
+                                newTaskList = newTaskList.push(subTaskItem);
+                            }
+                        });
+                        newCheckListItems = newCheckListItems.push(item.set('tasks', newTaskList));
+                    } else {
+                        newCheckListItems = newCheckListItems.push(item);
+                    }
+                });
+                state = state.set('checklistItems', newCheckListItems);
+                state = state.set('processing', false);
+            break;
+            case REMOVE_CHECKLIST_SUB_TASK_ITEMS_ERROR:
+                state = state.set('processing', false);
+            break;
+
+    }
+    return  state;
+}
+
+export function loadChecklistEvents() {
+
+}
+
+export function loadChecklistGroups() {
+
+}
+
+export function initChecklistSettings() {
+    return (dispatch) => {
+        let result = [];
+        dispatch({type: INIT_CHECKLIST_START});
+        axios.post('/assets/siud/s/setting/checklist.php', [{
+            criteria:{
+                member: WB.user.contact,
+                organisation: [WB.env.currentOrganisation.id]
+            }
+        }])
+        .then(function (response) {
+            result = response.data[0].result;
+            let categories = fromJS(result['checklistCategories']);
+            let events = fromJS(result['checklistEvents']);
+            let subCategories = fromJS(result['checklistSubCategories']);
+            let assignToOptions = fromJS(result['checklistAssignToOptions']);
+            dispatch({
+                type: INIT_CHECKLIST_SUCCESS, 
+                payload: {
+                    categories: categories, 
+                    events: events, 
+                    subCategories: subCategories,
+                    assignToOptions: assignToOptions
+                }
+            }); 
+            let selectedCategory = categories.first();
+            let activeSubCategories = subCategories.filter((item) => {
+                return (item.get('parentId') == selectedCategory.get('id') && 
+                (item.get('orgId') == WB.env.currentOrganisation.id || item.get('orgId') == '0'))
+            });
+            // let selectedSubCategory = activeSubCategories.first();
+            dispatch(changeCategory(selectedCategory, activeSubCategories));
+            // dispatch(changeSubCategory(selectedSubCategory));
+            // dispatch(loadChecklistItems(selectedSubCategory));
+        })
+        .catch(function (error) {
+            dispatch({type: INIT_CHECKLIST_ERROR});
+            console.log(error);
+        });
+    }
+}
+
+// export function loadSubCategories(selectedCategory) {
+//     return (dispatch) => {
+//         let result = [];
+//         dispatch({type: CHECKLIST_LOAD_SUB_CATEGORY_START});
+//         axios.post('/assets/siud/s/setting/checklistSubCategory.php', [{
+//             criteria:{
+//                 categoryId: selectedCategory.get('id')
+//             }
+//         }])
+//         .then(function (response) {
+//             result = response.data[0].result;
+//             let subCategories = fromJS(result['data']);
+//             dispatch({ type: CHECKLIST_LOAD_SUB_CATEGORY_SUCCESS, payload: { subCategories: subCategories }}); 
+//             // let selectedCategory = categories.first();
+//             // let activeSubCategories = subCategories.filter( item => item.get('parentId') == selectedCategory.get('id'));
+//             // // let selectedSubCategory = activeSubCategories.first();
+//             // dispatch(changeCategory(selectedCategory, activeSubCategories));
+//             // // dispatch(changeSubCategory(selectedSubCategory));
+//             // // dispatch(loadChecklistItems(selectedSubCategory));
+//         })
+//         .catch(function (error) {
+//             dispatch({type: CHECKLIST_LOAD_SUB_CATEGORY_ERROR});
+//             console.log(error);
+//         });
+//     }
+// }
+
+export function changeCategory(selectedCategory, activeSubCategories) {
+    return (dispatch) => {
+        dispatch({type: CHANGE_CHECKLIST_CATEGORY, payload: {selectedCategory: selectedCategory, activeSubCategories: activeSubCategories}});
+        if(activeSubCategories.size > 0) {
+            dispatch(changeSubCategory(activeSubCategories.first()));
+        }
+    }
+}
+
+export function changeSubCategory(selectedSubCategory) {
+    return (dispatch) => {
+        dispatch({type: CHANGE_CHECKLIST_SUB_CATEGORY, payload: {selectedSubCategory: selectedSubCategory}});
+        dispatch(loadChecklistItems(selectedSubCategory));
+    }
+}
+
+export function loadChecklistItems(selectedSubCategory) {
+     return (dispatch) => {
+        let result = [];
+        dispatch({type: LOAD_CHECKLIST_ITEM_START});
+        axios.post('/assets/siud/s/setting/checklistItem.php', [{
+            criteria: {
+                member: WB.user.contact,
+                organisation: [WB.env.currentOrganisation.id],
+                categoryId: selectedSubCategory.get('id')
+            }
+        }])
+        .then(function (response) {
+            result = response.data[0].result;
+            let checklistItems = fromJS(result['data']);
+            dispatch({
+                type: LOAD_CHECKLIST_ITEM_SUCCESS, 
+                payload: {
+                    checklistItems: checklistItems, 
+                }
+            }); 
+        })
+        .catch(function (error) {
+            dispatch({type: LOAD_CHECKLIST_ITEM_ERROR});
+            console.log(error);
+        });
+    }
+}
+
+export function updateChecklistItem(checklistItem, field, value) {
+    return (dispatch) => {
+        let result = [];
+        dispatch({type: UPDATE_CHECKLIST_ITEM_START});
+        axios.post('/assets/siud/u/setting/checklistItem.php', [{
+            criteria: {
+                checklistItemId: checklistItem.get('id'),
+                updatedField: field,
+                updatedValue: value,
+                member: WB.user.contact
+            }
+        }])
+        .then(function (response) {
+            // result = response.data[0].result;
+            // let checklistItems = fromJS(result['data']);
+            dispatch({type: UPDATE_CHECKLIST_ITEM_SUCCESS, payload: {}}); 
+        })
+        .catch(function (error) {
+            dispatch({type: UPDATE_CHECKLIST_ITEM_ERROR});
+            console.log(error);
+        });
+    }
+}
+
+export function updateNewItem(updatedNewItem) {
+    return ({type: UPDATE_CHECKLIST_NEW_ITEM, payload: {updatedNewItem: updatedNewItem }});
+}
+
+export function addNewItem(newItem, selectedAssignToIds, activeSubCategory) {
+    let item = newItem.toJS();
+    let activeSubCategoryId = activeSubCategory.get('id');
+    return (dispatch) => {
+        let result = [];
+        dispatch({type: ADD_CHECKLIST_NEW_ITEM_START});
+        axios.post('/assets/siud/i/setting/checklistItem.php', [{
+            criteria: {
+                newItem: item,
+                assignToRoleIds: selectedAssignToIds,
+                activeSubCategoryId: activeSubCategoryId,
+                member: WB.user.contact,
+                organisation: [WB.env.currentOrganisation.id]
+            }
+        }])
+        .then(function (response) {
+            dispatch({type: ADD_CHECKLIST_NEW_ITEM_SUCCESS}); 
+            dispatch(changeSubCategory(activeSubCategory));
+        })
+        .catch(function (error) {
+            dispatch({type: ADD_CHECKLIST_NEW_ITEM_ERROR});
+            console.log(error);
+        });
+    }
+}
+
+export function addNewSubCategory(newSubCatName, activeCategory) {
+    let activeCategoryId = activeCategory.get('id');
+    return (dispatch) => {
+        let result = [];
+        dispatch({type: ADD_CHECKLIST_NEW_SUB_CATEGORY_START});
+        axios.post('/assets/siud/i/setting/checklistSubCategory.php', [{
+            criteria: {
+                activeCategoryId: activeCategoryId,
+                subCategoryName: newSubCatName,
+                member: WB.user.contact,
+                organisation: [WB.env.currentOrganisation.id]
+            }
+        }])
+        .then(function (response) {
+            result = response.data[0].result;
+            let newSubCategory = fromJS(result['newSubCategory']);
+            dispatch({type: ADD_CHECKLIST_NEW_SUB_CATEGORY_SUCCESS, payload: {newSubCategory: newSubCategory}}); 
+        })
+        .catch(function (error) {
+            dispatch({type: ADD_CHECKLIST_NEW_SUB_CATEGORY_ERROR});
+            console.log(error);
+        });
+    }
+}
+
+export function checkAllItems(checkedItems) {
+    return {
+        type: CHECK_CHECKLIST_ALL_ITEMS,
+        payload: {checkedItems: checkedItems}
+    }
+}
+
+export function checkItem(checklistItem) {
+    return {
+        type: CHECK_CHECKLIST_ITEM,
+        payload: { checklistItem: checklistItem }
+    }
+}
+
+export function removeChecklistItems(items, activeSubCategory) {
+    return {
+        type: REMOVE_CHECKLIST_ITEMS_START,
+        payload: {items: items}
+    }
+    //   dispatch({type: REMOVE_CHECKLIST_ITEMS_START});
+    // let ids = [];
+    // items.map((item) => {
+    //     ids.push(item.get('id'));
+    // });
+    // return (dispatch) => {
+    //     let data = [];
+    //     dispatch({type: REMOVE_CHECKLIST_ITEMS_START});
+    //     axios.post('/assets/siud/d/setting/checklistItems.php', [{
+    //         criteria:{
+    //             member: WB.user.contact,
+    //             ids: ids
+    //         }
+    //     }])
+    //     .then(function (response) {
+    //         dispatch({type: REMOVE_CHECKLIST_ITEMS_SUCCESS, payload: {deletedItemIds: ids}}); 
+    //         // dispatch(changeSubCategory(activeSubCategory));
+    //     })
+    //     .catch(function (error) {
+    //         dispatch({type: REMOVE_CHECKLIST_ITEMS_ERROR});
+    //         console.log(error);
+    //     });
+    // }
+}
+
+export function assignChecklistItem(itemToAssign, selectedAssignToIds, selectedSubCategory) {
+    let roleIds = selectedAssignToIds.join();
+    let checklistItem = itemToAssign.set('assignTo', roleIds);
+    let initials = WB.user.contact.nameFirst.substring(0,1) + WB.user.contact.nameLast.substring(0,1);
+    checklistItem = checklistItem.set('assignedBy', initials);
+     return (dispatch) => {
+        let data = [];
+        dispatch({type: ASSIGN_CHECKLIST_ITEM_START});
+        axios.post('/assets/siud/u/setting/assignChecklistItem.php', [{
+            criteria:{
+                member: WB.user.contact,
+                clItemId: itemToAssign.get('id'),
+                roleIds: selectedAssignToIds
+            }
+        }])
+        .then(function (response) {
+            dispatch({type: ASSIGN_CHECKLIST_ITEM_SUCCESS, payload: {checklistItem: checklistItem}}); 
+            // dispatch(loadChecklistItems(selectedSubCategory));
+        })
+        .catch(function (error) {
+            dispatch({type: ASSIGN_CHECKLIST_ITEM_ERROR});
+            console.log(error);
+        });
+    }
+}
+
+
+
+export function locaChecklistItemTasks(checklistItem) {
+    let checklistItemId = checklistItem.get('id');
+    return (dispatch) => {
+        let result = [];
+        dispatch({type: LOAD_CHECKLIST_ITEM_TASK_START});
+        axios.post('/assets/siud/s/setting/checklistTasks.php', [{
+            criteria:{
+                member: WB.user.contact,
+                organisation: [WB.env.currentOrganisation.id],
+                itemId: checklistItem.get('id')
+            }
+        }])
+        .then(function (response) {
+            result = response.data[0].result;
+            let tasks = fromJS(result['tasks']);
+            checklistItem = checklistItem.set('tasks', tasks);
+            dispatch({
+                type: LOAD_CHECKLIST_ITEM_TASK_SUCCESS, 
+                payload: {checklistItem: checklistItem}
+            }); 
+        })
+        .catch(function (error) {
+            dispatch({type: LOAD_CHECKLIST_ITEM_TASK_ERROR});
+            console.log(error);
+        });
+    }
+}
+
+export function addNewTask(checklistItem, newTask) {
+    let checklistItemId = checklistItem.get('id');
+    return (dispatch) => {
+        let result = [];
+        dispatch({type: ADD_CHECKLIST_ITEM_TASK_START});
+        axios.post('/assets/siud/i/setting/checklistTask.php', [{
+            criteria:{
+                member: WB.user.contact,
+                organisation: [WB.env.currentOrganisation.id],
+                checklistItemId: checklistItem.get('id'),
+                newTask: newTask
+            }
+        }])
+        .then(function (response) {
+            result = response.data[0].result;
+            let tasks = fromJS(result['tasks']);
+            checklistItem = checklistItem.set('tasks', tasks);
+            dispatch({
+                type: ADD_CHECKLIST_ITEM_TASK_SUCCESS, 
+                payload: {checklistItem: checklistItem}
+            }); 
+        })
+        .catch(function (error) {
+            dispatch({type: ADD_CHECKLIST_ITEM_TASK_ERROR});
+            console.log(error);
+        });
+    }
+}
+
+export function updateChecklistSubTaskItem(checklistSubTaskItem, field, value) {
+    checklistSubTaskItem = checklistSubTaskItem.set(field, value);
+    return (dispatch) => {
+        let result = [];
+        dispatch({type: UPDATE_CHECKLIST_SUB_TASK_ITEM_START, payload: {checklistSubTaskItem: checklistSubTaskItem}});
+        axios.post('/assets/siud/u/setting/checklistSubTaskItem.php', [{
+            criteria: {
+                checklistSubTaskId: checklistSubTaskItem.get('id'),
+                updatedField: field,
+                updatedValue: value,
+                member: WB.user.contact
+            }
+        }])
+        .then(function (response) {
+            dispatch({type: UPDATE_CHECKLIST_SUB_TASK_ITEM_SUCCESS, payload: {}}); 
+        })
+        .catch(function (error) {
+            dispatch({type: UPDATE_CHECKLIST_SUB_TASK_ITEM_ERROR});
+            console.log(error);
+        });
+    }
+}
+
+export function sortSubTaskItems(checklistItem) {
+    let tasks = checklistItem.get('tasks');
+    return (dispatch) => {
+        dispatch({type: SORT_CHECKLIST_SUB_TASK_ITEMS_START, payload: {checklistItem: checklistItem}});
+        axios.post('/assets/siud/u/setting/checklistSubTaskItemOrder.php', [{
+            criteria: {
+                contactId: WB.user.contact.id,
+                tasks: tasks.toJS()
+            }
+        }])
+        .then( (response) => {
+            dispatch({type: SORT_CHECKLIST_SUB_TASK_ITEMS_SUCCESS, payload: {checklistItem: checklistItem}});
+        })
+        .catch((error) => {
+            dispatch({type: SORT_CHECKLIST_SUB_TASK_ITEMS_ERROR});
+            console.log(error);
+        });
+    }
+   
+}
+
+export function deleteSubTaskItem(subTaskItem) {
+    let ids = [subTaskItem.get('id')];
+    return (dispatch) => {
+        let data = [];
+        dispatch({type: REMOVE_CHECKLIST_SUB_TASK_ITEM_START});
+        axios.post('/assets/siud/d/setting/checklistSubTaskItems.php', [{
+            criteria:{
+                member: WB.user.contact,
+                ids: ids
+            }
+        }])
+        .then(function (response) {
+            dispatch({type: REMOVE_CHECKLIST_SUB_TASK_ITEM_SUCCESS, payload: {checklistSubTaskItem: subTaskItem}}); 
+        })
+        .catch(function (error) {
+            dispatch({type: REMOVE_CHECKLIST_SUB_TASK_ITEM_ERROR});
+            console.log(error);
+        });
+    }
+}
+
+export function sortChecklistItems(checklistItems, activeSubCategory) {
+    return (dispatch) => {
+        dispatch({type: SORT_CHECKLIST_ITEMS_START, payload: {checklistItems: checklistItems}});
+        axios.post('/assets/siud/u/setting/checklistItemOrder.php', [{
+            criteria: {
+                contactId: WB.user.contact.id,
+                checklistItems: checklistItems.toJS()
+            }
+        }])
+        .then( (response) => {
+            dispatch({type: SORT_CHECKLIST_ITEMS_SUCCESS, payload: {checklistItems: checklistItems}});
+            // dispatch(changeSubCategory(activeSubCategory));
+        })
+        .catch((error) => {
+            dispatch({type: SORT_CHECKLIST_ITEMS_ERROR});
+            console.log(error);
+        });
+    }
+}
+
+export function checkSubTaskItem(item) {
+     return {
+         type: CHECK_CHECKLIST_SUB_TASK_ITEM,
+         payload: { item: item }
+     }
+ }
+
+ export function removeChecklistSubTaskItems(items, activeSubCategory) {
+     let ids = [];
+     items.map((item) => {
+         ids.push(item.get('id'));
+     });
+     return (dispatch) => {
+         let data = [];
+         dispatch({type: REMOVE_CHECKLIST_SUB_TASK_ITEMS_START});
+         axios.post('/assets/siud/d/setting/checklistSubTaskItems.php', [{
+             criteria:{
+                 member: WB.user.contact,
+                 ids: ids
+             }
+         }])
+         .then(function (response) {
+             dispatch({type: REMOVE_CHECKLIST_SUB_TASK_ITEMS_SUCCESS, payload: {deletedSubTaskItemIds: ids}}); 
+            //  dispatch(changeSubCategory(activeSubCategory));
+         })
+         .catch(function (error) {
+             dispatch({type: REMOVE_CHECKLIST_SUB_TASK_ITEMS_ERROR});
+             console.log(error);
+         });
+     }
+ }
