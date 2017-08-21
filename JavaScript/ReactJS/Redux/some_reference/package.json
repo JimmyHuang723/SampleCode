@@ -1,14 +1,14 @@
 {
-  "name": "redesign_wol",
+  "name": "xxx",
   "version": "1.0.0",
-  "description": "WOL redesign with react",
+  "description": "XXX",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack -d --watch",
     "build": "webpack -p"
   },
-  "author": "Anjan Raj Shakya",
+  "author": "XXX",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.1",
